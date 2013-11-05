@@ -1,0 +1,11 @@
+<html>
+  <head>
+    <title>Items</title>
+  </head>
+  <body>
+    <% @items.each do |item| %>
+      <h1><%= item.title %></h1>
+      <p><%= item.description %></p>
+    <% end %>
+  </body>
+</html>
