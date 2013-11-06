@@ -26,11 +26,44 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
     assert_content page, "Deviled Eggs added to cart!"
   end
 
-  # test "can create a new order" do
-  #   item = {title: "cookie", description: "chocolate chip",
-  #                       price: "3", category: "dessert"}
-  #   Order.create({user_id: 2, status: "paid", items: Item.create(item)})
-  # end
+  test "can add multiple items to order without logging in" do
+    Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1', category:'egg')
+    Item.create(title: 'Hard Boiled Eggs', description: '12 hard eggs', price: '1', category:'egg')
+    visit root_path
+    within("#item_1") do
+      click_on "Add to Cart"
+    end
+    within("#item_2") do
+      click_on "Add to Cart"
+    end
+
+    visit order_path(Order.first)
+    within("#item_1") do
+      assert_content page, "Deviled Eggs"
+    end
+    within("#item_2") do
+      assert_content page, "Hard Boiled Eggs"
+    end
+  end
+
+  test "can add multiple instances of same item to order" do
+    Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1', category:'egg')
+    Item.create(title: 'Hard Boiled Eggs', description: '12 hard eggs', price: '1', category:'egg')
+
+    visit root_path
+    within("#item_1") do
+      click_on "Add to Cart"
+    end
+    within("#item_1") do
+      click_on "Add to Cart"
+    end
+
+    visit order_path(Order.first)
+    within("#item_1") do
+      assert_content page, "Quantity: 2"
+    end
+  end
+
 
 
 end

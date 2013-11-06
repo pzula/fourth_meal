@@ -4,5 +4,5 @@ DinnerDash::Application.routes.draw do
   resources :orders
   root to: 'items#index'
 
-  post "item/add_to_order" => 'item#add_to_order', as: 'add_item'
+  post "items/add_to_order/:id" => 'items#add_to_order', as: 'add_item'
 end

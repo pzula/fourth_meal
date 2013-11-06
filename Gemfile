@@ -48,4 +48,5 @@ end
 group :test do
   gem 'minitest-rails-capybara'
   gem 'launchy'
+  gem 'pry'
 end

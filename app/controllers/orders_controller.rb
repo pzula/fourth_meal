@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-
+    @order = Order.find(cookies[:order_id])
   end
 
 end

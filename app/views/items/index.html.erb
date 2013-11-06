@@ -7,7 +7,7 @@
 	    <p><%= item.price %></p>
 	    <p><%= item.category %></p>
 	    <% if @order %>
-	    	<%= link_to "Add to Cart", add_item_path(@order.id) %>
+        <%= link_to "Add to Cart", add_item_path(item.id), {method: 'post'} %>
 	    <% else %>
 		    <%= link_to "Add to Cart", new_order_path(:item_id => item.id) %>
 		<% end %>
