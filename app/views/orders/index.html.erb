@@ -1,0 +1,14 @@
+<div id="orders">
+  <% @orders.each do |order| %>
+    <% items = order.items %>
+    <h1><%= order.id %></h1>
+    <% items.each do |item| %>
+      <h3><%= item.title %></h3>
+      <p><%= item.description %></p>
+      <p><%= item.price %></p>
+      <p><%= item.category %></p>
+    <% end %>
+    <p><%= order.status %></p>
+  <% end %>
+
+</div>

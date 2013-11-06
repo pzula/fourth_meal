@@ -3,6 +3,11 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.active
+    if cookies[:order_id]
+      @order = Order.find(cookies[:order_id])
+    else
+      @order = nil
+    end
   end
 
   def new
