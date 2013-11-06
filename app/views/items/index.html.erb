@@ -1,9 +1,18 @@
 <div id="items">
-  <% @items.each do |item| %>
-    <h1><%= item.title %></h1>
-    <p><%= item.description %></p>
-    <p><%= item.price %></p>
-    <p><%= item.category %></p>
-  <% end %>
+	<ul>
+	  <% @items.each do |item| %>
+	  <li id="item_<%= item.id %>">
+	    <h1><%= item.title %></h1>
+	    <p><%= item.description %></p>
+	    <p><%= item.price %></p>
+	    <p><%= item.category %></p>
+	    <% if @order %>
+	    	<%= link_to "Add to Cart", add_item_path(@order.id) %>
+	    <% else %>
+		    <%= link_to "Add to Cart", new_order_path(:item_id => item.id) %>
+		<% end %>
+	  </li>
+	  <% end %>
+	</ul>
 </div>
 
