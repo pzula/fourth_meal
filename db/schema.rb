@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20131106155733) do
     t.integer  "item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "quantity"
+    t.integer  "quantity",   default: 1
   end
 
   add_index "order_items", ["item_id"], name: "index_order_items_on_item_id"

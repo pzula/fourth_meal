@@ -22,11 +22,23 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-
   end
 
   def update
     @item = Item.update(params[:id], item_params)
+    redirect_to items_path
+  end
+
+  def add_to_order
+    order = Order.find(cookies[:order_id])
+    item = Item.find(params[:id])
+    if order.items.include? item
+      order_item = OrderItem.where(order_id:order.id, item_id:item.id).first
+      new_quantity = order_item.quantity + 1
+      order_item.update(quantity: new_quantity)
+    else
+      order.items << item
+    end
     redirect_to items_path
   end
 
