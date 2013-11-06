@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   include ItemsHelper
 
   def index
-    @items = Item.all
+    @items = Item.active
   end
 
   def new
