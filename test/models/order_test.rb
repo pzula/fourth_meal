@@ -43,4 +43,14 @@ class OrderTest < ActiveSupport::TestCase
     assert_equal "chocolate chip", order.items.first.description
   end
 
+  test "it can find it's quantity" do
+    item1 = {title: "cookie", description: "chocolate chip",
+                        price: "3", category: "dessert"}
+    new_item = Item.create(item1)
+
+    order = Order.create
+    order.items << new_item
+    assert_equal 1, order.total_items
+  end
+
 end

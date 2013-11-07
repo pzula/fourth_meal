@@ -6,4 +6,10 @@ class Order < ActiveRecord::Base
     where(status: "pending")
   end
 
+  def total_items
+    order_items.inject(0) do |sum, order_item|
+      sum + order_item.quantity
+    end
+  end
+
 end
