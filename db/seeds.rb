@@ -50,7 +50,11 @@ Item.create({title: "Interstate S'Mores", description: "Graham Crackers, Marshma
 
 Item.create({title: "Coconut Cream Cheese Ice Box Cake", description: "Heaven on a Plate", category: "Dessert", price: '7'})
 
+usr = User.new({username: 'wvmitchell', password: 'password'})
+usr.admin = true
+usr.save
 
+User.create({username: 'bob', password: 'password'})
 
 
 
