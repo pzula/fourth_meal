@@ -22,10 +22,12 @@ class CanAccessItemsTest < Capybara::Rails::TestCase
   end
 
   test "can see item category" do
-    skip
-    Item.create({title: "Burger", description: "Loafy goodness", price: '1'})
+    category = Category.create(name: "Plates")
+    item = Item.create({title: "Burger", description: "Loafy goodness", price: '1'})
+    category.items << item
     visit items_path
-    assert_content page, "burger"
+    assert_content page, "Burger"
+    assert_content page, "Plates"
   end
 
   test "can edit an item" do

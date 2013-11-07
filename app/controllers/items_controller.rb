@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  include ItemsHelper
 
   def index
     @items = Item.active
@@ -40,6 +39,12 @@ class ItemsController < ApplicationController
       order.items << item
     end
     redirect_to items_path
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:title, :description, :price, :category)
   end
 
 end

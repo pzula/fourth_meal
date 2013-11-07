@@ -4,7 +4,7 @@
 	  <li id="item_<%= item.id %>">
 	    <h1><%= item.title %></h1>
 	    <p><%= item.description %></p>
-	    <p><%= item.price %></p>
+	    <p><%=print_price(item.price) %></p>
 	    <% item.categories.each do |category| %>
      	 <p><%= category.name %></p>
      	<% end %>

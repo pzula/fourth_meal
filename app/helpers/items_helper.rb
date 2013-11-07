@@ -1,7 +1,7 @@
 module ItemsHelper
 
-  def item_params
-    params.require(:item).permit(:title, :description, :price, :category)
+  def print_price(price)
+    number_to_currency price
   end
 
 end
