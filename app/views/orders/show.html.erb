@@ -2,6 +2,7 @@
 
 <h3>Order ID: <%= @order.id %></h3>
 <% @order.order_items.each do |order_item| %>
+  <% @order_item = order_item %>
   <% item = order_item.item %>
   <div id="item_<%= item.id %>">
     <h5><%= item.title %></h5>
@@ -9,6 +10,11 @@
     <p>Price: <%= item.price %></p>
     <p>Category: <%= item.category %></p>
     <p>Quantity: <%= order_item.quantity %>
+    <%= form_for @order_item do |f| %>
+      <%= f.label :quantity %>
+      <%= f.number_field :quantity %>
+      <%= f.submit "Adjust Quantity" %>
+    <% end %>
   </div>
 <% end %>
 

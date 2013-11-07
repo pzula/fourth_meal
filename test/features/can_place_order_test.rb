@@ -1,5 +1,5 @@
 require './test/test_helper'
-
+require 'pry'
 class CanPlaceOrderTest < Capybara::Rails::TestCase
 
   test "can see current orders" do
@@ -64,6 +64,20 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
     end
   end
 
+  test "user can adjust items in cart" do
+    item = Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1', category:'egg')
+    order = Order.create
+    order.items << item
+    visit order_path(order)
 
+    within("#item_1") do
+      fill_in "Quantity", with: 10
+      click_on "Adjust Quantity"
+    end
+
+    within("#item_1") do
+      assert_content page, "Quantity: 10"
+    end
+  end
 
 end
