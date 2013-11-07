@@ -9,9 +9,17 @@ class OrderItemsController < ApplicationController
     end
   end
 
+  def destroy
+    order_item = OrderItem.find(params[:id])
+    order = Order.find(order_item.order_id)
+    order_item.destroy
+    redirect_to order_path(order)
+  end
+
   private
 
   def order_item_params
     params.require(:order_item).permit(:quantity)
   end
+
 end

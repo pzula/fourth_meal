@@ -1,20 +1,23 @@
 <h1>Current Order</h1>
 
-<h3>Order ID: <%= @order.id %></h3>
-<% @order.order_items.each do |order_item| %>
-  <% @order_item = order_item %>
-  <% item = order_item.item %>
-  <div id="item_<%= item.id %>">
-    <h5><%= item.title %></h5>
-    <p><%= item.description %></p>
-    <p>Price: <%= item.price %></p>
-    <p>Category: <%= item.category %></p>
-    <p>Quantity: <%= order_item.quantity %>
-    <%= form_for @order_item do |f| %>
-      <%= f.label :quantity %>
-      <%= f.number_field :quantity %>
-      <%= f.submit "Adjust Quantity" %>
-    <% end %>
-  </div>
+<% if @order_items.count > 0 %>
+  <% @order_items.each do |order_item| %>
+    <% @order_item = order_item %>
+    <% item = order_item.item %>
+    <div id="item_<%= item.id %>">
+      <h5><%= item.title %></h5>
+      <p><%= item.description %></p>
+      <p>Price: <%= item.price %></p>
+      <p>Category: <%= item.category %></p>
+      <p>Quantity: <%= order_item.quantity %>
+      <%= form_for @order_item do |f| %>
+        <%= f.label :quantity %>
+        <%= f.number_field :quantity %>
+        <%= f.submit "Adjust Quantity" %>
+      <% end %>
+      <%= link_to "Delete", order_item_path, {method: 'delete'} %>
+    </div>
+  <% end %>
+<% else %>
+  <h3>Your Cart is Empty</h3>
 <% end %>
-

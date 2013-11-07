@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     elsif params[:id]
       @order = Order.find(params[:id])
     end
-    #@order_items = @order.order_items
+    @order_items = @order.order_items
   end
 
 end

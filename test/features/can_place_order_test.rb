@@ -93,4 +93,5 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
     end
   end
 
+
 end
