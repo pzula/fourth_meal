@@ -26,6 +26,19 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
     assert_content page, "Deviled Eggs added to cart!"
   end
 
+  test "cannot set the quantity to a negative number" do
+    item = Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1', category:'egg')
+    order = Order.create
+    order.items << item
+
+    visit order_path(order)
+    fill_in 'Quantity', with: '-5'
+    click_on 'Adjust Quantity'
+
+    assert_content page, 'There was an error.'
+    assert_content page, 'Quantity: 1'
+  end
+
   test "can add multiple items to order without logging in" do
     Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1', category:'egg')
     Item.create(title: 'Hard Boiled Eggs', description: '12 hard eggs', price: '1', category:'egg')

@@ -50,3 +50,7 @@ group :test do
   gem 'launchy'
   gem 'pry'
 end
+
+# group :development do
+#   gem 'rails-erd'
+# end
