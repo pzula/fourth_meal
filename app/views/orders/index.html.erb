@@ -5,7 +5,7 @@
     <% items.each do |item| %>
       <h3><%= item.title %></h3>
       <p><%= item.description %></p>
-      <p><%= item.price %></p>
+      <p><%= print_price(item.price) %></p>
       <% item.categories.each do |category| %>
           <p><%= category.name %></p>
       <% end %>

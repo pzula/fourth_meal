@@ -7,7 +7,7 @@
     <div id="item_<%= item.id %>">
       <h5><%= item.title %></h5>
       <p><%= item.description %></p>
-      <p>Price: <%= item.price %></p>
+      <p>Price: <%= print_price(item.price) %></p>
       <p>Categories: 
         <% item.categories.each do |category| %>
           <p><%= category.name %></p>

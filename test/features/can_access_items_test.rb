@@ -49,4 +49,15 @@ class CanAccessItemsTest < Capybara::Rails::TestCase
     end
   end
 
+  test "can view individual item info" do
+    @item = Item.create({title: "Burger", description: "Loafy goodness", price: '1'})
+    @item2 = Item.create({title: "Pita", description: "Loafy badness", price:'1'})
+    visit items_path
+    within("#item_1") do
+      click_on "#{@item.title}"
+    end
+    assert_content page, "$1.00"
+    assert_content page, "Burger"
+  end
+
 end

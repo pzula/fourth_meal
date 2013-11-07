@@ -19,6 +19,15 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def show
+    @item = Item.find(params[:id])
+    if cookies[:order_id]
+      @order = Order.find(cookies[:order_id])
+    else
+      @order = nil
+    end
+  end
+
   def edit
     @item = Item.find(params[:id])
   end
@@ -38,7 +47,7 @@ class ItemsController < ApplicationController
     else
       order.items << item
     end
-    redirect_to items_path
+    redirect_to :back
   end
 
   private

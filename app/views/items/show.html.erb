@@ -1,0 +1,11 @@
+<h2><%=	@item.title %></h2>
+<p><%= @item.description %></p>
+<p><%= print_price(@item.price) %></p>
+<% @item.categories.each do |category| %>
+	 <p><%= category.name %></p>
+	<% end %>
+<% if @order %>
+<%= link_to "Add to Cart", add_item_path(@item.id), {method: 'post'} %>
+<% else %>
+    <%= link_to "Add to Cart", new_order_path(:item_id => @item.id) %>
+<% end %>
