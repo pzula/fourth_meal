@@ -6,7 +6,9 @@
       <h3><%= item.title %></h3>
       <p><%= item.description %></p>
       <p><%= item.price %></p>
-      <p><%= item.category %></p>
+      <% item.categories.each do |category| %>
+          <p><%= category.name %></p>
+      <% end %>
     <% end %>
     <p><%= order.status %></p>
   <% end %>

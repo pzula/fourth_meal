@@ -6,8 +6,8 @@
 	    <p><%= item.description %></p>
 	    <p><%= item.price %></p>
 	    <% item.categories.each do |category| %>
-      <p><%= category.name %></p>
-      <% end %>
+     	 <p><%= category.name %></p>
+     	<% end %>
 	    <% if @order %>
         <%= link_to "Add to Cart", add_item_path(item.id), {method: 'post'} %>
 	    <% else %>

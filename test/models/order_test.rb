@@ -4,7 +4,7 @@ class OrderTest < ActiveSupport::TestCase
 
   test "it finds pending orders" do
     item1 = {title: "cookie", description: "chocolate chip",
-                        price: "3", category: "dessert"}
+                        price: "3"}
     item2 = item1.merge({description: "coconut macoroons"})
     item3 = item1.merge({description: "chewy chocolate oatmeal"})
     order = Order.new
@@ -14,7 +14,7 @@ class OrderTest < ActiveSupport::TestCase
     order.items.create(item3)
     assert_equal 3, order.items.count
     item1 = {title: "ice cream", description: "chocolate chip",
-                        price: "3", category: "dessert"}
+                        price: "3"}
     item2 = item1.merge({description: "rocky road"})
     item3 = item1.merge({description: "butter pecan"})
     ice_cream = Order.new({status: "paid"})
@@ -28,7 +28,7 @@ class OrderTest < ActiveSupport::TestCase
 
   test "it can create a new order" do
     item1 = {title: "cookie", description: "chocolate chip",
-                        price: "3", category: "dessert"}
+                        price: "3"}
     item2 = item1.merge({description: "coconut macoroons"})
     item3 = item1.merge({description: "chewy chocolate oatmeal"})
     new_item1 = Item.new(item1)
@@ -45,7 +45,7 @@ class OrderTest < ActiveSupport::TestCase
 
   test "it can find it's quantity" do
     item1 = {title: "cookie", description: "chocolate chip",
-                        price: "3", category: "dessert"}
+                        price: "3"}
     new_item = Item.create(item1)
 
     order = Order.create
