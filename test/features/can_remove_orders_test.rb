@@ -28,7 +28,7 @@ class CanRemoveOrdersTest < Capybara::Rails::TestCase
       click_on "Adjust Quantity"
     end
 
-    assert_content page, "Your Cart is Empty"
+    assert_content page, "There was an error"
 
   end
 end

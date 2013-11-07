@@ -15,7 +15,7 @@
         <%= f.number_field :quantity %>
         <%= f.submit "Adjust Quantity" %>
       <% end %>
-      <%= link_to "Delete", order_item_path, {method: 'delete'} %>
+      <%= link_to "Delete", order_item_path(order_item), {method: 'delete'} %>
     </div>
   <% end %>
 <% else %>
