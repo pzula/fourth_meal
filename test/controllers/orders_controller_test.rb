@@ -8,7 +8,7 @@ class OrdersControllerTest < ActionController::TestCase
     # 3. otherwise, create a new order and store in cookie
     # 4. then add the item to to that order
     item = {title: "cookie", description: "chocolate chip",
-                        price: "3", category: "dessert"}
+                        price: "3"}
     new_item = Item.create(item)
     order = Order.create
     cookies[:order_id] = order.id

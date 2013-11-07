@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  include ItemsHelper
 
   def index
     @items = Item.active
@@ -18,6 +17,15 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.save
     redirect_to items_path
+  end
+
+  def show
+    @item = Item.find(params[:id])
+    if cookies[:order_id]
+      @order = Order.find(cookies[:order_id])
+    else
+      @order = nil
+    end
   end
 
   def edit
@@ -39,7 +47,13 @@ class ItemsController < ApplicationController
     else
       order.items << item
     end
-    redirect_to items_path
+    redirect_to :back
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:title, :description, :price, :category)
   end
 
 end

@@ -3,7 +3,7 @@ require "./test/test_helper"
 class CanRemoveOrdersTest < Capybara::Rails::TestCase
 
   test "user can delete orders" do
-    item = Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1', category:'egg')
+    item = Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1')
     order = Order.create
     order.items << item
 
@@ -17,7 +17,7 @@ class CanRemoveOrdersTest < Capybara::Rails::TestCase
   end
 
   test "orders disappear when quantity is zero" do
-    item = Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1', category:'egg')
+    item = Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1')
     order = Order.create
     order.items << item
 

@@ -4,7 +4,7 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
 
   test "can see current orders" do
     item = {title: "cookie", description: "chocolate chip",
-                        price: "3", category: "dessert"}
+                        price: "3"}
     order = Order.new
     order.save
     order.items.create(item)
@@ -16,7 +16,7 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
   end
 
   test "can add an item to the current order" do
-    item = Item.new(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1', category:'egg')
+    item = Item.new(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1')
     item.save
     visit root_path
     within("#item_1") do
@@ -27,7 +27,7 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
   end
 
   test "cannot set the quantity to a negative number" do
-    item = Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1', category:'egg')
+    item = Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1')
     order = Order.create
     order.items << item
 
@@ -40,8 +40,8 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
   end
 
   test "can add multiple items to order without logging in" do
-    Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1', category:'egg')
-    Item.create(title: 'Hard Boiled Eggs', description: '12 hard eggs', price: '1', category:'egg')
+    Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1')
+    Item.create(title: 'Hard Boiled Eggs', description: '12 hard eggs', price: '1')
     visit root_path
     within("#item_1") do
       click_on "Add to Cart"
@@ -60,8 +60,8 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
   end
 
   test "can add multiple instances of same item to order" do
-    Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1', category:'egg')
-    Item.create(title: 'Hard Boiled Eggs', description: '12 hard eggs', price: '1', category:'egg')
+    Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1')
+    Item.create(title: 'Hard Boiled Eggs', description: '12 hard eggs', price: '1')
 
     visit root_path
     within("#item_1") do
@@ -78,7 +78,7 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
   end
 
   test "user can adjust items in cart" do
-    item = Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1', category:'egg')
+    item = Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1')
     order = Order.create
     order.items << item
     visit order_path(order)
