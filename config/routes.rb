@@ -4,6 +4,7 @@ DinnerDash::Application.routes.draw do
   resources :orders
   resources :order_items
   resources :users
+  resources :categories
   resources :user_sessions, only: [:new, :create, :destroy]
   root to: 'items#index'
 
