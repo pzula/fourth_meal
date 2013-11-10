@@ -14,7 +14,9 @@ class BrowseByCategoryTest < Capybara::Rails::TestCase
     select('Plates', :from => 'Categories')
     # save_and_open_page
     click_button "Update Categories"
-    refute_content page, "Desserts"
+    within('ul') do
+      refute_content page, "Desserts"
+    end
 
   end
 

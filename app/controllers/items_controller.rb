@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   def index
     if params["Categories"]
       category = Category.find(params["Categories"])
-      @items = Item.all.collect {|item| item.categories.include? category} || Item.all
+      @items = Item.all.find_all {|item| item.categories.include? category}
     else
       @items = Item.active
     end
