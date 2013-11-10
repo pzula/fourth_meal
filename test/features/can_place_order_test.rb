@@ -20,7 +20,7 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
     item.save
     visit root_path
     within("#item_1") do
-      click_on "Add to Cart"
+      click_on "Add to Order"
     end
 
     assert_content page, "Deviled Eggs added to cart!"
@@ -36,18 +36,19 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
     click_on 'Adjust Quantity'
 
     assert_content page, 'There was an error.'
-    assert_content page, 'Quantity: 1'
+    assert_equal "1", find_field('Quantity').value
   end
+
 
   test "can add multiple items to order without logging in" do
     Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1')
     Item.create(title: 'Hard Boiled Eggs', description: '12 hard eggs', price: '1')
     visit root_path
     within("#item_1") do
-      click_on "Add to Cart"
+      click_on "Add to Order"
     end
     within("#item_2") do
-      click_on "Add to Cart"
+      click_on "Add to Order"
     end
 
     visit order_path(Order.first)
@@ -65,15 +66,15 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
 
     visit root_path
     within("#item_1") do
-      click_on "Add to Cart"
+      click_on "Add to Order"
     end
     within("#item_1") do
-      click_on "Add to Cart"
+      click_on "Add to Order"
     end
 
     visit order_path(Order.first)
     within("#item_1") do
-      assert_content page, "Quantity: 2"
+      assert_equal "2", find_field('Quantity').value
     end
   end
 
@@ -89,7 +90,7 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
     end
 
     within("#item_1") do
-      assert_content page, "Quantity: 10"
+      assert_equal "10", find_field('Quantity').value
     end
   end
 

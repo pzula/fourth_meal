@@ -1,23 +1,31 @@
-<div id="items">
 	<%= form_tag("/", method: "get") do %>
-		<%= select_tag("Categories", options_from_collection_for_select(@categories, "id", "name"))%>
-		<%= submit_tag("Update Categories")%>
+  <%= select_tag "Categories", options_from_collection_for_select(@categories, "id", "name"), {:class => "btn btn-default dropdown-toggle" }%>
+    <%= submit_tag "Browse by Category", {:class => "btn btn-info"} %>
 	<% end %>	
 
+<div id="items">
 	<ul>
 	  <% @items.each do |item| %>
-	  <li id="item_<%= item.id %>">
-	    <a href="<%= item_path item.id %>"><%= item.title %></a>
-	    <p><%= item.description %></p>
-	    <p><%=print_price(item.price) %></p>
-	    <% item.categories.each do |category| %>
-     	 <p><%= category.name %></p>
-     	<% end %>
-	    <% if @order %>
-        <%= link_to "Add to Cart", add_item_path(item.id), {method: 'post'} %>
+	  <li id="item_<%= item.id %>" class="item">
+    <div class="item-wrapper">
+    <img src="/images/product-placeholder.jpg" class="item-image">
+    <div class="item-details">
+      <a href="<%= item_path item.id %>" class="title"><%= item.title %></a>
+       <p> <%= item.description %></p>
+	     <p><%=print_price(item.price) %></p>
+       <ul class="categories">
+         <li class="glyphicon glyphicon-tag category"></li>
+	       <% item.categories.each do |category| %>
+         <li class="category"><%= category.name %></li>
+     	    <% end %>
+        </ul>
+	      <% if @order %>
+        <%= button_to "Add to Order", add_item_path(item.id), {:class => "btn btn-success" } %>
 	    <% else %>
-		    <%= link_to "Add to Cart", new_order_path(:item_id => item.id) %>
+        <%= link_to "Add to Order", new_order_path(:item_id => item.id), {:class => "btn btn-success"} %>
 		<% end %>
+    </div>
+    </div>
 	  </li>
 	  <% end %>
 	</ul>

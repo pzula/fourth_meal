@@ -2,6 +2,62 @@
 
 $font-family-sans-serif: 'Merriweather Sans', sans-serif; 
 $font-family-base: 'Merriweather Sans', sans-serif; 
-body { padding-top: 60px; 
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0 0 100px; /* bottom = footer height */
+  padding-top: 60px; 
 	font-family: $font-family-base;
+  background:#222222
+}
+
+.navbar-fixed-top {
+  background: #fff;
+  overflow:hidden;
+}
+
+.logo {
+  display:block;
+  float:left;
+  width:339px;
+  height:107px;
+}
+
+main {
+  margin-top:50px;
+  padding-top:40px;
+  padding-bottom:30px;
+  color: #f2f2f2;
+}
+
+.controls {
+  width:175px;
+  float:right;
+  margin-top: 38px;
+  margin-right:1%;
+}
+
+.login {
+  float:right;
+}
+
+
+footer {
+  color:#222;
+  background:#dadada;
+  padding-top:20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+}
+
+footer p {
+  text-align: center;
 }
