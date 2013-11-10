@@ -12,6 +12,17 @@
   <body>
     <header class="navbar navbar-fixed-top">
       <nav class="navbar-inner">
+          <a href="/" class="logo"><img src="/images/platable.png"></a>
+          <div class="controls">
+            <% if cookies[:order_id] %>
+            <%= link_to "My Order", order_path(cookies[:order_id]), {:class => "btn btn-success"} %>
+            <% end %>
+            <% if current_user %>
+              <%= link_to "Logout", logout_path, {:class => "btn btn-warning"} %>
+            <% else %>
+              <%= link_to "Login", login_path, {:class => "btn btn-primary login"} %>
+            <% end %>
+          </div>
         <div class="container">
         </div>
       </nav>
@@ -23,14 +34,13 @@
             <div class="span12">
               <%= render 'layouts/messages' %>
               <%= yield %>
-              <% if current_user %>
-                <%= link_to "Logout", logout_path %>
-              <% else %>
-                <%= link_to "Login", login_path %>
-              <% end %>
             </div>
           </div>
           <footer>
+            <div class="container">
+             <p>Platable. An open-source food ordering service built by gSchool class 1.
+              William Mitchell, Persa Zula &amp; Lauren Spath</p>
+            </div>
           </footer>
         </div>
       </div>

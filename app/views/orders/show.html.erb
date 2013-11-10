@@ -12,13 +12,13 @@
         <% item.categories.each do |category| %>
           <p><%= category.name %></p>
         <% end %></p>
-      <p>Quantity: <%= order_item.quantity %>
+    
       <%= form_for @order_item do |f| %>
         <%= f.label :quantity %>
         <%= f.number_field :quantity %>
-        <%= f.submit "Adjust Quantity" %>
+        <%= f.submit "Adjust Quantity", {:class => "btn btn-success"} %>
       <% end %>
-      <%= link_to "Delete", order_item_path(order_item), {method: 'delete'} %>
+      <%= link_to "Remove Dish", order_item_path(order_item), {method: 'delete', :class => "btn btn-danger"} %>
     </div>
   <% end %>
 <% else %>

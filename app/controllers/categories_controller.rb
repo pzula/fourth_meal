@@ -11,10 +11,10 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      flash.notice = "Your category was added!"
+      flash[:notice] = "Your category was added!"
       redirect_to categories_path
     else
-      flash.notice = "This category cannot be created!"
+      flash[:error] =  "This category cannot be created!"
       render :new
     end
   end

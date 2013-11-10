@@ -13,8 +13,8 @@ class BrowseByCategoryTest < Capybara::Rails::TestCase
     visit root_path
     select('Plates', :from => 'Categories')
     # save_and_open_page
-    click_button "Update Categories"
-    within('ul') do
+    click_button "Browse by Category"
+    within('#items > ul') do
       refute_content page, "Desserts"
     end
 
