@@ -31,6 +31,7 @@ body {
 main {
   margin-top:50px;
   padding-top:40px;
+  padding-bottom:30px;
   color: #f2f2f2;
 }
 
@@ -41,9 +42,10 @@ main {
   margin-right:1%;
 }
 
-#order_item_quantity {
-  width:40px;
+.login {
+  float:right;
 }
+
 
 footer {
   color:#222;
@@ -54,4 +56,8 @@ footer {
   bottom: 0;
   height: 100px;
   width: 100%;
+}
+
+footer p {
+  text-align: center;
 }
