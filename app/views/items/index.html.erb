@@ -7,13 +7,15 @@
 	<ul>
 	  <% @items.each do |item| %>
 	  <li id="item_<%= item.id %>">
-	    <a href="<%= item_path item.id %>"><%= item.title %></a>
-	    <p><%= item.description %></p>
+    <p><a href="<%= item_path item.id %>"><%= item.title %></a>
+      <br>
+      <%= item.description %></p>
 	    <p><%=print_price(item.price) %></p>
 	    <% item.categories.each do |category| %>
      	 <p><%= category.name %></p>
      	<% end %>
 	    <% if @order %>
+        <%= button_to "Add to Order", add_item_path(item.id), {:class => "btn btn-success" } %>
         <%= link_to "Add to Cart", add_item_path(item.id), {method: 'post'} %>
 	    <% else %>
 		    <%= link_to "Add to Cart", new_order_path(:item_id => item.id) %>
