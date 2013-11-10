@@ -11,11 +11,13 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @categories = Category.all
   end
 
   def create
     @item = Item.new(item_params)
     @item.save
+    @item.update_categories(params[:item][:category])
     redirect_to items_path
   end
 
@@ -30,10 +32,12 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @categories = Category.all
   end
 
   def update
     @item = Item.update(params[:id], item_params)
+    @item.update_categories(params[:item][:category])
     redirect_to items_path
   end
 
@@ -53,7 +57,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :category)
+    params.require(:item).permit(:title, :description, :price)
   end
 
 end

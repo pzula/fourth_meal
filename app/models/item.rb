@@ -8,4 +8,10 @@ class Item < ActiveRecord::Base
   def self.active
     where(active: true)
   end
+
+  def update_categories(potential_categories)
+    kategories = potential_categories || []
+    kategories.each {|cat| categories << Category.find(cat)}
+  end
+
 end
