@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 
+  before_action :require_admin, except: [:index, :show, :add_to_order]
+
   def index
     @items = Item.active
     if cookies[:order_id]
