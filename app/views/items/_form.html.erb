@@ -11,7 +11,9 @@
     <%= f.label :price %>
     <%= f.text_field :price %>
   </p>
-
+  <p>
+  <%= f.collection_select(:name, :category_id, Category.all, :id, :name) %> 
+  </p>
   <p>
     <%= f.submit "submit" %>
   </p>

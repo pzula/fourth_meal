@@ -51,4 +51,5 @@ class RegularUserCannotViewAdminPagesTest < Capybara::Rails::TestCase
 
   test "logged in user cannot create items" do
     user1 = User.create({username: 'bob_bob', password: 'password'})
+  end
 end

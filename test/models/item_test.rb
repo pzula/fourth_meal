@@ -17,12 +17,6 @@ class ItemTest < ActiveSupport::TestCase
     refute item.save
   end
 
-  test "item invalid without category" do
-    skip
-    item = Item.new({title: 'tasty', description: '3', price:'bread'})
-    refute item.save
-  end
-
   test "class method active returns active items" do
     Item.create({title: 'tasty', description: '3', price:'bread'})
     Item.create({title: 'smelly', description: '5', price:'3', active: false})

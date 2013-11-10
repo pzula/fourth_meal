@@ -49,6 +49,8 @@ group :test do
   gem 'minitest-rails-capybara'
   gem 'launchy'
   gem 'pry'
+  gem 'guard'
+  gem 'guard-minitest'
 end
 
 # group :development do
