@@ -1,4 +1,9 @@
 <div id="items">
+	<%= form_tag("/", method: "get") do %>
+		<%= select_tag("Categories", options_from_collection_for_select(@categories, "id", "name"))%>
+		<%= submit_tag("Update Categories")%>
+	<% end %>	
+
 	<ul>
 	  <% @items.each do |item| %>
 	  <li id="item_<%= item.id %>">
