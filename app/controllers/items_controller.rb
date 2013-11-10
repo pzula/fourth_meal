@@ -3,7 +3,13 @@ class ItemsController < ApplicationController
   before_action :require_admin, except: [:index, :show, :add_to_order]
 
   def index
-    @items = Item.active
+    if params["Categories"]
+      category = Category.find(params["Categories"])
+      @items = Item.all.find_all {|item| item.categories.include? category}
+    else
+      @items = Item.active
+    end
+    @categories = Category.all
     if cookies[:order_id]
       @order = Order.find(cookies[:order_id])
     else
