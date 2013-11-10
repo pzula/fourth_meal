@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 
+  before_action :require_login, except: [:index, :show, :add_to_order]
   before_action :require_admin, except: [:index, :show, :add_to_order]
 
   def index
