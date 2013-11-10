@@ -1,4 +1,7 @@
 <h2><%=	@item.title %></h2>
+<% if @item.image.exists? %>
+      <%= image_tag @item.image.url %><br/>
+    <% end %>
 <p><%= @item.description %></p>
 <p><%= print_price(@item.price) %></p>
 <% @item.categories.each do |category| %>
