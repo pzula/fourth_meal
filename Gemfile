@@ -59,3 +59,4 @@ end
 
 gem 'bootstrap-sass'
 gem 'sorcery'
+gem 'paperclip'
