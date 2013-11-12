@@ -1,0 +1,11 @@
+<div id="user_order">
+  <h1>Order for <%= current_user.username %></h1>
+
+  <div id="order">
+    <% @items.each do |item| %>
+      <h4><%= item.title %></h4>
+      <p><%= item.description %></p>
+    <% end %>
+  </div>
+
+</div>

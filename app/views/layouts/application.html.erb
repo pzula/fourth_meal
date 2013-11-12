@@ -15,7 +15,7 @@
           <a href="/" class="logo"><img src="/images/platable.png"></a>
           <div class="controls">
             <% if cookies[:order_id] %>
-            <%= link_to "My Order", order_path(cookies[:order_id]), {:class => "btn btn-success"} %>
+              <%= link_to "My Order", order_path(cookies[:order_id]), {:class => "btn btn-success"} %>
             <% end %>
             <% if current_user %>
               <%= link_to "Logout", logout_path, {:class => "btn btn-warning"} %>

@@ -6,6 +6,7 @@ class UserSessionsController < ApplicationController
   def create
     if login(params[:username], params[:password])
       flash.notice = "Successfully logged in as #{current_user.username}"
+      current_user.associate_order(cookies[:order_id]) if cookies[:order_id]
       redirect_to items_path
     else
       flash.notice = "Login failed"

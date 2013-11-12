@@ -1,5 +1,7 @@
 <h1>Current Order</h1>
 
+<%= link_to "Checkout", checkout_path, {:class => "btn btn-primary login"} %>
+
 <% if @order_items.count > 0 %>
   <% @order_items.each do |order_item| %>
     <% @order_item = order_item %>
