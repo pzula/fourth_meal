@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   before_action :require_admin, except: [:index, :show, :add_to_order]
 
   def index
+    redirect_to new_order_path unless cookies[:order_id]
     if params["Categories"]
       category = Category.find(params["Categories"])
       @items = Item.all.find_all {|item| item.categories.include? category}
@@ -60,6 +61,7 @@ class ItemsController < ApplicationController
     else
       order.items << item
     end
+    flash.notice = order.items.last.title + " added to cart!"
     redirect_to :back
   end
 
