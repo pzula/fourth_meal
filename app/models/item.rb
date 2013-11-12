@@ -3,6 +3,7 @@ class Item < ActiveRecord::Base
   has_many :orders, through: :order_items
   has_many :categories, through: :item_categories
   has_many :item_categories
+  has_attached_file :image
   validates_presence_of :title, :description, :price
 
   def self.active
@@ -10,8 +11,7 @@ class Item < ActiveRecord::Base
   end
 
   def update_categories(potential_categories)
-    kategories = potential_categories || []
-    kategories.each {|cat| categories << Category.find(cat)}
+    category_ids = potential_categories || []
+    categories = category_ids.collect { |id| Category.find(id) }
   end
-
 end

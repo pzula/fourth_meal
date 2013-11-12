@@ -1,5 +1,7 @@
 <h2><%=	@item.title %></h2>
-<img src="/images/product-placeholder.jpg" class="item-show-image">
+<% if @item.image.exists? %>
+  <%= image_tag @item.image.url, {:class => "item-show-image"} %>
+    <% end %>
 <p><%= @item.description %></p>
 <p><%= print_price(@item.price) %></p>
 <ul class="categories">

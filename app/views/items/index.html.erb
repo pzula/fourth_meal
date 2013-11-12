@@ -8,7 +8,9 @@
 	  <% @items.each do |item| %>
 	  <li id="item_<%= item.id %>" class="item">
     <div class="item-wrapper">
-    <img src="/images/product-placeholder.jpg" class="item-image">
+    <% if item.image.exists? %>
+      <%= image_tag item.image.url, {:class => "item-show-image"} %><br/>
+    <% end %>
     <div class="item-details">
       <a href="<%= item_path item.id %>" class="title"><%= item.title %></a>
        <p> <%= item.description %></p>
