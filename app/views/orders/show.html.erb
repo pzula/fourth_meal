@@ -1,26 +1,47 @@
+<div id="current-order">
 <h1>Current Order</h1>
 
 <% if @order_items.count > 0 %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Dish</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Remove?</th>
+      </tr>
+    </thead>
+
+   <tbody>
   <% @order_items.each do |order_item| %>
     <% @order_item = order_item %>
     <% item = order_item.item %>
-    <div id="item_<%= item.id %>">
-      <h5><%= item.title %></h5>
-      <p><%= item.description %></p>
-      <p>Price: <%= print_price(item.price) %></p>
-      <p>Categories: 
-        <% item.categories.each do |category| %>
-          <p><%= category.name %></p>
-        <% end %></p>
-    
+    <tr id="item_<%= item.id %>">
+      <td class="item-title"><%= item.title %></td>
+      <td><%= item.description %></td>
+      <td><%= print_price(item.price) %></td>
+
       <%= form_for @order_item do |f| %>
-        <%= f.label :quantity %>
-        <%= f.number_field :quantity %>
-        <%= f.submit "Adjust Quantity", {:class => "btn btn-success"} %>
-      <% end %>
-      <%= link_to "Remove Dish", order_item_path(order_item), {method: 'delete', :class => "btn btn-danger"} %>
-    </div>
+       <td><%= f.number_field :quantity %>
+         <%= f.submit "Adjust Quantity", {:class => "btn btn-success"} %></td>
+        <% end %>
+      <td>
+        <%= link_to "x", order_item_path(order_item), {method: 'delete', :class => "btn btn-danger remove-item"} %></td>
+    </tr>
   <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td></td>
+      <td><h4>Order Total</h4></td>
+      <td><h4>$0.00</h4></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
 <% else %>
   <h3>Your Cart is Empty</h3>
 <% end %>
+</div>

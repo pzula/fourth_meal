@@ -1,16 +1,31 @@
 <div id="orders">
+  <h1>All Orders</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Dish</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Categories</th>
+      </tr>
+    </thead>
   <% @orders.each do |order| %>
     <% items = order.items %>
-    <h1><%= order.id %></h1>
+    <h3>Order #<%= order.id %></h3>
     <% items.each do |item| %>
-      <h3><%= item.title %></h3>
-      <p><%= item.description %></p>
-      <p><%= print_price(item.price) %></p>
+    <tbody>
+    <tr>
+      <td><%= item.title %></td>
+      <td><%= item.description %></td>
+      <td><%= print_price(item.price) %></td>
+      <td>
       <% item.categories.each do |category| %>
-          <p><%= category.name %></p>
-      <% end %>
+          <%= category.name %>
+          <% end %></td>
+    </tr>
+    </tbody>
     <% end %>
-    <p><%= order.status %></p>
+    <p>Order Status: <%= order.status %></p>
   <% end %>
-
+</table>
 </div>
