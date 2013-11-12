@@ -11,20 +11,22 @@
     <%= f.label :price %>
     <%= f.text_field :price %>
   </p>
+  <h4>Select a Category</h4>
   <% @categories.each do |category| %>
-    <p>
+    <p class="category-checkbox">
     <%= check_box_tag "item[category][#{category.id}]", category.id, @item.categories.include?(category) %>
     <%= f.label category.name %>
     </p>
   <% end %>
+  <br>
   <p>
     <% if @item.image.exists? %>
       <%= image_tag @item.image.url %><br/>
     <% end %>
-    <%= f.label :image, "Attach an Image" %><br />
-    <%= f.file_field :image %>
+    <%= f.label :image, "Attach an Image", :class => "item-image-label" %>
+    <%= f.file_field :image, :class => "btn btn-default" %>
   </p>
   <p>
-    <%= f.submit "submit" %>
+  <%= f.submit @item.new_record? ? "Add Item" : "Update item", :class => "btn btn-success" %>
   </p>
 <% end %>

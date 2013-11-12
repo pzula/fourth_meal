@@ -65,3 +65,15 @@ li.category {
   margin-bottom:5px;
   margin-right:6px;
 }
+
+.edit_item label {
+  display:block;
+}
+
+.edit_item .category-checkbox label { 
+  display:inline;
+}
+
+label.item-image-label {
+  font-size:1.2em;
+}
