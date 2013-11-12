@@ -15,64 +15,116 @@ sandwiches = Category.create(name: "Sandwiches")
 burgers = Category.create(name: "Burgers")
 brunch = Category.create(name: "Brunch")
 
-deviled_eggs = Item.create({title: "Deviled Eggs", description: "12 luscious eggs", price: '5'})
+deviled_eggs = Item.new(title: "Deviled Eggs", description: "12 luscious eggs", price: '5')
+deviled_eggs.image = File.open("app/assets/images/deviled_eggs.jpg")
+deviled_eggs.save
 
 snacks.items << deviled_eggs
 plates.items << deviled_eggs
 
-snacks.items << Item.create({title: "Interstate Mac and Cheese", description: "Creamy Mac and Cheese", price: '5'})
+mac_and_cheese = Item.new(title: "Interstate Mac and Cheese", description: "Creamy Mac and Cheese", price: '5')
+mac_and_cheese.image = File.open("app/assets/images/mac_and_cheese.jpg")
+mac_and_cheese.save
 
-snacks.items << Item.create({title: "Spoon Bread", description: "Warm Bread with Butter, Honey, and Bacon", price: '7'})
+snacks.items << mac_and_cheese
 
-soups.items << Item.create({title: "Tomato Soup", description: "Roasted Tomato Soup with Oozy Grilled Cheese", price: '6'})
+spoon_bread = Item.new(title: "Spoon Bread", description: "Warm Bread with Butter, Honey, and Bacon", price: '7')
+spoon_bread.image = File.open("app/assets/images/spoon_bread.jpg")
+spoon_bread.save
 
-salads.items << Item.create({title: "Green Bean Salad", description: "Fresh Green Beans With Pecans and Grapes", price: '8'})
+snacks.items << spoon_bread
 
-salads.items << Item.create({title: "Argula Salad", description: "Arugula, Radish, and Sunflower Seeds with a Zesty Lemon Vinaigrette", price: '7'})
+tomato_soup = Item.new(title: "Tomato Soup", description: "Roasted Tomato Soup with Oozy Grilled Cheese", price: '6')
+tomato_soup.image = File.open("app/assets/images/tomato_soup.jpg")
+tomato_soup.save
 
-sandwiches.items << Item.create({title: "Cubano Sandwich", description: "Classic Cubano Sandwich with House-Made Pickles, Mustard, and Black Beans with Rice", price: '9'})
+soups.items << tomato_soup
 
-sandwiches.items << Item.create({title: "Monte Cristo Sandwich", description: "Served with Shoestring Potatoes", price: '9'})
+green_bean_salad = Item.new(title: "Green Bean Salad", description: "Fresh Green Beans With Pecans and Grapes", price: '8')
+green_bean_salad.image = File.open("app/assets/images/green_beans.jpg")
+green_bean_salad.save
 
-burgers.items << Item.create({title: "Classic Burger", description: "Burger and fries with your choice of swiss, cheddar, muenster, or provolone", price: '10'})
+salads.items << green_bean_salad
 
-burgers.items << Item.create({title: "House Made Veggie Burger", description: "Burger and fries with your choice of swiss, cheddar, muenster, or provolone", price: '10'})
+arugula_salad = Item.new(title: "Argula Salad", description: "Arugula, Radish, and Sunflower Seeds with a Zesty Lemon Vinaigrette", price: '7')
+arugula_salad.image = File.open("app/assets/images/arugula_salad.jpg")
+arugula_salad.save
 
-plates.items << Item.create({title: "Chicken Fried Chicken", description: "Chicken fried chicken, pork belly green beans & country gravy", price: '15'})
+salads.items << arugula_salad
 
-plates.items << Item.create({title: "Seared Ribeye", description: "Served with Blue Cheese Potato Salad & Whiskey Molasses Sauce", price: '18'})
+cubano_sandwich = Item.new(title: "Cubano Sandwich", description: "Classic Cubano Sandwich with House-Made Pickles, Mustard, and Black Beans with Rice", price: '9')
+cubano_sandwich.image = File.open("app/assets/images/cubano_sandwich.jpg")
+cubano_sandwich.save
 
-plates.items << Item.create({title: "New Mexican Veggie Street Tacos", description: "Accompanied by Smoked Mushrooms, Roasted Squash & Queso Fresco", price: '19'})
+sandwiches.items << cubano_sandwich
 
-plates.items << Item.create({title: "Confit of Pork Porterhouse", description: "Served With with Brussel Sprouts & House-Made Mustard", price: '16'})
+monte_cristo = Item.new(title: "Monte Cristo Sandwich", description: "Served with Shoestring Potatoes", price: '9')
+monte_cristo.image = File.open("app/assets/images/monte_cristo.jpg")
+monte_cristo.save
 
-grapefruit = Item.create({title: "Sugar Broiled Half Grapefruit", description: "Half a Grapefruit Topped with Dark Brown Sugar and Broiled Until Crisp", price: '4'})
+sandwiches.items << monte_cristo
+
+classic_burger = Item.new(title: "Classic Burger", description: "Burger and fries with your choice of swiss, cheddar, muenster, or provolone", price: '10')
+classic_burger.image = File.open("app/assets/images/classic_burger.jpg")
+classic_burger.save
+
+burgers.items << classic_burger
+
+veggie_burger = Item.new(title: "House Made Veggie Burger", description: "Burger and fries with your choice of swiss, cheddar, muenster, or provolone", price: '10')
+veggie_burger.image = File.open("app/assets/images/veggie_burger.jpg")
+veggie_burger.save
+
+burgers.items << veggie_burger
+
+chicken_fried_chicken = Item.new(title: "Chicken Fried Chicken", description: "Chicken fried chicken, pork belly green beans & country gravy", price: '15')
+chicken_fried_chicken.image = File.open("app/assets/images/chicken_fried_chicken.jpg")
+chicken_fried_chicken.save
+
+plates.items << chicken_fried_chicken
+
+seared_ribeye = Item.new(title: "Seared Ribeye", description: "Served with Blue Cheese Potato Salad & Whiskey Molasses Sauce", price: '18')
+seared_ribeye.image = File.open("app/assets/images/seared_ribeye.jpg")
+seared_ribeye.save
+
+plates.items << seared_ribeye
+
+tacos = Item.new(title: "New Mexican Veggie Street Tacos", description: "Accompanied by Smoked Mushrooms, Roasted Squash & Queso Fresco", price: '19')
+tacos.image = File.open("app/assets/images/tacos.jpg")
+tacos.save
+
+plates.items << tacos
+
+pork
+
+plates.items << Item.new({title: "Confit of Pork Porterhouse", description: "Served With with Brussel Sprouts & House-Made Mustard", price: '16'})
+
+grapefruit = Item.new({title: "Sugar Broiled Half Grapefruit", description: "Half a Grapefruit Topped with Dark Brown Sugar and Broiled Until Crisp", price: '4'})
 
 snacks.items << grapefruit
 brunch.items << grapefruit
 
-snacks.items << Item.create({title: "Coffee Cake", description: "Walnut, Brown Sugar Crumble Coffee Cake", price: '4'})
+snacks.items << Item.new({title: "Coffee Cake", description: "Walnut, Brown Sugar Crumble Coffee Cake", price: '4'})
 
-hoecake = Item.create({title: "Sweet Corn Hoecake Platter", description: "Sweet corn Hoecake, Pulled Pork, Fried Egg, House-Made Cheese Curd & Hash",  price: '10'})
+hoecake = Item.new({title: "Sweet Corn Hoecake Platter", description: "Sweet corn Hoecake, Pulled Pork, Fried Egg, House-Made Cheese Curd & Hash",  price: '10'})
 
 brunch.items << hoecake
 plates.items << hoecake
 
-french_toast = Item.create({title: "French Toast", description: "Topped with Brûléed Banana, Whipped Cream & Maple Syrup",  price: '8'})
+french_toast = Item.new({title: "French Toast", description: "Topped with Brûléed Banana, Whipped Cream & Maple Syrup",  price: '8'})
 
 brunch.items << french_toast
 plates.items << french_toast
 
-omelette= Item.create({title: "Freakin’ Denver Omelette", description: "Served with Hash & Toast",  price: '8'})
+omelette= Item.new({title: "Freakin’ Denver Omelette", description: "Served with Hash & Toast",  price: '8'})
 
 brunch.items << omelette
 plates.items << omelette
 
-desserts.items << Item.create({title: "Pecan & Mixed Berry Trifle", description: "Pecan & Mixed Berry Trifle Topped with Whipped Cream", price: '7'})
+desserts.items << Item.new({title: "Pecan & Mixed Berry Trifle", description: "Pecan & Mixed Berry Trifle Topped with Whipped Cream", price: '7'})
 
-desserts.items << Item.create({title: "Interstate S'Mores", description: "Graham Crackers, Marshmallows, and Chocolate", price: '7'})
+desserts.items << Item.new({title: "Interstate S'Mores", description: "Graham Crackers, Marshmallows, and Chocolate", price: '7'})
 
-desserts.items << Item.create({title: "Coconut Cream Cheese Ice Box Cake", description: "Heaven on a Plate", price: '7'})
+desserts.items << Item.new({title: "Coconut Cream Cheese Ice Box Cake", description: "Heaven on a Plate", price: '7'})
 
 usr = User.new({username: 'wvmitchell', password: 'password'})
 usr.admin = true
