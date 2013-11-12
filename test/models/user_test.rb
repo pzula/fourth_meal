@@ -13,4 +13,13 @@ class UserTest < ActiveSupport::TestCase
      assert user.admin
    end
 
+   test "a user can have orders" do
+     user = User.create({username: 'user', password: 'password'})
+     order = Order.create
+     user.orders << order
+
+     assert user.orders.include? order
+   end
+
+
 end

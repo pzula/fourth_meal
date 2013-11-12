@@ -22,4 +22,16 @@ class OrdersController < ApplicationController
     @order_items = @order.order_items
   end
 
+  def checkout
+    unless current_user
+      flash.notice = "Login is required to checkout"
+      redirect_to login_path
+    else
+      @order = Order.where(user_id: current_user.id).first
+      @items = @order.items
+    end
+  end
+
+  private
+
 end
