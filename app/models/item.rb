@@ -11,7 +11,7 @@ class Item < ActiveRecord::Base
   end
 
   def update_categories(potential_categories)
-    category_ids = potential_categories.values || []
+    category_ids = potential_categories ? potential_categories.values : []
     self.categories = category_ids.collect { |id| Category.find(id) }
   end
 end
