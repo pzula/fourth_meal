@@ -29,7 +29,7 @@ mac_and_cheese.save
 snacks.items << mac_and_cheese
 
 spoon_bread = Item.new(title: "Spoon Bread", description: "Warm Bread with Butter, Honey, and Bacon", price: '7')
-spoon_bread.image = File.open("app/assets/images/spoon_bread.jpg")
+spoon_bread.image = File.open("app/assets/images/spoon_bread1.jpg")
 spoon_bread.save
 
 snacks.items << spoon_bread
@@ -94,37 +94,63 @@ tacos.save
 
 plates.items << tacos
 
-pork
+pork = Item.new(title: "Confit of Pork Porterhouse", description: "Served over a bed of Polenta with Braised Greens", price: '16')
+pork.image = File.open("app/assets/images/pork.jpg")
+pork.save
 
-plates.items << Item.new({title: "Confit of Pork Porterhouse", description: "Served With with Brussel Sprouts & House-Made Mustard", price: '16'})
+plates.items << pork
 
-grapefruit = Item.new({title: "Sugar Broiled Half Grapefruit", description: "Half a Grapefruit Topped with Dark Brown Sugar and Broiled Until Crisp", price: '4'})
+grapefruit = Item.new(title: "Sugar Broiled Half Grapefruit", description: "Half a Grapefruit Topped with Dark Brown Sugar and Broiled Until Crisp", price: '4')
+grapefruit.image = File.open("app/assets/images/grapefruit.jpg")
+grapefruit.save
 
 snacks.items << grapefruit
 brunch.items << grapefruit
 
-snacks.items << Item.new({title: "Coffee Cake", description: "Walnut, Brown Sugar Crumble Coffee Cake", price: '4'})
+coffee_cake = Item.new(title: "Coffee Cake", description: "Walnut, Brown Sugar Crumble Coffee Cake", price: '4')
+coffee_cake.image = File.open("app/assets/images/coffee_cake.jpg")
+coffee_cake.save
 
-hoecake = Item.new({title: "Sweet Corn Hoecake Platter", description: "Sweet corn Hoecake, Pulled Pork, Fried Egg, House-Made Cheese Curd & Hash",  price: '10'})
+snacks.items << coffee_cake
 
-brunch.items << hoecake
-plates.items << hoecake
+hoecakes = Item.new(title: "Sweet Corn Hoecake Platter", description: "Sweet corn Hoecake, Pulled Pork, Fried Egg, House-Made Cheese Curd & Hash",  price: '10')
+hoecakes.image = File.open("app/assets/images/hoecakes.jpg")
+hoecakes.save
 
-french_toast = Item.new({title: "French Toast", description: "Topped with Brûléed Banana, Whipped Cream & Maple Syrup",  price: '8'})
+brunch.items << hoecakes
+plates.items << hoecakes
+
+french_toast = Item.new(title: "French Toast", description: "Topped with Brûléed Banana, Whipped Cream & Maple Syrup",  price: '8')
+french_toast.image = File.open("app/assets/images/french_toast.jpg")
+french_toast.save
 
 brunch.items << french_toast
 plates.items << french_toast
 
-omelette= Item.new({title: "Freakin’ Denver Omelette", description: "Served with Hash & Toast",  price: '8'})
+omelette = Item.new(title: "Freakin’ Denver Omelette", description: "Served with Hash & Toast",  price: '8')
+omelette.image = File.open("app/assets/images/denver_omelette.jpg")
+omelette.save
 
 brunch.items << omelette
 plates.items << omelette
 
-desserts.items << Item.new({title: "Pecan & Mixed Berry Trifle", description: "Pecan & Mixed Berry Trifle Topped with Whipped Cream", price: '7'})
+trifle = Item.new(title: "Pecan & Mixed Berry Trifle", description: "Pecan & Mixed Berry Trifle Topped with Whipped Cream", price: '7')
+trifle.image = File.open("app/assets/images/trifle.jpg")
+trifle.save
 
-desserts.items << Item.new({title: "Interstate S'Mores", description: "Graham Crackers, Marshmallows, and Chocolate", price: '7'})
+desserts.items << trifle
 
-desserts.items << Item.new({title: "Coconut Cream Cheese Ice Box Cake", description: "Heaven on a Plate", price: '7'})
+smores = Item.new(title: "Interstate S'Mores", description: "Graham Crackers, Marshmallows, and Chocolate", price: '7')
+smores.image = File.open("app/assets/images/s'mores.jpg")
+smores.save
+
+desserts.items << smores
+
+coco_cake = Item.new(title: "Coconut Cream Cheese Ice Box Cake", description: "Heaven on a Plate", price: '7')
+coco_cake.image = File.open("app/assets/images/coco_cake.jpg")
+coco_cake.save
+
+desserts.items << coco_cake
 
 usr = User.new({username: 'wvmitchell', password: 'password'})
 usr.admin = true
