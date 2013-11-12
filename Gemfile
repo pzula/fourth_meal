@@ -42,15 +42,19 @@ end
 # gem 'debugger', group: [:development, :test]
 #
 
-group :test do
+group :test, :development do
   gem 'minitest-rails-capybara'
   gem 'launchy'
   gem 'pry'
   gem 'guard'
   gem 'guard-minitest'
+  gem 'pg'
 end
 
-gem 'pg'
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
 # group :development do
 #   gem 'rails-erd'
