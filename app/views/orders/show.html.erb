@@ -1,7 +1,6 @@
 <div id="current-order">
 <h1>Current Order</h1>
 
-<%= link_to "Checkout", checkout_path, {:class => "btn btn-primary login"} %>
 
 <% if @order_items.count > 0 %>
   <table class="table">
@@ -37,7 +36,8 @@
       <td></td>
       <td><h4>Order Total</h4></td>
       <td><h4>$<%= @order.subtotal %>0</h4></td>
-      <td></td>
+      <td>
+<%= link_to "Checkout", checkout_path, {:class => "btn btn-primary login"} %></td>
       <td></td>
     </tr>
   </tfoot>
