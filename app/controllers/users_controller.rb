@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_login
+  before_action :require_login, except: [:new, :create, :edit]
   before_action :require_admin, only: [:index]
 
   def index
@@ -29,8 +29,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      auto_login(@user)
       flash.notice = "User #{@user.username} created!"
-      redirect_to user_path(@user)
+      redirect_to root_path
     else
       redirect_to new_user_path
     end
