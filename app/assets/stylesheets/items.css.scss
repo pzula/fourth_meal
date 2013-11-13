@@ -66,11 +66,11 @@ li.category {
   margin-right:6px;
 }
 
-.edit_item label {
+.edit_item label, .new_item label {
   display:block;
 }
 
-.edit_item .category-checkbox label { 
+.edit_item .category-checkbox label, .new_item .category-checkbox label { 
   display:inline;
 }
 
