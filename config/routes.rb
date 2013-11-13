@@ -13,4 +13,5 @@ DinnerDash::Application.routes.draw do
   get "logout" => "user_sessions#destroy"
 
   get "checkout" => "orders#checkout", as: 'checkout'
+  post "place_order" => "orders#place_order", as: 'place_order'
 end

@@ -5,6 +5,19 @@
   <%= @user.username %>
 </p>
 
+<h2>Recent Orders</h2>
+<div id="recent_orders">
+  <% @recent_orders.each do |order| %>
+    <h3>Order Number: <%= order.id %></h3>
+    <% order.items.each do |item| %>
+      <% oi = OrderItem.where(order_id: order.id, item_id: item.id).first %>
+      <h4><%= item.title %></h4>
+      <p><%= item.description %></p>
+      <p>Quantity: <%= oi.quantity %></p>
+    <% end %>
+  <% end %>
+</div>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
