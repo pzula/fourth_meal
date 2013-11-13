@@ -24,11 +24,18 @@ class OrdersController < ApplicationController
       flash.notice = "Login is required to checkout"
       redirect_to login_path
     else
-      @order = Order.where(user_id: current_user.id).first
+      current_user.associate_order(cookies[:order_id])
+      @order = Order.where(user_id: current_user.id).last
       @items = @order.items
     end
   end
 
-  private
+  def place_order
+    current_user.change_order_to_completed
+    flash.notice = "Your order is successfull"
+    cookies.delete :order_id
+    redirect_to user_path(current_user)
+  end
+
 
 end

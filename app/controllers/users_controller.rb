@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     else 
       @user = User.find(current_user.id)
     end
+    @recent_orders = current_user.recent_orders 
   end
 
   def new

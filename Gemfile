@@ -48,6 +48,7 @@ group :test, :development do
   gem 'pry'
   gem 'guard'
   gem 'guard-minitest'
+  gem 'sqlite3'
   gem 'pg'
 end
 
