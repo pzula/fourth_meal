@@ -10,7 +10,7 @@ class CanRemoveOrdersTest < Capybara::Rails::TestCase
     visit order_path(order)
 
     within("#item_1") do
-      click_on "Remove Dish"
+      click_on "remove_item"
     end
 
     assert_content page, "Your Cart is Empty"
@@ -24,7 +24,7 @@ class CanRemoveOrdersTest < Capybara::Rails::TestCase
     visit order_path(order)
 
     within("#item_1") do
-      fill_in "Quantity", with: 0
+      fill_in "order_item_quantity", with: 0
       click_on "Adjust Quantity"
     end
 
