@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :require_login, except: [:new, :show]
+  before_action :require_login, except: [:new, :show, :checkout]
   before_action :require_admin, only: [:index]
 
   def index
@@ -38,6 +38,5 @@ class OrdersController < ApplicationController
     cookies.delete :order_id
     redirect_to user_path(current_user)
   end
-
 
 end

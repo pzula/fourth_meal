@@ -2,18 +2,6 @@ require './test/test_helper'
 require 'pry'
 class CanPlaceOrderTest < Capybara::Rails::TestCase
 
-  test "can see current orders" do
-    item = {title: "cookie", description: "chocolate chip",
-                        price: "3"}
-    order = Order.new
-    order.save
-    order.items.create(item)
-    visit orders_path
-    within("#orders") do
-      assert_content page, "cookie"
-      assert_content page, "pending"
-    end
-  end
 
   test "can add an item to the current order" do
     item = Item.new(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1')
@@ -32,11 +20,11 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
     order.items << item
 
     visit order_path(order)
-    fill_in 'Quantity', with: '-5'
+    fill_in 'order_item_quantity', with: '-5'
     click_on 'Adjust Quantity'
 
     assert_content page, 'There was an error.'
-    assert_equal "1", find_field('Quantity').value
+    assert_equal "1", find_field('order_item_quantity').value
   end
 
 
@@ -74,7 +62,7 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
 
     visit order_path(Order.first)
     within("#item_1") do
-      assert_equal "2", find_field('Quantity').value
+      assert_equal "2", find_field('order_item_quantity').value
     end
   end
 
@@ -85,12 +73,12 @@ class CanPlaceOrderTest < Capybara::Rails::TestCase
     visit order_path(order)
 
     within("#item_1") do
-      fill_in "Quantity", with: 10
+      fill_in "order_item_quantity", with: 10
       click_on "Adjust Quantity"
     end
 
     within("#item_1") do
-      assert_equal "10", find_field('Quantity').value
+      assert_equal "10", find_field('order_item_quantity').value
     end
   end
 

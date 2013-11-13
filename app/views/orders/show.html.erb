@@ -28,7 +28,7 @@
          <%= f.submit "Adjust Quantity", {:class => "btn btn-success"} %></td>
         <% end %>
       <td>
-        <%= link_to "x", order_item_path(order_item), {method: 'delete', :class => "btn btn-danger remove-item"} %></td>
+        <%= link_to "x", order_item_path(order_item), {method: 'delete', :class => "btn btn-danger remove-item", id: 'remove_item'} %></td>
     </tr>
   <% end %>
   </tbody>
