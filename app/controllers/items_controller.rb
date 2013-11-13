@@ -6,8 +6,8 @@ class ItemsController < ApplicationController
   def index
     redirect_to new_order_path unless cookies[:order_id]
     if params["Categories"]
-      category = Category.find(params["Categories"])
-      @items = Item.all.find_all {|item| item.categories.include? category}
+      @category = Category.find(params["Categories"])
+      @items = Item.all.find_all {|item| item.categories.include? @category}
     else
       @items = Item.active
     end

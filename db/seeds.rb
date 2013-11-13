@@ -82,7 +82,7 @@ seared_ribeye.save
 
 plates.items << seared_ribeye
 
-tacos = Item.new(title: "New Mexican Veggie Street Tacos", description: "Accompanied by Smoked Mushrooms, Roasted Squash & Queso Fresco", price: '19')
+tacos = Item.new(title: "New Mexican Veggie Street Tacos", description: "Accompanied by Smoked Mushrooms & Roasted Squash", price: '19')
 tacos.image = open("https://platable.s3.amazonaws.com/items/images/000/000/013/small/tacos.jpg")
 tacos.save
 

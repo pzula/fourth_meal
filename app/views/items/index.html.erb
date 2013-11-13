@@ -1,7 +1,14 @@
-	<%= form_tag("/", method: "get") do %>
-  <%= select_tag "Categories", options_from_collection_for_select(@categories, "id", "name"), {:class => "btn btn-default dropdown-toggle" }%>
+<div class="select-menu">
+	<%= form_tag("/", method: "get", class:"select-category") do %>
+  <% if @category %>
+    <%= select_tag "Categories", options_from_collection_for_select(@categories, "id", "name", @category.id), {:class => "btn btn-default dropdown-toggle" }%>
+  <% else %>
+    <%= select_tag "Categories", options_from_collection_for_select(@categories, "id", "name"), {:class => "btn btn-default dropdown-toggle" }%>
+  <% end %>
     <%= submit_tag "Browse by Category", {:class => "btn btn-info"} %>
 	<% end %>	
+    <%= link_to "View All", items_path, {:class => "btn btn-info view-all"} %>
+</div>
 
 <div id="items">
 	<ul>
