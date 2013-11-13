@@ -1,72 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <style type="text/css">
-
-      body {
-        padding-top: 40px; 
-      }
-      .container {
-        width: 300px;
-      }
-
-      /* The white background content wrapper */
-      .container > .content {
-        background-color: #fff;
-        padding: 20px;
-        margin: 0 -20px; 
-        -webkit-border-radius: 10px 10px 10px 10px;
-           -moz-border-radius: 10px 10px 10px 10px;
-                border-radius: 10px 10px 10px 10px;
-        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-                box-shadow: 0 1px 2px rgba(0,0,0,.15);
-      }
-
-      .login-form {
-      margin-left: 65px;
-      }
-  
-      legend {
-      margin-right: -50px;
-      font-weight: bold;
-        color: #000000;
-      }
-
-    </style>
-  </head>
-
-<body>
-  <div class="container">
-    <div class="content">
-      <div class="row">
-        <div class="login-form">
-          <h2>Login</h2>
-          <form action="">
-            <%= form_tag user_sessions_path, method: :post do %>
-              <div>
-                <%= label_tag :username %>
-                <%= text_field_tag :username %>
-              </div>
-              <div>
-                <%= label_tag :password %>
-                <%= password_field_tag :password %>
-              </div>
-              <div>
-                <%= submit_tag "Login", {:class => "btn btn-success"} %>
-              </div
-            <% end %>
-            <%= link_to "<< Back to Items", items_path %>
-          </form>
-        </div>
+<div class="login-form">
+  <div class="form-container">
+  <h2>Login</h2>
+    <%= form_tag user_sessions_path, method: :post do %>
+      <div>
+        <%= label_tag :username %>
+        <%= text_field_tag :username %>
       </div>
-    </div>
+      <div>
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
+      </div>
+      <div>
+        <%= submit_tag "Login", {:class => "btn btn-success"} %>
+      </div>
+    <% end %>
+    <%= link_to "<< Back to Items", items_path %>
+    <p>Not a Member? <%= link_to "Create an Account", new_user_path %></p>
   </div>
-</body>
-</head>
-</html>
-      
- 
-<%= link_to "<< Back to Items", items_path %>
+</div>
 
-<p>Not a Member? <%= link_to "Create an Account", new_user_path %></p>
+
