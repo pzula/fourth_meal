@@ -1,17 +1,69 @@
-<h1>Login</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
 
-<%= form_tag user_sessions_path, method: :post do %>
-  <div>
-    <%= label_tag :username %>
-    <%= text_field_tag :username %>
-  </div>
-  <div>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div>
-    <%= submit_tag "Login", {:class => "btn btn-success"} %>
-  </div
-<% end %>
+      body {
+        padding-top: 40px; 
+      }
+      .container {
+        width: 300px;
+      }
 
-<%= link_to "<< Back to Items", items_path %>
+      /* The white background content wrapper */
+      .container > .content {
+        background-color: #fff;
+        padding: 20px;
+        margin: 0 -20px; 
+        -webkit-border-radius: 10px 10px 10px 10px;
+           -moz-border-radius: 10px 10px 10px 10px;
+                border-radius: 10px 10px 10px 10px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+                box-shadow: 0 1px 2px rgba(0,0,0,.15);
+      }
+
+    .login-form {
+    margin-left: 65px;
+    }
+  
+    legend {
+    margin-right: -50px;
+    font-weight: bold;
+      color: #000000;
+    }
+
+    </style>
+  </head>
+
+<body>
+  <div class="container">
+    <div class="content">
+      <div class="row">
+        <div class="login-form">
+          <h2>Login</h2>
+          <form action="">
+            <%= form_tag user_sessions_path, method: :post do %>
+              <div>
+                <%= label_tag :username %>
+                <%= text_field_tag :username %>
+              </div>
+              <div>
+                <%= label_tag :password %>
+                <%= password_field_tag :password %>
+              </div>
+              <div>
+                <%= submit_tag "Login", {:class => "btn btn-success"} %>
+              </div
+            <% end %>
+            <%= link_to "<< Back to Items", items_path %>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</head>
+</html>
+      
+ 
