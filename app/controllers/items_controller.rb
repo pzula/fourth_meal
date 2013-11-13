@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
     else
       order.items << item
     end
-    flash.notice = order.items.last.title + " added to cart!"
+    flash.notice = item.title + " added to cart!"
     redirect_to :back
   end
 
