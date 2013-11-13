@@ -17,14 +17,13 @@
 
    <tbody>
   <% @order_items.each do |order_item| %>
-    <% @order_item = order_item %>
     <% item = order_item.item %>
     <tr id="item_<%= item.id %>">
       <td class="item-title"><%= item.title %></td>
       <td><%= item.description %></td>
       <td><%= print_price(item.price) %></td>
 
-      <%= form_for @order_item do |f| %>
+      <%= form_for order_item do |f| %>
        <td><%= f.number_field :quantity %>
          <%= f.submit "Adjust Quantity", {:class => "btn btn-success"} %></td>
         <% end %>
