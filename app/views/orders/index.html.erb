@@ -1,5 +1,7 @@
 <div id="orders">
   <h1>All Orders</h1>
+  <% @orders.each do |order| %>
+  <h3>Order #<%= order.id %></h3>
   <table class="table">
     <thead>
       <tr>
@@ -9,9 +11,7 @@
         <th>Categories</th>
       </tr>
     </thead>
-  <% @orders.each do |order| %>
     <% items = order.items %>
-    <h3>Order #<%= order.id %></h3>
     <% items.each do |item| %>
     <tbody>
     <tr>
@@ -25,7 +25,8 @@
     </tr>
     </tbody>
     <% end %>
-    <p>Order Status: <%= order.status %></p>
+  </table>
+  <p>Order Status: <%= order.status %></p>
   <% end %>
-</table>
+<br />
 </div>
