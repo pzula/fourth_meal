@@ -1,9 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
+  <strong>Username:</strong>
   <%= @user.username %>
 </p>
+
+<p>
+  <% if current_user.admin? %>
+  <%= link_to "Admin Dashboard",  dashboard_path, {:class => "btn btn-info" } %>
+  <% end %>
+</p>
+
+
 
 <h2>Recent Orders</h2>
 <div id="recent_orders">

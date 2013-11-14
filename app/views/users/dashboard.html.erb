@@ -1,0 +1,60 @@
+<div id ="dashboard">
+  <h2>Admin Dashboard</h2>
+
+  <%= link_to "Jump To Menu Items", dashboard_path(:anchor =>"menu-items") %> <br>
+  <%= link_to "Jump To Categories List", dashboard_path(:anchor =>"categories-list") %> <br>
+  <%= link_to "Jump To Orders List", dashboard_path(:anchor =>"orders-list") %> <br>
+  <%= link_to "Jump To Users List", dashboard_path(:anchor =>"users-list") %>
+
+  <div class="menu-items">
+  <h3>Menu Items</h3>
+  <a id="menu-items"></a>
+  <%= link_to "Create New Menu Item", new_item_path, {:class => "btn btn-success create-new-item"} %>
+  <br>
+  <br>
+  <table>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= link_to item.title, item_path(item.id) %></td>
+      <td><%= link_to "Edit", edit_item_path(item.id), {:class => "btn btn-warning edit-item" } %></td>
+      <td></td>
+    </tr>
+  <% end %>
+  </table>
+  </div>
+
+  <div class="categories-list">
+    <h3>Categories</h3>
+    <a id="categories-list"></a>
+    <%= link_to "Create New Category", new_category_path, {:class => "btn btn-success"} %>
+    <br>
+    <br>
+    <table>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= link_to category.name, category_path(category.id) %></td>
+        <td><%= link_to "Edit", edit_category_path(category.id), {:class=> "btn btn-warning edit-category" } %></td>
+      </tr>
+      <% end %>
+  </div>
+  </table>
+
+  <div class="orders-list">
+    <h3>Orders</h3>
+    <a id="orders-list"></a>
+    <%= link_to "Order History", orders_path %>
+  </div>
+
+  <div class="users-list">
+    <h3>Users</h3>
+    <a id="users-list"></a>
+    <table>
+     <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.username, user_path(user.id) %></td>
+      </tr>
+     <% end %>
+    </table>
+  </div>
+
+</div>
