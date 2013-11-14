@@ -31,22 +31,22 @@
   margin-bottom:5%;
 }
 
-form {
+.login-form form {
   margin-bottom:5%;
 }
 
-label {
+.login-form label {
   display: inline-block;
   float: left;
   clear: left;
   width: 75px;
 }
 
-input[type=text], input[type=password] {
+.login-form input[type=text], input[type=password] {
   margin-bottom:5%
 }
 
-p.new-member {
+.login-form p.new-member {
   text-align:center;
 }
   
