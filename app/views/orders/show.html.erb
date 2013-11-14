@@ -18,7 +18,7 @@
   <% @order_items.each do |order_item| %>
     <% item = order_item.item %>
     <tr id="item_<%= item.id %>">
-      <td class="item-title"><%= item.title %></td>
+      <td class="item-title"><%= link_to item.title, item_path(item.id)  %></td>
       <td><%= item.description %></td>
       <td><%= print_price(item.price) %></td>
 
