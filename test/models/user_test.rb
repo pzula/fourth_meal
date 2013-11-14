@@ -22,7 +22,7 @@ class UserTest < ActiveSupport::TestCase
    end
 
    test "a user can change it's order to complete" do
-     user = User.create({username: 'user', password: 'password'})
+     user = User.create({username: 'user', email: 'user@example.com', password: 'password'})
      order = Order.create
      user.orders << order
      user.change_order_to_completed
@@ -37,6 +37,11 @@ class UserTest < ActiveSupport::TestCase
      user.recent_orders.each do |order|
        assert_equal 'completed', order.status
      end
+   end
+
+   test "a user must have a valid email" do
+     user = User.new({username: 'user', email: 'bob', password: 'pass'})
+     refute user.save
    end
 
 end

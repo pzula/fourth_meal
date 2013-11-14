@@ -41,6 +41,7 @@ class UsersController < ApplicationController
       UserMailer.welcome_email(@user).deliver
       redirect_to root_path
     else
+      flash.notice = "There was an error"
       redirect_to new_user_path
     end
   end
