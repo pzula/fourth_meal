@@ -1,0 +1,53 @@
+<div id ="dashboard">
+  <h2>Admin Dashboard</h2>
+
+  <%= link_to "#", dashboard_path(:anchor =>"menu-items") %>
+  <%= link_to "#", dashboard_path(:anchor =>"categories-list") %>
+  <%= link_to "#", dashboard_path(:anchor =>"orders-list") %>
+
+  <div class="menu-items">
+  <h3>Menu Items</h3>
+  <a id="menu-items"></a>
+  <%= link_to new_item_path, "Create New Menu Item", {:class => "create-new-item"} %>
+  <table>
+  <% @items.each do |item| %>
+d    <tr>
+      <td><%= link_to item_path(item.id), item.title %></td>
+      <td><%= link_to edit_item_path(item.id), "[Edit]", {:class => "edit-item" %></td>
+    </tr>
+  <% end %>
+  </table>
+  </div>
+
+  <div class="categories-list">
+    <h3>Categories</h3>
+    <a id="categories"></a>
+    <table>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= link_to category_path(category.id), category.name %></td>
+        <td><%= link_to edit_category_path(category.id), "[Edit]", {:class=> "edit-category" %></td>
+      </tr>
+  </div>
+  </table>
+
+  <div class="orders-list">
+    <h3>Orders</h3>
+    <a id="orders"></a>
+    <table>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order_path(order.id), order.id %></td>
+        <td><%= link_to </td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+
+  </div>
+
+
+
+
+
+</div>
