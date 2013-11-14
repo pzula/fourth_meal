@@ -90,3 +90,15 @@ form.select-category {
 .select-menu {
   overflow: hidden;
 }
+
+.active-checkbox {
+  overflow:hidden;
+}
+
+.active-checkbox label {
+  float:left;
+}
+
+.active-checkbox input[type="checkbox"] {
+  float:left;
+}

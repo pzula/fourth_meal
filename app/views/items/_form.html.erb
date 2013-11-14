@@ -11,6 +11,7 @@
     <%= f.label :price %>
     <%= f.text_field :price %>
   </p>
+  <br>
   <h4>Select a Category</h4>
   <% @categories.each do |category| %>
     <p class="category-checkbox">
@@ -18,6 +19,11 @@
     <%= f.label category.name %>
     </p>
   <% end %>
+  <br>
+  <h4>Is this menu item active?</h4>
+  <p class="active-checkbox">  <%= f.check_box :active %>
+   <%= f.label :active, "Yes" %>
+  </p>
   <br>
   <p>
     <% if @item.image.exists? %>
