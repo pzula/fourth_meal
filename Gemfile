@@ -64,4 +64,5 @@ end
 gem 'bootstrap-sass'
 gem 'sorcery'
 gem 'paperclip'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'aws-sdk', '~> 1.25'
