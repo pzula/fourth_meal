@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     redirect_to new_order_path unless cookies[:order_id]
     if params["Categories"]
       @category = Category.find(params["Categories"])
-      @items = Item.all.find_all {|item| item.categories.include? @category}
+      @items = Item.active.find_all {|item| item.categories.include? @category}
     else
       @items = Item.active
     end
@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :image)
+    params.require(:item).permit(:title, :description, :price, :image, :active)
   end
 
 end
