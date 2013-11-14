@@ -10,10 +10,10 @@ class UsersController < ApplicationController
   def show
     if current_user.admin
       @user = User.find(params[:id])
-    else 
+    else
       @user = User.find(current_user.id)
     end
-    @recent_orders = current_user.recent_orders 
+    @recent_orders = current_user.recent_orders
   end
 
   def new
@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     if @user.save
       auto_login(@user)
       flash.notice = "User #{@user.username} created!"
+      UserMailer.welcome_email(@user).deliver
       redirect_to root_path
     else
       redirect_to new_user_path
