@@ -25,7 +25,7 @@
        <ul class="categories">
          <li class="glyphicon glyphicon-tag category"></li>
 	       <% item.categories.each do |category| %>
-         <li class="category"><%= category.name %></li>
+         <li class="category"><%= link_to category.name, items_path(Categories: category.id) %></li>
      	    <% end %>
         </ul>
         <%= button_to "Add to Order", add_item_path(item.id), {:class => "btn btn-success" } %>
