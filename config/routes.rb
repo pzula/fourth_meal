@@ -14,4 +14,6 @@ DinnerDash::Application.routes.draw do
 
   get "checkout" => "orders#checkout", as: 'checkout'
   post "place_order" => "orders#place_order", as: 'place_order'
+
+  get "dashboard" => "users#dashboard", as: 'dashboard'
 end
