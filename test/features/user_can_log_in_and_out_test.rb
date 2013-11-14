@@ -5,6 +5,7 @@ class UserCanLogInAndOutTest < Capybara::Rails::TestCase
     user = User.new
     user.username = 'user'
     user.password = 'password'
+    user.email = 'user@example.com'
     user.save
 
     visit root_path

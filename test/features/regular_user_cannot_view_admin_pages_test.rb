@@ -3,8 +3,8 @@ require "./test/test_helper"
 class RegularUserCannotViewAdminPagesTest < Capybara::Rails::TestCase
 
   test "logged in user cannot view other user's info" do
-    user1 = User.create({username: 'bob_bob', password: 'password'})
-    user2 = User.create({username: 'mary_mary', password: 'password'})
+    user1 = User.create({username: 'bob_bob', email: 'bob@example.com', password: 'password'})
+    user2 = User.create({username: 'mary_mary', email: 'bob@example.com', password: 'password'})
 
     visit root_path
     click_on "Login"
@@ -18,10 +18,10 @@ class RegularUserCannotViewAdminPagesTest < Capybara::Rails::TestCase
   end
 
   test "logged in user cannot view listing of all users" do
-    user1 = User.new({username: 'admin', password: 'password'})
+    user1 = User.new({username: 'admin', email: 'bob@example.com', password: 'password'})
     user1.admin = true
     user1.save
-    user2 = User.create({username: 'bob_bob', password: 'password'})
+    user2 = User.create({username: 'bob_bob', email: 'bob@example.com', password: 'password'})
 
     visit root_path
     click_on "Login"
@@ -35,8 +35,8 @@ class RegularUserCannotViewAdminPagesTest < Capybara::Rails::TestCase
   end
 
   test "logged in user cannot edit other users" do
-    user1 = User.create({username: 'bob_bob', password: 'password'})
-    user2 = User.create({username: 'mary_mary', password: 'password'})
+    user1 = User.create({username: 'bob_bob', email: 'bob@example.com', password: 'password'})
+    user2 = User.create({username: 'mary_mary', email: 'bob@example.com', password: 'password'})
 
     visit root_path
     click_on "Login"
@@ -50,7 +50,7 @@ class RegularUserCannotViewAdminPagesTest < Capybara::Rails::TestCase
   end
 
   test "logged in user cannot create items" do
-    user1 = User.create({username: 'bob_bob', password: 'password'})
+    user1 = User.create({username: 'bob_bob', email: 'bob@example.com', password: 'password'})
     visit root_path
     click_on "Login"
 

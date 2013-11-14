@@ -146,9 +146,9 @@ coco_cake.save
 
 desserts.items << coco_cake
 
-usr = User.new({username: 'wvmitchell', password: 'password'})
+usr = User.new({username: 'wvmitchell', email: 'wvmitchell@gmail.com', password: 'password'})
 usr.admin = true
 usr.save
 
-User.create({username: 'bob', password: 'password'})
+User.create({username: 'bob', email: 'bob@example.com', password: 'password'})
 
