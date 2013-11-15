@@ -6,8 +6,7 @@ class ApplicationController < ActionController::Base
   def require_admin
     if current_user
       unless current_user.admin
-        #redirect_to user_path(current_user)
-        redirect_to "http://lmgtfy.com/?q=How+do+I+reach+unauthorized+pages+on+Platable%3F"
+        redirect_to user_path(current_user)
       end
     end
   end
