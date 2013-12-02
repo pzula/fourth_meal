@@ -5,7 +5,7 @@ class ChargesController < ApplicationController
   end
   
   def create
-    # Amount in cents
+   
     @order = current_user.orders.last
     @amount = @order.subtotal * 100
   
