@@ -54,13 +54,7 @@ class ItemsController < ApplicationController
   def add_to_order
     order = Order.find(cookies[:order_id])
     item = Item.find(params[:id])
-    if order.items.include? item
-      order_item = OrderItem.where(order_id:order.id, item_id:item.id).first
-      new_quantity = order_item.quantity + 1
-      order_item.update(quantity: new_quantity)
-    else
-      order.items << item
-    end
+    Item.add_item_or_update(order, item)
     flash.notice = item.title + " added to cart!"
     redirect_to :back
   end

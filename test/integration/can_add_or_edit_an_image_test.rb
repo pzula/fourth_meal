@@ -19,7 +19,6 @@ class CanAddOrEditAnImageTest < Capybara::Rails::TestCase
 
     visit edit_item_path(item.id)
     attach_file("item_image", "./app/assets/images/deviled_eggs.jpg")
-    save_and_open_page
     click_button "Update"
   end
 
