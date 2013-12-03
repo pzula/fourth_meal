@@ -4,12 +4,12 @@ class UsersControllerTest < ActionController::TestCase
   setup do
     @user = User.new(username: "bob", email: "bob@example.com")
     @user.save
+    @admin = User.new(username: "admin", email: "admin@example.com", admin: true) 
+    @admin.save
   end
 
   test "should get index" do
-    skip
-    # need to implement login_admin for this to work
-    login_admin
+    login_user(@admin)
     get :index
     assert_response :success
     assert_not_nil assigns(:users)
@@ -35,9 +35,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    skip
-    # need to implement login_admin for this to work
-    login_user
+    login_user(@admin)
     get :edit, :id => @user.to_param
     assert_response :success
   end
