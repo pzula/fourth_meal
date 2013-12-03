@@ -29,5 +29,5 @@ class ChargesController < ApplicationController
       UserMailer.order_email(current_user, current_user.orders.last).deliver
     end
     redirect_to user_path(current_user)
-  end 
+  end  
 end
