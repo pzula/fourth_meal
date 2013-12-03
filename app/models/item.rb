@@ -14,4 +14,14 @@ class Item < ActiveRecord::Base
     category_ids = potential_categories ? potential_categories.values : []
     self.categories = category_ids.collect { |id| Category.find(id) }
   end
+
+  def self.add_item_or_update(order, item)
+    if order.items.include? item
+      order_item = OrderItem.where(order_id:order.id, item_id:item.id).first
+      new_quantity = order_item.quantity + 1
+      order_item.update(quantity: new_quantity)
+    else
+      order.items << item
+    end
+  end
 end
