@@ -16,5 +16,4 @@ class OrdersControllerTest < ActionController::TestCase
     get :show, id: cookies[:order_id]
     assert_response :success
   end
-
 end
