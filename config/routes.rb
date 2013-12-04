@@ -1,5 +1,6 @@
 DinnerDash::Application.routes.draw do
 
+  get "static_pages/home"
   resources :items
   resources :orders
   resources :order_items
