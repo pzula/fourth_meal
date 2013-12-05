@@ -6,7 +6,7 @@ class UserSessionsController < ApplicationController
   def create
     if login(params[:username], params[:password])
       flash.notice = "Successfully logged in as #{current_user.username}"
-      redirect_to items_path
+      redirect_to root_path
     else
       flash.notice = "Login failed"
       redirect_to login_path
@@ -16,6 +16,6 @@ class UserSessionsController < ApplicationController
   def destroy
     logout
     flash.notice = "Logged out"
-    redirect_to items_path
+    redirect_to root_path
   end
 end

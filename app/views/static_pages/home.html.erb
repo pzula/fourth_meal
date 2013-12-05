@@ -1,2 +1,36 @@
-<h1>StaticPages#home</h1>
-<p>Welcome to CRAVEYARD BITCHES!!!!!!!!!!</p>
+<header>
+  <img src="logo.png" alt="Craveyard">
+  <div id="header-signup">
+    <% if current_user %>
+    <%= link_to "Log Out" %>
+    <% else %>
+    <%= link_to "Sign Up", new_user_path, {:class => "btn"} %>
+    <%= link_to "Sign In", login_path, {:class => "btn"} %>
+    <% end %>
+  </div>
+</header>
+
+
+<h1>Satisfy Your Craving</h1>
+<p>Pick a Restaurant =====></p>
+<p>Build a meal</p>
+<p>Order your meal</p>
+<div id="food-types">
+  <%= link_to "Bars" %>
+  </div>
+
+
+<p>Restaurant Owner?</p>
+<p>Join Craveyard</p>
+<% if current_user %>
+  <%= link_to "Join Craveyard", {:class => "btn btn-warning"} %>
+  <% else %>
+    <%= link_to "Join Craveyard" %>
+<% end %>
+
+
+
+
+
+
+

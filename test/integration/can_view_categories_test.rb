@@ -7,7 +7,7 @@ class CanViewCategoriesTest < Capybara::Rails::TestCase
     item = Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1')
     category.items << item
 
-    visit root_path
+    visit items_path
     assert_content page, "Deviled Eggs"
     assert_content page, "brunch"
   end
@@ -20,7 +20,7 @@ class CanViewCategoriesTest < Capybara::Rails::TestCase
     category.items << item
     category2.items << item2
 
-    visit root_path
+    visit items_path
 
     within("#item_1") do
       click_on "brunch"
