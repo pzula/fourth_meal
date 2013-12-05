@@ -38,5 +38,19 @@ To purge the test database - run
 rake db:test:purge
 ```
 
+#####Dependencies
+**Amazon AWS S3 Bucket for images**
+To integrate the Paperclip gem with image upload on Heroku, we use an AWS S3 bucket to store our images.
+You will need to create a bucket (free) on S3, and then export the following keys to your environment:
+`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `S3_BUCKET_NAME`
+
+**Stripe for Payment integration**
+To integrate credit card payments, we used Stripe. In order for your local copy to process payments correctly, you will
+need to sign up for a free Stripe account, visit your account settings, and export the following API keys to your environment: `SECRET_KEY` and `PUBLISHABLE_KEY`
+
+**SendGrid for ActionMailer integration**
+To integrate email on account creation and payment success, we use the SendGrid API.
+In order for this to function correctly, you must create a SendGrid account, and set your environment variables with the following: `SENDGRID_USERNAME` and `SENDGRID_PASSWORD`.
+
 #####Version in Production
-Visit [this heroku site]!!
+Visit  
