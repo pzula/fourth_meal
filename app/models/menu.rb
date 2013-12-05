@@ -4,4 +4,8 @@ class Menu
     @item = Item.all
   end
 
+  def items_array
+    @item
+  end
+
 end

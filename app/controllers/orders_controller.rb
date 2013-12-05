@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
     unless current_user
       flash.notice = "Login is required to checkout"
       redirect_to login_path
+      #need to get rid of this
     else
       current_user.associate_order(cookies[:order_id])
       @order = Order.where(user_id: current_user.id).last

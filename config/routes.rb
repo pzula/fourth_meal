@@ -1,6 +1,6 @@
 DinnerDash::Application.routes.draw do
 
-  #resources :items
+  resources :items
   resources :orders
   resources :order_items
   resources :users
