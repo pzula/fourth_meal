@@ -7,7 +7,7 @@ The original tutorial was created by Jumpstart Lab. Fourth Meal [Fourth Meal](ht
 
 ####Instructions
 
-#####Setuping Locally
+#####Seting Up Locally
 
 1. Clone the repository.
   `https://github.com/pzula/fourth_meal.git'
