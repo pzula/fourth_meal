@@ -1,7 +1,6 @@
 DinnerDash::Application.routes.draw do
 
-  get "static_pages/home"
-  resources :items
+  #resources :items
   resources :orders
   resources :order_items
   resources :users
@@ -18,4 +17,9 @@ DinnerDash::Application.routes.draw do
   post "place_order" => "orders#place_order", as: 'place_order'
 
   get "dashboard" => "users#dashboard", as: 'dashboard'
+
+  get "static_pages/home"
+
+  get ":restaurant/menu" => "menus#index"
+
 end
