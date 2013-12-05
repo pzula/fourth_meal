@@ -23,10 +23,20 @@ The original tutorial was created by Jumpstart Lab. Fourth Meal [Fourth Meal](ht
    `rails s`
 
 ####Test Version
-Running Tests
+To Run MiniTest Tests
 ```ruby
 rake test
 ```
+
+To Run RSPEC
+```ruby
+# Run all specs
+bundle exec rspec
+
+# Run only model specs
+bundle exec rspec spec/models
+```
+
 
 ```ruby
 rake db:test:load
