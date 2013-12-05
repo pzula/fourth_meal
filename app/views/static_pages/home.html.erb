@@ -12,7 +12,7 @@
 
 
 <h1>Satisfy Your Craving</h1>
-<p>Pick a Restaurant</p>
+<p>Pick a Restaurant =====></p>
 <p>Build a meal</p>
 <p>Order your meal</p>
 <div id="food-types">
@@ -23,10 +23,12 @@
 <p>Restaurant Owner?</p>
 <p>Join Craveyard</p>
 <% if current_user %>
-  <%= link_to "Join Craveyard", new_restaurant_owner_path %>
+  <%= link_to "Join Craveyard", {:class => "btn btn-warning"} %>
   <% else %>
-    <%= link_to "Join Craveyard", apply_path %>
+    <%= link_to "Join Craveyard" %>
 <% end %>
+
+
 
 
 

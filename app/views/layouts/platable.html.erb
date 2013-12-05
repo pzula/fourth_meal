@@ -2,8 +2,8 @@
 <html>
  <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Craveyard" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Craveyard" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Dinner Dash" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Dinner Dash" %>">
      <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700,400italic' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag "application", :media => "all" %>
    <%= javascript_include_tag "application" %>
@@ -22,7 +22,6 @@
               <%= link_to "Logout", logout_path, {:class => "btn btn-warning"} %>
             <% else %>
               <%= link_to "Login", login_path, {:class => "btn btn-primary login"} %>
-              <%= link_to "Sign Up", new_user_path, {:class => "btn btn-primary sign-up"} %>
             <% end %>
           </div>
         <div class="container">
@@ -40,8 +39,8 @@
           </div>
           <footer>
             <div class="container">
-              <p>Craveyard. An open-source food ordering service built by gSchool class[1]</p>
-              <p>Romeeka Gayhart, Persa Zula, &amp; Tyler Long</p>
+              <p>Platable. An open-source food ordering service built by gSchool class[1]</p>
+              <p>Will Mitchell, Persa Zula, &amp; Lauren Spath Luhring</p>
             </div>
           </footer>
         </div>
