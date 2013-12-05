@@ -4,8 +4,7 @@ class HomePageIntegrationTest < Capybara::Rails::TestCase
 
   test "home page has correct content for Public User" do
 
-    visit root_path
-    
+    visit static_pages_home_path
     assert_content page, "Sign Up"
     assert_content page, "Sign In"
 
@@ -17,7 +16,7 @@ class HomePageIntegrationTest < Capybara::Rails::TestCase
 
   test "Clicking on food type icon brings up restaurants" do
 
-    visit root_path
+    visit static_pages_home_path
 
     within("#food_types") do
       click_on "Bars"
@@ -29,14 +28,14 @@ class HomePageIntegrationTest < Capybara::Rails::TestCase
       click_on "American"
     end
 
-    assert_content page, "Platable" 
+    assert_content page, "Platable"
     refute_content page, "Dive Bar"
 
   end
 
   test "Clicking on sign up redirects to sign up form" do
 
-    visit root_path
+    visit static_pages_home_path
 
     click_on "Sign Up"
 
@@ -46,7 +45,7 @@ class HomePageIntegrationTest < Capybara::Rails::TestCase
 
   test "Clicking on sign in redirects to sign in form" do
 
-    visit root_path
+    visit static_pages_home_path
     click_on "Sign In"
 
     assert_content page, "Email:"
@@ -59,9 +58,9 @@ class HomePageIntegrationTest < Capybara::Rails::TestCase
     user1 = User.new({username: 'regular', password: 'password'})
     assert user1.save
 
-    visit root_path
+    visit static_pages_home_path
     click_on "Sign In"
-    
+
     fill_in "Username", with: 'admin'
     fill_in "Password", with: 'password'
 
@@ -71,9 +70,8 @@ class HomePageIntegrationTest < Capybara::Rails::TestCase
 
   end
 
-  test "Choosing join craveyard redirects to sign up and join form"
-    
-    visit root_path
+  test "Choosing join craveyard redirects to sign up and join form" do
+    visit static_pages_home_path
     click_on "Join Craveyard"
 
     assert_content page, "Sign In Now"
@@ -81,12 +79,12 @@ class HomePageIntegrationTest < Capybara::Rails::TestCase
 
   end
 
-  test "Signing in Redirects to New Restaurant Application"
+  test "Signing in Redirects to New Restaurant Application" do
 
     user1 = User.new({username: 'regular', password: 'password'})
     assert user1.save
 
-    visit root_path
+    visit static_pages_home_path
     click_on "Join Craveyard"
 
     fill_in "Username", with: 'admin'
@@ -98,9 +96,9 @@ class HomePageIntegrationTest < Capybara::Rails::TestCase
 
   end
 
-  test "Signing Up Redirects to New Restaurant Application"
+  test "Signing Up Redirects to New Restaurant Application" do
 
-    visit root_path
+    visit static_pages_home_path
     click_on "Join Craveyard"
 
     fill_in "Username", with: 'admin'
