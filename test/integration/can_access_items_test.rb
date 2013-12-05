@@ -5,7 +5,7 @@ class CanAccessItemsTest < Capybara::Rails::TestCase
   test "can see all items" do
     item = Item.new(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1')
     item.save
-    visit root_path
+    visit items_path
     assert_content page, "Deviled Eggs"
     refute_content page, "Bread"
   end

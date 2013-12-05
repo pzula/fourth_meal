@@ -18,13 +18,13 @@ class HomePageIntegrationTest < Capybara::Rails::TestCase
 
     visit static_pages_home_path
 
-    within("#food_types") do
+    within("#food-types") do
       click_on "Bars"
     end
 
     assert_content page, "Dive Bar"
 
-    within("#food_types") do
+    within("#food-types") do
       click_on "American"
     end
 
@@ -61,11 +61,12 @@ class HomePageIntegrationTest < Capybara::Rails::TestCase
     visit static_pages_home_path
     click_on "Sign In"
 
-    fill_in "Username", with: 'admin'
+    fill_in "Username", with: 'regular'
     fill_in "Password", with: 'password'
 
-    click_button "Sign In"
-    assert_content page, "Satisfy"
+    click_button "Login"
+    assert_content page, "Satisfy Your Craving"
+    assert_content page, "Logout"
     refute_content page, 'Sign In'
 
   end

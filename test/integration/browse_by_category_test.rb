@@ -10,7 +10,7 @@ class BrowseByCategoryTest < Capybara::Rails::TestCase
     item1.categories << cat1
     item2.categories << cat2
 
-    visit root_path
+    visit items_path
     select('Plates', :from => 'Categories')
     click_button "Browse by Category"
     within('#items > ul') do

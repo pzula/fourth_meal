@@ -3,8 +3,7 @@ require "./test/test_helper"
 class UserCheckoutTest < Capybara::Rails::TestCase
   test "user must login before checking out" do
     Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1')
-    visit root_path
-
+    visit items_path
     within("#item_1") do
       click_on 'Add to Order'
     end
@@ -22,7 +21,7 @@ class UserCheckoutTest < Capybara::Rails::TestCase
     User.create({username: 'bob_bob', email: "bob@example.com",
 password: 'password'})
     Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: '1')
-    visit root_path
+    visit items_path    
     within("#item_1") do
       click_on 'Add to Order'
     end
@@ -32,8 +31,7 @@ password: 'password'})
     fill_in "Password", with: 'password'
     click_button "Login"
 
-    visit root_path
-
+    visit items_path
     click_on "My Order"
     click_on "Checkout"
 
@@ -46,7 +44,7 @@ password: 'password'})
     Item.create(title: 'Deviled Eggs', description: '12 luscious eggs', price: 1)
     Item.create(title: 'Spam', description: 'Almost meat', price: 2)
 
-    visit root_path
+    visit items_path    
     within("#item_1") do
       click_on 'Add to Order'
     end
@@ -56,14 +54,13 @@ password: 'password'})
     fill_in "Password", with: 'password'
     click_button "Login"
 
-    visit root_path
-
+    visit items_path
     click_on "My Order"
     click_on "Checkout"
     click_on "Place Order"
 
-    visit root_path
-    within("#item_2") do
+    visit items_path   
+     within("#item_2") do
       click_on 'Add to Order'
     end
 
