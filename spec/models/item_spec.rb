@@ -18,5 +18,4 @@ describe Item do
     @item.save
     expect(@item.image_file_name).to eq("deviled_eggs.jpg")
   end
-#Validations testing needs to be added
 end
