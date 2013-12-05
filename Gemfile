@@ -43,9 +43,13 @@ end
 #
 
 group :test, :development do
+  #RSPEC Gems
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem "capybara"
+  gem 'shoulda-matchers'
+  #MINITEST Gems
   gem 'minitest-rails-capybara'
+  #
   gem 'launchy'
   gem 'pry'
   gem 'guard'
