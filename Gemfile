@@ -47,12 +47,12 @@ group :test, :development do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem "capybara"
   gem 'shoulda-matchers'
-  gem 'better_errors'
-  gem 'binding_of_caller'
+ # gem 'better_errors'
+ # gem 'binding_of_caller'
 
   gem 'factory_girl_rails'
   #MINITEST Gems
-  gem 'minitest-rails-capybara'
+  # gem 'minitest-rails-capybara'
   #
   gem 'launchy'
   gem 'pry'
