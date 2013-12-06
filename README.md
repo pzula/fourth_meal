@@ -22,11 +22,6 @@ The original tutorial was created by Jumpstart Lab. Fourth Meal [Fourth Meal](ht
 6. Start the Rails sever.
    `rails s`
 
-####Test Version
-To Run MiniTest Tests
-```ruby
-rake test
-```
 
 To Run RSPEC
 ```ruby

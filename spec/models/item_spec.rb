@@ -14,7 +14,7 @@ describe Item do
 
   it "can attach image when editing" do
     item = FactoryGirl.build(:item)
-    item.image = File.new("test/fixtures/deviled_eggs.jpg")
+    item.image = File.new("app/assets/images/deviled_eggs.jpg")
     item.save
     expect(item.image_file_name).to eq("deviled_eggs.jpg")
   end
