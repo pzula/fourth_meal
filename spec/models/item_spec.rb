@@ -6,8 +6,7 @@ describe Item do
   it { should validate_presence_of(:description)}
 
   it "has method active that returns active items" do
-    item = FactoryGirl.build(:item)
-    item.save
+    item = FactoryGirl.create(:item)
     inactive_item = FactoryGirl.build(:item, title: "Eggs", active: false)
     inactive_item.save
     expect(Item.active.count).to eq(1)
