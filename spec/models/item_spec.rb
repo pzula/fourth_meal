@@ -18,4 +18,11 @@ describe Item do
     item.save
     expect(item.image_file_name).to eq("deviled_eggs.jpg")
   end
+
+  it "is associated with a specific restaurant" do
+    item = FactoryGirl.build(:item)
+    item.update_attributes(restaurant_id: 1)
+
+    expect(item.restaurant_id).to eq(1)
+  end
 end

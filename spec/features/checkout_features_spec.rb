@@ -26,7 +26,6 @@ describe "Adding an item to the cart", :type => :feature do
 
 
   it "updates the cart without redirecting" do
-    pending
     visit "/platable/menu" 
     expect(page).to have_text("Deviled Eggs")
      within("#item_2") do 
@@ -38,4 +37,5 @@ describe "Adding an item to the cart", :type => :feature do
     
      current_url.should == "http://www.example.com/platable/menu"
   end
+
 end
