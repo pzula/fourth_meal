@@ -20,7 +20,14 @@ describe Restaurant do
     expect(restaurant.status).to eq("pending")
   end
 
+  it "can have a description" do
+    restaurant = FactoryGirl.create(:restaurant, description: "An awesome american grill")
+    
+    restaurant.should be_valid
+  end
+
+  
   it "has the appropriate type of url slug"
   it "can have a food type"
-  it "can have a description"
+
 end
