@@ -6,6 +6,7 @@ class Item < ActiveRecord::Base
   belongs_to :restaurant
   has_attached_file :image, styles: { small: "200x200" }, bucket: 'platable'
   validates_presence_of :title, :description, :price
+  validates_presence_of :restaurant_id
 
   def self.active
     where(active: true)
