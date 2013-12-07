@@ -3,6 +3,6 @@ class Restaurant < ActiveRecord::Base
   validates :status, presence: true
   validates :url_slug, presence: true, format: {with: /[A-Za-z0-9\-]+/, message: "Only use letters, numbers and -"}, uniqueness: {case_sensitive: false}
   before_save {|restaurant| restaurant.url_slug.downcase!}
-
+  has_many :items
 
 end

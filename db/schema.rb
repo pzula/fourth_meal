@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207201704) do
+ActiveRecord::Schema.define(version: 20131207212943) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -37,7 +37,10 @@ ActiveRecord::Schema.define(version: 20131207201704) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "restaurant_id"
   end
+
+  add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id"
 
   create_table "order_items", force: true do |t|
     t.integer  "order_id"
