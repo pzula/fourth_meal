@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "Adding an item to the cart", :type => :feature do 
 
   before :each do 
-    item1 = Item.new(title: "Deviled Eggs", description: "twelve luscious eggs", price: 1)
-    item2 = Item.new(title: "Waffles", description: "syrup", price: 3)
-    item3 = Item.new(title: "quinoa", description: "grainy", price: 9)
+    item1 = Item.new(title: "Deviled Eggs", description: "twelve luscious eggs", price: 1, restaurant_id: 1)
+    item2 = Item.new(title: "Waffles", description: "syrup", price: 3, restaurant_id: 1)
+    item3 = Item.new(title: "quinoa", description: "grainy", price: 9, restaurant_id: 1)
     item1.save
     item2.save
     item3.save
