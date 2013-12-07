@@ -41,6 +41,7 @@ class HomePageIntegrationTest < Capybara::Rails::TestCase
 
     assert_content page, "Confirm Password:"
 
+
   end
 
   test "Clicking on sign in redirects to sign in form" do
