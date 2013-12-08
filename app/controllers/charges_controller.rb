@@ -1,4 +1,5 @@
 class ChargesController < ApplicationController
+  
   def new
     @order = current_user.orders.last
     @amount = @order.subtotal * 100

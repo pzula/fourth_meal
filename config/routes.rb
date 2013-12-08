@@ -1,5 +1,6 @@
 DinnerDash::Application.routes.draw do
 
+  resources :restaurants
   resources :items
   resources :orders
   resources :order_items
@@ -7,6 +8,7 @@ DinnerDash::Application.routes.draw do
   resources :categories
   resources :user_sessions, only: [:new, :create, :destroy]
   resources :charges
+  resources :menus
   root to: 'static_pages#home'
 
   post "items/add_to_order/:id" => 'items#add_to_order', as: 'add_item'

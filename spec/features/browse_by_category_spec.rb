@@ -14,6 +14,7 @@ describe "A public user", :type => :feature do
 
   it "browsing a menu by category" do
     visit items_path
+    # save_and_open_page
     select('Plates', :from => 'Categories')
     click_button "Browse by Category"
     within("#items > ul") do

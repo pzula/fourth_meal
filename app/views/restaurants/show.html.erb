@@ -1,0 +1,25 @@
+<div id="items">
+  <ul>
+    <% @items.each do |item| %>
+    <li id="item_<%= item.id %>" class="item">
+    <div class="item-wrapper">
+    <% if item.image.exists? %>
+      <%= image_tag item.image.url(:small), {:class => "item-show-image"} %><br/>
+    <% end %>
+    <div class="item-details">
+      <a href="<%= item_path item.id %>" class="title"><%= item.title %></a>
+       <p> <%= item.description %></p>
+       <p><%=print_price(item.price) %></p>
+       <ul class="categories">
+         <li class="glyphicon glyphicon-tag category"></li>
+         <% item.categories.each do |category| %>
+         <li class="category"><%= link_to category.name, items_path(Categories: category.id) %></li>
+          <% end %>
+        </ul>
+        <%= button_to "Add to Order", add_item_path(item.id), {:class => "btn btn-success" } %>
+    </div>
+    </div>
+    </li>
+    <% end %>
+  </ul>
+</div>
