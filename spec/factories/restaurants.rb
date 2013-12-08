@@ -9,5 +9,6 @@ FactoryGirl.define do
     name "Interstate Cafe"
     description "Delicious American food & spirits"
     url_slug
+    food_type "American"
   end
 end

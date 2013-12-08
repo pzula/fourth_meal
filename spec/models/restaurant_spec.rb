@@ -46,6 +46,13 @@ describe Restaurant do
     restaurant_invalid.should_not be_valid
   end
   
-  it "can have a food type"
+  it "can have a food type" do
+    restaurant = FactoryGirl.create(:restaurant, food_type: "American")
+    expect(restaurant.food_type).to eq("American")
+  end
 
+  it "should be invalid without a food type" do
+    restaurant = FactoryGirl.build(:restaurant, food_type: nil)
+    expect(restaurant).to be_invalid
+  end
 end

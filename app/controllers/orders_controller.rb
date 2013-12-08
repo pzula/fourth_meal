@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   def new
     order = Order.create
     cookies[:order_id] = order.id
-    redirect_to :back 
+    redirect_to items_path
   end
 
   def show

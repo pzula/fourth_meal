@@ -10,7 +10,6 @@ describe "A public user", :type => :feature do
     @item2 = FactoryGirl.create(:item_unique, title: "Cheese", restaurant: @restaurant)
     @item_category1 = FactoryGirl.create(:item_category, item: @item1, category: @cat1)
     @item_category2 = FactoryGirl.create(:item_category, item: @item2, category: @cat2)
-    request.env["HTTP_REFERER"]
   end
 
 
