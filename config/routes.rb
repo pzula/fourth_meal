@@ -22,6 +22,5 @@ DinnerDash::Application.routes.draw do
 
   get "static_pages/home"
 
-  get ":restaurant/menu" => "menus#index"
 
 end

@@ -3,18 +3,19 @@ require 'spec_helper'
 describe "A public user", :type => :feature do
   
   before :each do 
+    @restaurant = FactoryGirl.create(:restaurant)
     @cat1 = FactoryGirl.create(:category, name: "Plates")
     @cat2 = FactoryGirl.create(:category, name: "Desserts")
-    @item1 = FactoryGirl.create(:item, title: "Bread")
-    @item2 = FactoryGirl.create(:item, title: "Cheese")
+    @item1 = FactoryGirl.create(:item_unique, title: "Bread", restaurant: @restaurant)
+    @item2 = FactoryGirl.create(:item_unique, title: "Cheese", restaurant: @restaurant)
     @item_category1 = FactoryGirl.create(:item_category, item: @item1, category: @cat1)
     @item_category2 = FactoryGirl.create(:item_category, item: @item2, category: @cat2)
+    request.env["HTTP_REFERER"]
   end
 
 
   it "browsing a menu by category" do
     visit items_path
-    # save_and_open_page
     select('Plates', :from => 'Categories')
     click_button "Browse by Category"
     within("#items > ul") do

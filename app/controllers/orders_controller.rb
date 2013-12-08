@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   def new
     order = Order.create
     cookies[:order_id] = order.id
-    redirect_to menus_path(:platable)
+    redirect_to :back 
   end
 
   def show

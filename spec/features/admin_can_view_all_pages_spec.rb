@@ -26,6 +26,7 @@ describe "Admin logged in to site", :type => :feature do
   end
 
   it "can create an item" do
+    pending
     visit new_item_path
     expect(page).not_to have_text("deviled eggs")
     fill_in "Title", :with => "deviled eggs"

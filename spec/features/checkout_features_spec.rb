@@ -18,7 +18,6 @@ describe "Adding an item to the cart", :type => :feature do
    it "updates the cart with a visual indicator" do
     visit root_path
     visit restaurant_path(@restaurant)
-    save_and_open_page
     expect(page).to have_text("Deviled Eggs")
      within("#item_2") do 
        click_on "Add to Order"
@@ -42,7 +41,7 @@ describe "Adding an item to the cart", :type => :feature do
        click_on "Add to Order"
      end
     
-     current_path.should == restaurant_path(restaurant)
+     current_path.should == restaurant_path(@restaurant)
   end
 
 end
