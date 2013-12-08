@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
 
   def show 
-    redirect_to new_order_path unless cookies[:order_id]
+    set_cookie
     @restaurant = Restaurant.find(params[:id])
     @items = @restaurant.items
     if cookies[:order_id] 
