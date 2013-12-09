@@ -1,5 +1,7 @@
 DinnerDash::Application.routes.draw do
 
+  resources :visitor_users
+
   resources :restaurants
   resources :items
   resources :orders
@@ -10,6 +12,8 @@ DinnerDash::Application.routes.draw do
   resources :charges
   resources :menus
   root to: 'static_pages#home'
+
+  get "orders/guest_checkout"
 
   post "items/add_to_order/:id" => 'items#add_to_order', as: 'add_item'
   get "login" => "user_sessions#new"

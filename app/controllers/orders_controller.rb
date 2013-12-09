@@ -17,14 +17,16 @@ class OrdersController < ApplicationController
     @order_items = @order.order_items
   end
 
-  def confirm_guest_checkout
-
+  def guest_checkout
+    render "guest_checkout"
   end
 
   def checkout
     unless current_user
-     flash.notice = "Login is required to checkout"
-     redirect_to login_path
+      guest_checkout
+      #redirect_to "/orders/guest_checkout"
+     #flash.notice = "Login is required to checkout"
+     #redirect_to login_path
       # confirm_guest_checkout
       # current_user = User.guest_user("joe@email.com")
     else

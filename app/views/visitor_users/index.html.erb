@@ -1,0 +1,27 @@
+<h1>Listing visitor_users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @visitor_users.each do |visitor_user| %>
+      <tr>
+        <td><%= visitor_user.email %></td>
+        <td><%= link_to 'Show', visitor_user %></td>
+        <td><%= link_to 'Edit', edit_visitor_user_path(visitor_user) %></td>
+        <td><%= link_to 'Destroy', visitor_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Visitor user', new_visitor_user_path %>
