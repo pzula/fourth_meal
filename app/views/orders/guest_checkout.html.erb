@@ -1,91 +1,104 @@
 <%= form_tag charges_path do %>
- <h3>Billing Address</h3>
- <fieldset name="billing-details">
- <p>
-  <%= label_tag(:first_name, "First Name") %>
-  <%= text_field_tag(:first_name) %>
- </p>
 
- <p>
-  <%= label_tag(:last_name, "Last Name") %>
-  <%= text_field_tag(:last_name) %>
- </p> 
+<h3>Customer Details</h3>
+<fieldset name="billing-details">
+	<p>
+		<%= label_tag(:first_name, "First Name") %>
+		<%= text_field_tag(:first_name) %>
+	</p>
 
- <p>
- 	<%= label_tag(:email, "Email") %>
- 	<%= text_field_tag(:email) %>
- </p>
+	<p>
+		<%= label_tag(:last_name, "Last Name") %>
+		<%= text_field_tag(:last_name) %>
+	</p> 
 
- <p>
- 	<%= label_tag(:phone, "Phone Number") %>
- 	<%= text_field_tag(:phone) %>
- </p>
+	<p>
+		<%= label_tag(:email, "Email") %>
+		<%= text_field_tag(:email) %>
+	</p>
 
- </fieldset>
+	<p>
+		<%= label_tag(:phone, "Phone Number") %>
+		<%= text_field_tag(:phone) %>
+	</p>
 
-<h3>Delivery Address</h3>
- <fieldset id="delivery-address">
- 	<p>
- 		<%= label_tag(:delivery_street, "Street Address") %>
- 		<%= text_field_tag(:delivery_street) %>
- 	</p>
+</fieldset>
+<table>
+	<tr>
+		<td>
 
- 	<p> 
-		<%= label_tag(:delivery_address_2, "Address Line 2") %>
-		<%= text_field_tag(:delivery_address_2) %>
- 	</p>
+			<h3>Delivery Address</h3>
+			<fieldset id="delivery-address">
+				<p>
+					<%= label_tag(:delivery_street, "Street Address") %>
+					<%= text_field_tag(:delivery_street) %>
+				</p>
 
- 	<p>
- 		<%= label_tag(:delivery_city, "City") %>
- 		<%= text_field_tag(:delivery_city) %>
- 	</p>
+				<p> 
+					<%= label_tag(:delivery_address_2, "Address Line 2") %>
+					<%= text_field_tag(:delivery_address_2) %>
+				</p>
 
- 	<p>
- 		<%= label_tag(:delivery_state, "State") %>
- 		<%= text_field_tag(:delivery_state) %>
- 	</p>
+				<p>
+					<%= label_tag(:delivery_city, "City") %>
+					<%= text_field_tag(:delivery_city) %>
+				</p>
 
- 	<p>
- 		<%= label_tag(:delivery_zip, "Zip") %>
- 		<%= text_field_tag(:delivery_zip) %>
- 	</p>
+				<p>
+					<%= label_tag(:delivery_state, "State") %>
+					<%= text_field_tag(:delivery_state) %>
+				</p>
+
+				<p>
+					<%= label_tag(:delivery_zip, "Zip") %>
+					<%= text_field_tag(:delivery_zip) %>
+				</p>
 
 
- </fieldset>
+			</fieldset>
 
- <h3>Billing</h3>
- <fieldset id="billing-address">
- 	<p>
- 		<%= label_tag(:billing_street, "Street Address") %>
- 		<%= text_field_tag(:billing_street) %>
- 	</p>
+		</td>
 
- 	<p> 
-		<%= label_tag(:billing_address_2, "Address Line 2") %>
-		<%= text_field_tag(:billing_address_2) %>
- 	</p>
+		<td>
 
- 	<p>
- 		<%= label_tag(:billing_city, "City") %>
- 		<%= text_field_tag(:billing_city) %>
- 	</p>
+			<h3>Billing Address</h3>
+			<fieldset id="billing-address">
+				<p>
+					<%= label_tag(:billing_street, "Street Address") %>
+					<%= text_field_tag(:billing_street) %>
+				</p>
 
- 	<p>
- 		<%= label_tag(:billing_state, "State") %>
- 		<%= text_field_tag(:billing_state) %>
- 	</p>
+				<p> 
+					<%= label_tag(:billing_address_2, "Address Line 2") %>
+					<%= text_field_tag(:billing_address_2) %>
+				</p>
 
- 	<p>
- 		<%= label_tag(:billing_zip, "Zip") %>
- 		<%= text_field_tag(:billing_zip) %>
- 	</p>
+				<p>
+					<%= label_tag(:billing_city, "City") %>
+					<%= text_field_tag(:billing_city) %>
+				</p>
 
- </fieldset>
+				<p>
+					<%= label_tag(:billing_state, "State") %>
+					<%= text_field_tag(:billing_state) %>
+				</p>
 
- <fieldset id="credit-card">
- 	<p>
-	 	<%= label_tag(:card_number, "Card Number") %>
-	 	<%= text_field_tag(:card_number) %>
+				<p>
+					<%= label_tag(:billing_zip, "Zip") %>
+					<%= text_field_tag(:billing_zip) %>
+				</p>
+
+			</fieldset>
+		</td>
+	</tr>
+</table>
+
+
+<h3>Payment Details</h3>
+<fieldset id="credit-card">
+	<p>
+		<%= label_tag(:card_number, "Card Number") %>
+		<%= text_field_tag(:card_number) %>
 	</p>
 
 	<p>
@@ -97,8 +110,8 @@
 		<%= label_tag(:expiry, "Expiration (MM/YYYY)") %>
 		<%= text_field_tag(:expiry) %>
 	</p>
- </fieldset>
+</fieldset>
 
- <%= submit_tag("Submit Payment") %>
+<%= submit_tag("Submit Payment") %>
 
 <% end %>

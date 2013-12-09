@@ -53,7 +53,9 @@ describe "a public visitor", :type => :feature do
         fill_in("Expiration (MM/YYYY)", :with => "09/2019")
       end
       click_on("Submit Payment")
-      expect(response).to eq(200)
+      expect(page).to have_text("Your order was successful")
+      #expect(page).to have_text("French Bread")
+      #expect(page).to have_text("$3")
     end
 
   end
