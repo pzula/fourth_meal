@@ -157,3 +157,86 @@ usr.save
 
 User.create({username: 'bob', email: 'bob@example.com', password: 'password'})
 
+
+ono_burrito = Restaurant.create(name: "Ono Burrito", url_slug: "ono-burrito", description: "A fiesta wrapped in a flour wrapper")
+
+entrees = Category.create(title: "Entrees")
+combos = Category.create(title: "Combos")
+kids = Category.create(title: "Kids Menu")
+add_ons = Category.create(title: "Add Ons")
+beverages = Category.create(title: "Beverages")
+appetizers = Category.create(title: "Appetizers")
+salads = Category.create(title: "Salads")
+burritos = Category.create(title: "Burritos")
+tacos = Category.create(title: "Tacos")
+nachos = Category.create(title: "Nachos")
+
+tacos = Item.new(title: "New Mexican Veggie Street Tacos", description: "Accompanied by smoked mushrooms and roasted squash", price: '19', restaurant_id: Ono_burrito_id)
+tacos.image = open("https://platable.s3.amazonaws.com/items/images/000/000/013/small/tacos.jpg")
+tacos.save
+
+entreee.items << tacos
+tacos.items << tacos
+
+burritos = Item.new(title: "THE Ono Burrito", description: "A mouthwatering slab of meat in white flour", price: '19', restaurant_id: Ono_burrito_id)
+burritos.image = open("https://platable.s3.amazonaws.com/items/images/000/000/013/small/tacos.jpg")
+burritos.save
+
+entree.items << burritos
+burritos.items << burritos
+
+margaritas = Item.new(title: "Margaritas", description: "Blended margs for your enjoyment", price: '12', restaurant_id: Ono_burrito_id)
+margaritas.image = open("https://platable.s3.amazonaws.com/items/images/000/000/013/small/tacos.jpg")
+margaritas.save
+
+beverages.items << margaritas
+
+soda = Item.new(title: "Soda", description: "Sodeeee pop!", price: '7', restaurant_id: Ono_burrito_id)
+soda.image = open("https://platable.s3.amazonaws.com/items/images/000/000/013/small/tacos.jpg")
+soda.save
+
+beverages.items << soda
+
+beer = Item.new(title: "Beer", description: "Fermented and Delicious", price: '8', restaurant_id: Ono_burrito_id)
+beer.image = open("https://platable.s3.amazonaws.com/items/images/000/000/013/small/tacos.jpg")
+beer.save
+
+beverages.items << beer
+
+chips_and_dip = Item.new(title: "Cheese and dippers", description: "YUMMY", price: '4', restaurant_id: Ono_burrito_id)
+chips_and_dip.image = open("https://platable.s3.amazonaws.com/items/images/000/000/013/small/tacos.jpg")
+chips_and_dip.save
+
+appetizers.items << chips_and_dip
+kids.items << chips_and_dip
+add_ons.items << chips_and_dip
+
+nachos = Item.new(title: "Three Cheese Nachos", description: "Thats 'not-cho' cheese", price: '25', restaurant_id: Ono_burrito_id)
+nachos.image = open("https://platable.s3.amazonaws.com/items/images/000/000/013/small/tacos.jpg")
+nachos.save
+
+appetizers.items << nachos
+nachos.items << nachos
+kids.items << nachos
+
+two_naked_tacos = Item.new(title: "Two Naked Tacos", description: "Tacos without the wrapping", price: '14', restaurant_id: Ono_burrito_id)
+two_naked_tacos.image = open("https://platable.s3.amazonaws.com/items/images/000/000/013/small/tacos.jpg")
+two_naked_tacos.save
+
+appetizers.items << two_naked_tacos
+tacos.items << two_naked_tacos
+
+tacos_with_gumbo_soup = Item.new(title: "Tacos and Soup", description: "You must be hungry!!", price: '7', restaurant_id: Ono_burrito_id)
+tacos_with_gumbo_soup.image = open("https://platable.s3.amazonaws.com/items/images/000/000/013/small/tacos.jpg")
+tacos_with_gumbo_soup.save
+
+tacos.items << tacos_with_gumbo_soup
+entrees.items << tacos_with_gumbo_soup
+
+quesadilla = Item.new(title: "Cheesy quesadilla", description: "CHEEZY!!!", price: '9', restaurant_id: Ono_burrito_id)
+quesadilla.image = open("https://platable.s3.amazonaws.com/items/images/000/000/013/small/tacos.jpg")
+quesadilla.save
+
+salads.items << quesadilla
+entree.items << quesadilla
+
