@@ -1,32 +1,45 @@
 <header>
-  <img src="logo.png" alt="Craveyard">
+
   <div id="header-signup">
     <% if current_user %>
     <%= link_to "Log Out" %>
-    <% else %>
-    <%= link_to "Sign Up", new_user_path, {:class => "btn"} %>
-    <%= link_to "Sign In", login_path, {:class => "btn"} %>
     <% end %>
   </div>
 </header>
 
+<body>
+  <div id="wrapper">
+    <header class="grid-container" id="page_header" role="header">
+      <div class="grid-container" id="header-container"> 
+        <a href="/"></a>
+      </div>
+    </header>
 
-<h1>Satisfy Your Craving</h1>
+<div id="wrapper">
+    <header class="grid-container" id="page_header" role="header">
+      <%= render 'static_pages/main_nav' %>
+    </header>
+
+
+
+<div>
 <p>Pick a Restaurant =====></p>
+<%= link_to "Platable"%>
+<p>
+<%= link_to "Ono Burrito"%>
+</p>
+</div>
+
+
+<div>
 <p>Build a meal</p>
+<p> "Choose from many restaurants!"</p>
 <p>Order your meal</p>
+<p> "Your Order Will be Ready ASAP!!" </p>
+</div>
 <div id="food-types">
   <%= link_to "Bars" %>
   </div>
-
-
-<p>Restaurant Owner?</p>
-<p>Join Craveyard</p>
-<% if current_user %>
-  <%= link_to "Join Craveyard", {:class => "btn btn-warning"} %>
-  <% else %>
-    <%= link_to "Join Craveyard" %>
-<% end %>
 
 
 
