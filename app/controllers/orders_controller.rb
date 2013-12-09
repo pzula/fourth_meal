@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :require_login, except: [:new, :show, :checkout]
+  #before_action :require_login, except: [:new, :show, :checkout]
   before_action :require_admin, only: [:index]
   before_action :set_order, only: [:show]
   
@@ -17,11 +17,16 @@ class OrdersController < ApplicationController
     @order_items = @order.order_items
   end
 
+  def confirm_guest_checkout
+
+  end
+
   def checkout
     unless current_user
-      flash.notice = "Login is required to checkout"
-      redirect_to login_path
-      #need to get rid of this
+     flash.notice = "Login is required to checkout"
+     redirect_to login_path
+      # confirm_guest_checkout
+      # current_user = User.guest_user("joe@email.com")
     else
       current_user.associate_order(cookies[:order_id])
       @order = Order.where(user_id: current_user.id).last
