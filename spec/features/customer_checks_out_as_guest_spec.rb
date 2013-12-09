@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 
-describe "a public visitor", :type => :feature do 
+describe "a public visitor", :type => :feature do
 
   before :each do
     user = FactoryGirl.create(:user)
-    @restaurant = FactoryGirl.create(:restaurant, url_slug: "fancy") 
+    @restaurant = FactoryGirl.create(:restaurant, url_slug: "fancy")
     item = FactoryGirl.create(:item_unique, restaurant: @restaurant)
     visit restaurant_path(@restaurant)
     within("#item_1") do
@@ -14,7 +14,7 @@ describe "a public visitor", :type => :feature do
   end
 
   context "when checking out" do
-    
+
     it "has a url with the restaurant in the path"
 
     it "can click checkout" do
@@ -39,7 +39,7 @@ describe "a public visitor", :type => :feature do
         fill_in("State", :with => "CO")
         fill_in("Zip", :with => "80204")
       end
-      expect(page).to have_text("Billing Address") 
+      expect(page).to have_text("Billing Address")
       within_fieldset("billing-address") do
         fill_in("Street Address", :with => "123 Main St.")
         fill_in("Address Line 2", :with => "Apt 12")
