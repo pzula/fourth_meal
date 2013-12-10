@@ -19,6 +19,9 @@ class OrdersController < ApplicationController
 
   def checkout
     unless current_user
+      @order_id = cookies[:order_id]
+      @order = Order.find(@order_id)
+      @amount = (@order.subtotal * 100).to_i
       render "guest_checkout"
       #redirect_to "/orders/guest_checkout"
      #flash.notice = "Login is required to checkout"

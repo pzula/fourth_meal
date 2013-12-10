@@ -1,1 +1,6 @@
-<h2>Thanks, you paid <strong>$5.00</strong>!</h2>
+<h2>Thanks, you paid 
+<strong>
+  <% if @first_name %> 
+    <%= @first_name %> 
+  <% end %>
+</strong>!</h2>

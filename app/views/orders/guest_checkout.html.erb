@@ -1,25 +1,25 @@
-<%= form_tag charges_path do %>
+<%= form_for :order_detail, url: charges_path do |f| %>
 
 <h3>Customer Details</h3>
 <fieldset name="billing-details">
 	<p>
-		<%= label_tag(:first_name, "First Name") %>
-		<%= text_field_tag(:first_name) %>
+		<%= f.label(:first_name, "First Name") %>
+		<%= f.text_field(:first_name) %>
 	</p>
 
 	<p>
-		<%= label_tag(:last_name, "Last Name") %>
-		<%= text_field_tag(:last_name) %>
+		<%= f.label(:last_name, "Last Name") %>
+		<%= f.text_field(:last_name) %>
 	</p> 
 
 	<p>
-		<%= label_tag(:email, "Email") %>
-		<%= text_field_tag(:email) %>
+		<%= f.label(:email, "Email") %>
+		<%= f.text_field(:email) %>
 	</p>
 
 	<p>
-		<%= label_tag(:phone, "Phone Number") %>
-		<%= text_field_tag(:phone) %>
+		<%= f.label(:phone, "Phone Number") %>
+		<%= f.text_field(:phone) %>
 	</p>
 
 </fieldset>
@@ -30,28 +30,28 @@
 			<h3>Delivery Address</h3>
 			<fieldset id="delivery-address">
 				<p>
-					<%= label_tag(:delivery_street, "Street Address") %>
-					<%= text_field_tag(:delivery_street) %>
+					<%= f.label(:delivery_street, "Street Address") %>
+					<%= f.text_field(:delivery_street) %>
 				</p>
 
 				<p> 
-					<%= label_tag(:delivery_address_2, "Address Line 2") %>
-					<%= text_field_tag(:delivery_address_2) %>
+					<%= f.label(:delivery_address_2, "Address Line 2") %>
+					<%= f.text_field(:delivery_address_2) %>
 				</p>
 
 				<p>
-					<%= label_tag(:delivery_city, "City") %>
-					<%= text_field_tag(:delivery_city) %>
+					<%= f.label(:delivery_city, "City") %>
+					<%= f.text_field(:delivery_city) %>
 				</p>
 
 				<p>
-					<%= label_tag(:delivery_state, "State") %>
-					<%= text_field_tag(:delivery_state) %>
+					<%= f.label(:delivery_state, "State") %>
+					<%= f.text_field(:delivery_state) %>
 				</p>
 
 				<p>
-					<%= label_tag(:delivery_zip, "Zip") %>
-					<%= text_field_tag(:delivery_zip) %>
+					<%= f.label(:delivery_zip, "Zip") %>
+					<%= f.text_field(:delivery_zip) %>
 				</p>
 
 
@@ -64,54 +64,36 @@
 			<h3>Billing Address</h3>
 			<fieldset id="billing-address">
 				<p>
-					<%= label_tag(:billing_street, "Street Address") %>
-					<%= text_field_tag(:billing_street) %>
+					<%= f.label(:billing_street, "Street Address") %>
+					<%= f.text_field(:billing_street) %>
 				</p>
 
 				<p> 
-					<%= label_tag(:billing_address_2, "Address Line 2") %>
-					<%= text_field_tag(:billing_address_2) %>
+					<%= f.label(:billing_address_2, "Address Line 2") %>
+					<%= f.text_field(:billing_address_2) %>
 				</p>
 
 				<p>
-					<%= label_tag(:billing_city, "City") %>
-					<%= text_field_tag(:billing_city) %>
+					<%= f.label(:billing_city, "City") %>
+					<%= f.text_field(:billing_city) %>
 				</p>
 
 				<p>
-					<%= label_tag(:billing_state, "State") %>
-					<%= text_field_tag(:billing_state) %>
+					<%= f.label(:billing_state, "State") %>
+					<%= f.text_field(:billing_state) %>
 				</p>
 
 				<p>
-					<%= label_tag(:billing_zip, "Zip") %>
-					<%= text_field_tag(:billing_zip) %>
+					<%= f.label(:billing_zip, "Zip") %>
+					<%= f.text_field(:billing_zip) %>
 				</p>
 
 			</fieldset>
 		</td>
 	</tr>
 </table>
-
-
-<h3>Payment Details</h3>
-<fieldset id="credit-card">
-	<p>
-		<%= label_tag(:card_number, "Card Number") %>
-		<%= text_field_tag(:card_number) %>
-	</p>
-
-	<p>
-		<%= label_tag(:cvc, "CVC") %>
-		<%= text_field_tag(:cvc) %>
-	</p>
-
-	<p>
-		<%= label_tag(:expiry, "Expiration (MM/YYYY)") %>
-		<%= text_field_tag(:expiry) %>
-	</p>
-</fieldset>
-
-<%= submit_tag("Submit Payment") %>
-
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Your Order"
+          data-amount="<%= @amount %>"></script>
 <% end %>

@@ -32,22 +32,36 @@ class ChargesController < ApplicationController
       end
       redirect_to user_path(current_user)
     else
-      flash.notice = "Your order was successful"
+      save_addresses
+      customer = Stripe::Customer.create(
+        :email => order_params[:email],
+        :card  => params[:stripeToken]
+      )
+      begin
+        charge = Stripe::Charge.create(
+          :customer    => customer.id,
+          :amount      => @amount.to_i,
+          :description => 'Rails Stripe customer',
+          :currency    => 'usd'
+        )
+      rescue Stripe::CardError => e
+        flash[:error] = e.message
+      else
+        #current_user.change_order_to_completed
+        flash.notice = "Your order was successful"
+        cookies.delete :order_id
+        #UserMailer.order_email(current_user, current_user.orders.last).deliver
+      end
     end
   end
 
   private
 
-  def self.charge_customer
-
+  def order_params
+    params.require(:order_detail).permit(:first_name, :last_name, :email, :phone, :delivery_street, :delivery_address_2, :delivery_city, :delivery_state, :delivery_zip, :billing_street, :billing_address_2, :billing_city, :billing_state, :billing_zip)
   end
 
-  def self.save_addresses
-    # Generate a migration for an addresses table
-    # Feed the params into that table
-    # Add a migration for address table to be added to order
-    # New up an address, and set the order to hold the address id
+  def save_addresses
+    @details = OrderDetail.create(order_params)
   end
-
-
 end
