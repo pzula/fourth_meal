@@ -17,13 +17,9 @@ class OrdersController < ApplicationController
     @order_items = @order.order_items
   end
 
-  def guest_checkout
-    render "guest_checkout"
-  end
-
   def checkout
     unless current_user
-      guest_checkout
+      render "guest_checkout"
       #redirect_to "/orders/guest_checkout"
      #flash.notice = "Login is required to checkout"
      #redirect_to login_path
