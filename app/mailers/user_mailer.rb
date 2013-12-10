@@ -18,6 +18,7 @@ class UserMailer < ActionMailer::Base
   def guest_email(email, order)
     @url = "craveyard.herokyapp.com"
     @order = order
+    @items = order.items
     mail(to: email, subject: "Your Grub is Coming!")
   end
 end
