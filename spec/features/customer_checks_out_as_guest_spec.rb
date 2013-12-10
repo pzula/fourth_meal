@@ -39,24 +39,6 @@ describe "a public visitor", :type => :feature do
         fill_in("State", :with => "CO")
         fill_in("Zip", :with => "80204")
       end
-      expect(page).to have_text("Would you like to log in")
-      within_fieldset("log in")
-        fill_in("Username", :with => "Joe") 
-        fill_in("email", with => "joe@example.com")
-        fill_in("password", with => "password")
-        expect(page).to have_text("Bread")
-      # expect(page).to have_text("Delivery Address")
-      # within_fieldset("delivery-address") do
-      #   fill_in("Street Address", :with => "123 Main St.")
-      #   fill_in("Address Line 2", :with => "Apt 12")
-      #   fill_in("City", :with => "Denver")
-      #   fill_in("State", :with => "CO")
-      #   fill_in("Zip", :with => "80204")
-      
-      # need to test javascript button here
-      #expect(page).to have_text("Your order was successful")
     end
-
   end
-
 end

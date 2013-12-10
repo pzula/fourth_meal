@@ -1,28 +1,21 @@
 class VisitorUsersController < ApplicationController
   before_action :set_visitor_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /visitor_users
-  # GET /visitor_users.json
   def index
     @visitor_users = VisitorUser.all
   end
 
-  # GET /visitor_users/1
-  # GET /visitor_users/1.json
   def show
   end
 
-  # GET /visitor_users/new
   def new
     @visitor_user = VisitorUser.new
   end
 
-  # GET /visitor_users/1/edit
+
   def edit
   end
 
-  # POST /visitor_users
-  # POST /visitor_users.json
   def create
     @visitor_user = VisitorUser.new(visitor_user_params)
 
