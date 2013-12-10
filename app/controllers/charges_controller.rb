@@ -12,7 +12,7 @@ class ChargesController < ApplicationController
 
     if current_user
       customer = Stripe::Customer.create(
-        :email => 'example@stripe.com',
+        :email => params[:stripeEmail],
         :card  => params[:stripeToken]
       )
       begin
@@ -34,7 +34,7 @@ class ChargesController < ApplicationController
     else
       save_addresses
       customer = Stripe::Customer.create(
-        :email => order_params[:email],
+        :email => params[:stripeEmail],
         :card  => params[:stripeToken]
       )
       begin
