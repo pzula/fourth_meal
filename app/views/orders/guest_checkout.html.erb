@@ -19,6 +19,21 @@
 </div>
     </td>
     <td>
+      <h3> Already a Customer? Log in now!</h3>
+      <fieldset name="login">
+       <%= f.label :username %>
+          <%= f.text_field :username %>
+        </div>
+       
+    <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+  </div>
+
+    </td>
+
+</fieldset>
+    <td>
       <h3>Customer Details</h3>
 <fieldset name="billing-details">
 	<p>
@@ -43,9 +58,9 @@
 
 </fieldset>
     </td>
-		<td>
 
-			<h3>Delivery Address</h3>
+		<td>
+  	<h3>Delivery Address</h3>
 			<fieldset id="delivery-address">
 				<p>
 					<%= f.label(:delivery_street, "Street Address") %>
@@ -74,9 +89,7 @@
 
 
 			</fieldset>
-
-		</td>
-	</tr>
+    
 </table>
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
