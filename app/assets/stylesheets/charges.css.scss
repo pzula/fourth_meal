@@ -1,3 +1,23 @@
 // Place all the styles related to the charges controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+form#guest-order label {
+  display:block;
+}
+
+form#guest-order tr td {
+  margin-right:40px;
+  padding-right: 40px;
+  padding-left:40px;
+  border-right: 5px dotted white;
+}
+
+form#guest-order tr td:last-child {
+  border-right:none;
+}
+
+form#guest-order tr td:first-child {
+  padding-left:0px;
+}

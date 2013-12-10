@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
     unless current_user
       @order_id = cookies[:order_id]
       @order = Order.find(@order_id)
+      @items = @order.items
       @amount = (@order.subtotal * 100).to_i
       render "guest_checkout"
       #redirect_to "/orders/guest_checkout"
