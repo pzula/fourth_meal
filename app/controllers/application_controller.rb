@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_cookie
+  def set_order_cookie
    unless cookies[:order_id]
      order = Order.create
      cookies[:order_id] = order.id
