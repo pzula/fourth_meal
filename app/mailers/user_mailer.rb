@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "customer_service@platable.com"
+  default from: "customer_service@craveyard.com"
 
   def welcome_email(user)
     @user = user
@@ -13,5 +13,10 @@ class UserMailer < ActionMailer::Base
     @items = order.items
     @url = "platable.herokuapp.com"
     mail(to: @user.email, subject: "Your Grub is Forthcoming!")
+  end
+
+  def guest_email(email, order)
+    @url = "craveyard.herokyapp.com"
+    mail(to: email, subject: "Your Grub is Coming!")
   end
 end

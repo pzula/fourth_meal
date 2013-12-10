@@ -49,7 +49,7 @@ class ChargesController < ApplicationController
       else
         #current_user.change_order_to_completed
         flash.notice = "Your order was successful"
-        UserMailer.order_email(params[:stripeEmail], Order.find(cookies[:order_id])).deliver
+        UserMailer.guest_email(params[:stripeEmail], Order.find(cookies[:order_id])).deliver
         cookies.delete :order_id
       end
     end
