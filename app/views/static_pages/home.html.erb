@@ -24,9 +24,13 @@
 
 <div>
 <p>Pick a Restaurant =====></p>
-<%= link_to "Platable"%>
+<%=  link_to "Platabale", restaurant_path(@restaurant.first) %>
+<p></p>
+<%= link_to "Ono Burrito", restaurant_path(@restaurant.last) %>
+
 <p>
-<%= link_to "Ono Burrito"%>
+
+
 </p>
 </div>
 
