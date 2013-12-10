@@ -8,11 +8,5 @@
 
     <p>You card has been charged $<%= @order.subtotal %>0</p>
 
-    <p>You Ordered: </p>
-    <% @items.each do |item| %>
-    <p><%= item.title %></p>
-    <p><%= item.description %></p>
-    <p>$<%= print_price(item.price) %></p>
-    <% end %>
   </body>
 </html>
