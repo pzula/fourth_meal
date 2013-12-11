@@ -56,5 +56,21 @@ describe "Customer on my orders page", :type => :feature do
     click_link "remove_item_#{@item3.id}"
     expect(page).to_not have_text("All Orders Total")
   end
-  
+
+  it "should not add another user's orders to cart"
+
+  it "should have a checkout button that displays items per shop" do
+    pending
+    click_on "My Order (3)"
+    within(".restaurant-#{@platable.url_slug}") do
+      expect(page).to have_link("Waffles")
+      expect(page).to_not have_link("quinoa")
+      click_on "Checkout"
+    end
+    expect(page).to_not have_text("quinoa")
+    expect(page).to have_text("Waffles")
+    expect(page).to have_text("Order Total: $4.00")
+  end
+
+  it "checking out one restauarant should not remove all orders"
 end

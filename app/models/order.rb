@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
   has_many :items, through: :order_items
   belongs_to :user
 
+
   def self.pending
     where(status: "pending")
   end
@@ -19,6 +20,13 @@ class Order < ActiveRecord::Base
 
   def subtotal
     order_items.inject(0) do |sum, order_item|
+      item_price = Item.find(order_item.item_id).price
+      sum + order_item.quantity * item_price
+    end
+  end
+
+  def subtotal_per_restaurant(order_items_per_restaurant)
+    order_items_per_restaurant.inject(0) do |sum, order_item|
       item_price = Item.find(order_item.item_id).price
       sum + order_item.quantity * item_price
     end

@@ -15,7 +15,22 @@ class OrdersController < ApplicationController
 
   def show
     @order_items = @order.order_items
-    @restaurants = Restaurant.all
+    @restaurants = @order.items.map(&:restaurant).uniq
+  end
+
+  def checkout_one_restaurant
+    @order_id = cookies[:order_id]
+    @order = Order.find(@order_id)
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @items = @order.items.find_by_restaurant(params[:restaurant_id])
+    @order_items = @order.order_items.select{ |oi| oi.restaurant == @restaurant }
+    @amount = @order.subtotal_per_restaurant(@order_items).to_i
+    render "guest_checkout"
+    #unless current_user
+
+    #else
+
+    #end
   end
 
   def checkout

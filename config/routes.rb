@@ -22,6 +22,11 @@ DinnerDash::Application.routes.draw do
   get "checkout" => "orders#checkout", as: 'checkout'
   post "place_order" => "orders#place_order", as: 'place_order'
 
+  #Section for singular checkout
+  get "checkout_one" => "orders#checkout_one_restaurant", as: 'checkout_one_restaurant'
+  post "place_order_one_restaurant" => "orders#place_order_one_restaurant", as: 'place_order_one_restaurant'
+
+
   get "dashboard" => "users#dashboard", as: 'dashboard'
 
   get "static_pages/home"

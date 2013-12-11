@@ -35,7 +35,7 @@
             <td></td>
             <td><h4><%= restaurant.name %>: Order Total</h4></td>
             <td><h4>$<%= restaurant.order_items_subtotal(restaurant.order_items) %>0</h4></td>
-            <td> <%= link_to "Checkout", checkout_path, {:class => "btn btn-primary login"} %></td>
+            <td> <%= link_to "Checkout", checkout_one_restaurant_path(:restaurant_id => restaurant.id), {:class => "btn btn-primary login"} %></td>
             <td></td>
           </tr>
         </tfoot>

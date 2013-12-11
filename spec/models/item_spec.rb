@@ -26,4 +26,13 @@ describe Item do
 
     expect(item.restaurant_id).to eq(1)
   end
+
+  it "has method find_by_restaurant" do
+    restaurant = FactoryGirl.create(:restaurant)
+    item1 = FactoryGirl.create(:item_unique, title: "Bread", restaurant: restaurant)
+    item2 = FactoryGirl.create(:item_unique, title: "Sweets", restaurant: restaurant) 
+    inactive_item = FactoryGirl.create(:item, title: "Eggs")
+    expect(Item.find_by_restaurant(restaurant.id).count).to eq(2)
+  end
+
 end

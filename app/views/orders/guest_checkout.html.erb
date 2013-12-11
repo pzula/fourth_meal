@@ -1,3 +1,4 @@
+<%= @amount %>
 <%= form_for :order_detail, url: charges_path, html: {id: "guest-order"} do |f| %>
 
 <h3 class="main-heading">Finish Your Order</h3>
@@ -15,7 +16,7 @@
         <p><%= print_price(item.price) %>
       <% end %>
     </div>
-  </div> <h4>Order Total: $<%= @order.subtotal %>0</h4>
+  </div> <h4>Order Total: $<%= @amount %>.00</h4>
 </div>
     </td>
     <td>
