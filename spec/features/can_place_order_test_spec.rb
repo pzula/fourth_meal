@@ -56,15 +56,11 @@ describe "A shopper ", :type => :feature do
     end
     click_on "My Order (3)"
     
-    within("#item_1") do
-      click_on "remove_item"
-    end
+    click_link "remove_item_#{@item1.id}"
 
     expect(page).not_to have_content("Burger")
 
-    within("#item_2") do
-      click_on "remove_item"
-    end
+    click_link "remove_item_#{@item2.id}"
 
     expect(page).to have_content("Your Cart is Empty")
   end

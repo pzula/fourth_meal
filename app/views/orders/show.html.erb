@@ -26,7 +26,7 @@
               <td><%= f.number_field :quantity %>
               <%= f.submit "Adjust Quantity", {:class => "btn btn-success"} %></td>
             <% end %> 
-            <td> <%= link_to "x", order_item_path(order_item), {method: 'delete', :class => "btn btn-danger remove-item", id: 'remove_item'} %></td>
+            <td> <%= link_to "x", order_item_path(order_item), {method: 'delete', :class => "btn btn-danger remove-item", id: "remove_item_#{order_item.item_id}"} %></td>
           </tr>
         <% end %>
         </tbody>
@@ -45,9 +45,11 @@
       <h3>Your Cart is Empty</h3>
     <% end %>
   <% end %>
+  <% if @order.order_items.count > 0 %>
    <td><h4>All Orders Total</h4></td>
     <td><h4>$<%= @order.subtotal %>0</h4></td>
             <td> <%= link_to "Checkout All Orders", checkout_path, {:class => "btn btn-primary login"} %></td>
             <td></td>
+  <% end %>
 </div>
 

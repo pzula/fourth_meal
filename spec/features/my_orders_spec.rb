@@ -6,18 +6,18 @@ describe "Customer on my orders page", :type => :feature do
     @platable = FactoryGirl.create(:restaurant, name: "Platable", url_slug: "platable")
     @dive_bar = FactoryGirl.create(:restaurant, name: "Dive Bar", url_slug: "dive_bar")
     @sad_bar = FactoryGirl.create(:restaurant, name: "Sad Unused Restaurant", url_slug: "sad_bar")
-    item1 = FactoryGirl.create(:item_unique, title: "Deviled Eggs", description: "twelve luscious eggs", price: 1, restaurant: @platable)
-    item2 = FactoryGirl.create(:item_unique, title: "Waffles", description: "syrup", price: 3, restaurant: @platable)
-    item3 = FactoryGirl.create(:item_unique, title: "quinoa", description: "grainy", price: 9, restaurant: @dive_bar)
+    @item1 = FactoryGirl.create(:item_unique, title: "Deviled Eggs", description: "twelve luscious eggs", price: 1, restaurant: @platable)
+    @item2 = FactoryGirl.create(:item_unique, title: "Waffles", description: "syrup", price: 3, restaurant: @platable)
+    @item3 = FactoryGirl.create(:item_unique, title: "quinoa", description: "grainy", price: 9, restaurant: @dive_bar)
     visit restaurant_path(@platable)
-    within("#item_#{item1.id}") do
+    within("#item_#{@item1.id}") do
       click_on "Add to Order"
     end
-    within("#item_#{item2.id}") do
+    within("#item_#{@item2.id}") do
       click_on "Add to Order"
     end
     visit restaurant_path(@dive_bar)
-    within("#item_#{item3.id}") do
+    within("#item_#{@item3.id}") do
       click_on "Add to Order"
     end
   end
@@ -48,4 +48,13 @@ describe "Customer on my orders page", :type => :feature do
       expect(page).to have_text("9")
     end
   end
+
+  it "should not see a subtotal if there are no orders" do
+    click_on "My Order (3)"
+    click_link "remove_item_#{@item1.id}"
+    click_link "remove_item_#{@item2.id}"
+    click_link "remove_item_#{@item3.id}"
+    expect(page).to_not have_text("All Orders Total")
+  end
+  
 end
