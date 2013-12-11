@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   def set_cookie
    unless cookies[:order_id]
      order = Order.create
+     order.generate_unique_url
      cookies[:order_id] = order.id
    end
   end
