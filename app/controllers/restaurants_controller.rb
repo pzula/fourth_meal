@@ -8,4 +8,8 @@ class RestaurantsController < ApplicationController
       @order = Order.find(cookies[:order_id])
     end
   end
+
+  def index
+    @restaurant = Restaurant.all
+  end
 end
