@@ -5,5 +5,6 @@ class Restaurant < ActiveRecord::Base
   validates :food_type, presence: true
   before_save {|restaurant| restaurant.url_slug.downcase!}
   has_many :items
+  has_many :order_items, through: :items
 
 end
