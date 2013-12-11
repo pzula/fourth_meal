@@ -24,4 +24,10 @@ class Order < ActiveRecord::Base
     end
   end
 
+  require 'securerandom'
+
+  def generate_unique_url
+    SecureRandom.hex
+  end
+
 end
