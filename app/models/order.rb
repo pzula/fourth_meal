@@ -27,7 +27,7 @@ class Order < ActiveRecord::Base
   require 'securerandom'
 
   def generate_unique_url
-    SecureRandom.hex
+    update(:unique_url => SecureRandom.hex)
   end
 
 end
