@@ -40,6 +40,8 @@ class OrdersController < ApplicationController
       @order_items = @order.order_items
       @items = @order.items
       @amount = (@order.subtotal * 100).to_i
+
+      @details = OrderDetail.new
       render "guest_checkout"
     else
       current_user.associate_order(cookies[:order_id])

@@ -6,7 +6,7 @@ class UserSessionsController < ApplicationController
   def create
     if login(params[:username], params[:password])
       flash.notice = "Successfully logged in as #{current_user.username}"
-      redirect_to root_path
+      redirect_to :back
     else
       flash.notice = "Login failed"
       redirect_to login_path

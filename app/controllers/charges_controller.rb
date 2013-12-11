@@ -15,6 +15,7 @@ class ChargesController < ApplicationController
         :email => params[:stripeEmail],
         :card  => params[:stripeToken]
       )
+
       begin
         charge = Stripe::Charge.create(
           :customer    => customer.id,
@@ -24,15 +25,24 @@ class ChargesController < ApplicationController
         )
       rescue Stripe::CardError => e
         flash[:error] = e.message
-      else
-        current_user.change_order_to_completed
-        flash.notice = "Your order was successful"
-        cookies.delete :order_id
-        UserMailer.order_email(current_user, current_user.orders.last).deliver
       end
+
+      current_user.change_order_to_completed
+      flash.notice = "Your order was successful"
+      cookies.delete :order_id
+      UserMailer.order_email(current_user, current_user.orders.last).deliver
+
       redirect_to user_path(current_user)
     else
       save_addresses
+
+      if @details.invalid?
+        @order_id = cookies[:order_id]
+        @order = Order.find(@order_id)
+        @items = @order.items
+        render "orders/guest_checkout" and return
+      end
+
       customer = Stripe::Customer.create(
         :email => params[:stripeEmail],
         :card  => params[:stripeToken]

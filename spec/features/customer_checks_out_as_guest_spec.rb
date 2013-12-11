@@ -23,7 +23,7 @@ describe "a public visitor", :type => :feature do
       expect(page).to have_link("Checkout")
     end
 
-    it "I am asked for billing details" do
+    it "I am asked for delivery details or prompted to log in" do
       visit restaurant_path(@restaurant)
       click_on "My Order (1)"
       click_on "Checkout"
@@ -39,10 +39,6 @@ describe "a public visitor", :type => :feature do
         fill_in("State", :with => "CO")
         fill_in("Zip", :with => "80204")
       end
-      # need to test javascript button here
-      #expect(page).to have_text("Your order was successful")
     end
-
   end
-
 end
