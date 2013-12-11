@@ -31,6 +31,6 @@ DinnerDash::Application.routes.draw do
 
   get "static_pages/home"
 
-
+  get "past_orders/:unique_url" => "orders#guest_order_receipt", as: "past_orders"
 
 end

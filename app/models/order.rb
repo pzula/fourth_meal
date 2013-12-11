@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+  require 'securerandom'
   has_many :order_items
   has_many :items, through: :order_items
   belongs_to :user
@@ -36,5 +37,9 @@ class Order < ActiveRecord::Base
       sum + order_item.quantity * item_price
     end
   end
+
+    def generate_unique_url
+      update(:unique_url => SecureRandom.hex)
+    end
 
 end

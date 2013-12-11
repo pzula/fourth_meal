@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   def new
     order = Order.create
     cookies[:order_id] = order.id
+    order.generate_unique_url
     redirect_to items_path
   end
 
@@ -58,6 +59,10 @@ class OrdersController < ApplicationController
     cookies.delete :order_id
     UserMailer.order_email(current_user, current_user.orders.last).deliver
     redirect_to user_path(current_user)
+  end
+
+  def guest_order_receipt
+    @order = Order.find_by(:unique_url => params[:unique_url])
   end
 
   private

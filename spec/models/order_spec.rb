@@ -51,5 +51,16 @@ describe Order do
     order_item3 = FactoryGirl.create(:order_item, item: item3, order: order, quantity: 3)
     expect(order.find_order_items_by_restaurant_id(order, platable_id).count).to eq(2)
     expect(order.find_order_items_by_restaurant_id(order, dive_bar_id).count).to eq(1)
+end
+
+  it "should get a unique url" do
+    user = FactoryGirl.create(:user)
+    order = FactoryGirl.create(:order, user: user)
+    item1 = FactoryGirl.create(:item, title: "Bacon")
+    item2 = FactoryGirl.create(:item)
+    order_item1 = FactoryGirl.create(:order_item, item: item1, order: order, quantity: 3)
+    order_item2 = FactoryGirl.create(:order_item, item: item2, order: order)
+    order.generate_unique_url
+    expect(order.reload.unique_url).not_to eq(nil)
   end
 end
