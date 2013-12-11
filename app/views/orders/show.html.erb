@@ -2,8 +2,10 @@
 <h1>Current Orders</h1>
 
   <% @restaurants.each do |restaurant| %>
-    <% if restaurant.order_items.count > 0 %>
-      <h3 class="restaurant-<%= restaurant.id %>"> <%= restaurant.name %> </h3>
+    
+      <h3 class="restaurant-<%= restaurant.id %>"> 
+        <%= link_to restaurant.name, restaurant_path(restaurant)%> 
+      </h3>
       <div class="restaurant-<%= restaurant.url_slug %>">
         <table class="table">
           <thead>
@@ -16,7 +18,8 @@
             </tr>
           </thead>
          <tbody>
-        <% restaurant.order_items.each do |order_item| %>
+        <% @order_items = @order.find_order_items_by_restaurant_id(@order, restaurant.id) %>
+        <% @order_items.each do |order_item| %>
           <% item = order_item.item %>
           <tr id="item_<%= item.id %>">
             <td class="item-title"><%= link_to item.title, item_path(item.id)  %></td>
@@ -34,14 +37,13 @@
           <tr>
             <td></td>
             <td><h4><%= restaurant.name %>: Order Total</h4></td>
-            <td><h4>$<%= restaurant.order_items_subtotal(restaurant.order_items) %>0</h4></td>
+            <td><h4>$<%= restaurant.order_items_subtotal(@order_items) %>0</h4></td>
             <td> <%= link_to "Checkout", checkout_one_restaurant_path(:restaurant_id => restaurant.id), {:class => "btn btn-primary login"} %></td>
             <td></td>
           </tr>
         </tfoot>
       </table>
     </div>
-    <% end %>
   <% end %>
   <% if @order.order_items.count > 0 %>
    <td><h4>All Orders Total</h4></td>

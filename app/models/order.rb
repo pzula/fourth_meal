@@ -3,6 +3,11 @@ class Order < ActiveRecord::Base
   has_many :items, through: :order_items
   belongs_to :user
 
+  def find_order_items_by_restaurant_id(order, restaurant_id)
+    self.order_items.select do |oi|
+      oi.item.restaurant.id.to_i == restaurant_id
+    end
+  end
 
   def self.pending
     where(status: "pending")
