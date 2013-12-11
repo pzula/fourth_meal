@@ -63,6 +63,7 @@ class OrdersController < ApplicationController
 
   def guest_order_receipt
     @order = Order.find_by(:unique_url => params[:unique_url])
+    @items = @order.items
   end
 
   private
