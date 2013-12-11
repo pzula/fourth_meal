@@ -37,4 +37,15 @@ describe "Customer on my orders page", :type => :feature do
       expect(page).to_not have_link("quinoa")
     end
   end
+
+  it "should see a subtotal per restaurant" do
+    click_on "My Order (3)"
+    expect(page).to have_text("13")
+    within(".restaurant-#{@platable.url_slug}") do
+      expect(page).to have_text("4")
+    end
+    within(".restaurant-#{@dive_bar.url_slug}") do
+      expect(page).to have_text("9")
+    end
+  end
 end
