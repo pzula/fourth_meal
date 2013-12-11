@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     @items = @order.items.find_by_restaurant(params[:restaurant_id]).uniq!
     @order_items = @order.order_items.select{ |oi| oi.restaurant == @restaurant }
-    @amount = @order.subtotal_per_restaurant(@order_items).to_i
+    @amount = (@order.subtotal_per_restaurant(@order_items) * 100).to_i
     render "guest_checkout"
   end
 
