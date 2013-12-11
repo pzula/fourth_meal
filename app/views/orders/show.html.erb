@@ -41,8 +41,6 @@
         </tfoot>
       </table>
     </div>
-    <% else %>
-      <h3>Your Cart is Empty</h3>
     <% end %>
   <% end %>
   <% if @order.order_items.count > 0 %>
@@ -50,6 +48,8 @@
     <td><h4>$<%= @order.subtotal %>0</h4></td>
             <td> <%= link_to "Checkout All Orders", checkout_path, {:class => "btn btn-primary login"} %></td>
             <td></td>
+  <% else %>
+      <h3>Your Cart is Empty</h3>
   <% end %>
 </div>
 
