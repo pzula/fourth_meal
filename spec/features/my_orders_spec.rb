@@ -32,7 +32,6 @@ describe "Customer on my orders page", :type => :feature do
   it "should see items within restaurant" do
     click_on "My Order (3)"
     expect(page).to have_text("quinoa")
-    save_and_open_page
     within(".restaurant-#{@platable.url_slug}") do
       expect(page).to have_link("Waffles")
       expect(page).to_not have_link("quinoa")
