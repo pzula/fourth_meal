@@ -42,7 +42,6 @@ describe "a public visitor", :type => :feature do
       # need to test javascript button here
       #expect(page).to have_text("Your order was successful")
     end
-
   end
-
+  
 end

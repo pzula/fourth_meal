@@ -3,6 +3,8 @@ class Order < ActiveRecord::Base
   has_many :items, through: :order_items
   belongs_to :user
 
+  require 'securerandom'
+
   def self.pending
     where(status: "pending")
   end
@@ -24,4 +26,8 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def generate_unique_url
+    url = SecureRandom.hex
+    Order.update(self.id, unique_url: url)
+  end
 end

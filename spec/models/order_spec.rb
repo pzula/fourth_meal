@@ -35,4 +35,15 @@ describe Order do
     order_item2 = FactoryGirl.create(:order_item, item: item2, order: order)
     expect(order.total_items).to eq(4)
   end
+
+  it "should get a unique url" do
+    user = FactoryGirl.create(:user)
+    order = FactoryGirl.create(:order, user: user)
+    item1 = FactoryGirl.create(:item, title: "Bacon")
+    item2 = FactoryGirl.create(:item)
+    order_item1 = FactoryGirl.create(:order_item, item: item1, order: order, quantity: 3)
+    order_item2 = FactoryGirl.create(:order_item, item: item2, order: order)
+    order.generate_unique_url
+    expect(order.unique_url).not_to eq(nil)
+  end
 end
