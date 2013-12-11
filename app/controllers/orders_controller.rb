@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
     @order_items = @order.order_items.select{ |oi| oi.restaurant == @restaurant }
     @amount = (@order.subtotal_per_restaurant(@order_items) * 100).to_i
     unless current_user
+      @details = OrderDetail.new
       render "guest_checkout"
     else 
       render "checkout"
