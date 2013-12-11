@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131210005406) do
+ActiveRecord::Schema.define(version: 20131210222914) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -52,11 +52,6 @@ ActiveRecord::Schema.define(version: 20131210005406) do
     t.string "delivery_city"
     t.string "delivery_state"
     t.string "delivery_zip"
-    t.string "billing_street"
-    t.string "billing_address_2"
-    t.string "billing_city"
-    t.string "billing_state"
-    t.string "billing_zip"
   end
 
   create_table "order_items", force: true do |t|

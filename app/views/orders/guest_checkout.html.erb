@@ -76,38 +76,6 @@
 			</fieldset>
 
 		</td>
-
-		<td>
-
-			<h3>Billing Address</h3>
-			<fieldset id="billing-address">
-				<p>
-					<%= f.label(:billing_street, "Street Address") %>
-					<%= f.text_field(:billing_street) %>
-				</p>
-
-				<p> 
-					<%= f.label(:billing_address_2, "Address Line 2") %>
-					<%= f.text_field(:billing_address_2) %>
-				</p>
-
-				<p>
-					<%= f.label(:billing_city, "City") %>
-					<%= f.text_field(:billing_city) %>
-				</p>
-
-				<p>
-					<%= f.label(:billing_state, "State") %>
-					<%= f.text_field(:billing_state) %>
-				</p>
-
-				<p>
-					<%= f.label(:billing_zip, "Zip") %>
-					<%= f.text_field(:billing_zip) %>
-				</p>
-
-			</fieldset>
-		</td>
 	</tr>
 </table>
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
