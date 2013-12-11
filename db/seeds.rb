@@ -240,3 +240,126 @@ quesadilla.save
 salads.items << quesadilla
 entrees.items << quesadilla
 
+
+
+##################### New Seed Data For LOTS OF DATA!!!!! ###############################
+
+# def seed_items(restaurant, count)
+#   count.times do |i|
+#     begin
+#       puts "Seeding item ##{i} for #{restaurant.name}..."
+#       title = Faker::Lorem.words(2).join(" ")
+#       desc = Faker::Lorem.sentence(word_count = 5)
+#       restaurant.items.create!( title: title,
+#                                 description: desc,
+                                #price: rand(20) + 1 )
+                                #image_file_name: File.open("app/assets/images/chicken_fried_chicken.png", 'r'),
+                                #retired: false,
+                                
+    # rescue
+    #   puts "Item already exists, bra! Trying again..."
+    #   retry
+#      end
+#   end
+# end
+
+
+# def seed_categories(restaurant, count)
+#   count.times do |i|
+#     begin
+#       puts "Creating category #{i} for #{restaurant.name}..."
+#       title = Faker::Lorem.words(2).join(" ")
+#       restaurant.categories.create!(name: name,
+#                                     restaurant_id: restaurant.id)
+#     # rescue
+#     #   puts "Category already exists, bra! Trying again..."
+#     #   retry
+#      end
+#   end
+# end
+
+# def seed_item_categories(restaurant, count)
+#   count.times do |i|
+#     begin
+#       puts "Seeding item category ##{i} for #{restaurant.name}..."
+#       item_id = restaurant.items[i].id
+#       category_id = restaurant.categories[rand(5)].id
+#       ItemCategory.create!( item_id: item_id,
+#                             category_id: category_id)
+#     # rescue
+#     #   puts "Item category already exists! Trying again..."
+#     #   retry
+#      end
+#   end
+# end
+
+# def seed_users(count)
+#   count.times do |i|
+#     puts "Creating user #{i}"
+#     User.create(username: "user_number#{i}",
+#                 email: "user#{i}@example.com",
+#                 crypted_password: "password")
+#   end
+# end
+
+# USERS
+
+# user1 = User.create!(email: "demo+franklin@jumpstartlab.com", 
+#   username: "Franklin Webber",  
+#   crypted_password: "password")
+
+# user2 = User.create!(email: "demo+jeff@jumpstartlab.com", 
+#   username: "Jeff", 
+#   crypted_password: "password")
+
+# user3 = User.create!(email: "demo+katrina@jumpstartlab.com", 
+#   username: "Katrina Owen", 
+#   crypted_password: "password")
+
+# user4 = User.create!(email: "Meeka@example.com", 
+#   username: "Meeka BraveHeart",  
+#   crypted_password: "password")
+
+# user5 = User.create!(email: "Persa@example.com", 
+#   username: "Persa Zulinator",  
+#   crypted_password: "password")
+
+# seed_users(10)
+
+# RESTAURANTS
+
+# platable = Restaurant.create!(name: "Platable", description: "Delicious American Food Stuffs", food_type: "American", url_slug: "platable1")
+# ono = Restaurant.create!(name: "Ono Burrito", description: "FIESTAAAAA FARE!!!!!!!!", food_type: "Mexican", url_slug: "Ono-Burrito2")
+# pho = Restaurant.create!(name: "WT Pho", description: "KNEWDLES", food_type: "Asian", url_slug: "WTPho3")
+
+# restaurants = [ono, platable, pho]
+
+# RESTAURANT USERS
+
+# user_role2 = RestaurantUser.create(user_id: user5.id,
+#                                   restaurant_id: ono.id,
+#                                   role: "owner")
+
+# user_role3 = RestaurantUser.create(user_id: user5.id,
+#                                   restaurant_id: platable.id,
+#                                   role: "owner")
+
+# user_role4 = RestaurantUser.create(user_id: user5.id,
+#                                   restaurant_id: pho.id,
+#                                   role: "owner")
+
+
+
+# CATEGORIES
+
+#restaurants.each { |rest| seed_categories(rest, 5) }
+
+# ITEMS
+
+#restaurants.each { |rest| seed_items(rest, 10) }
+
+# ITEM CATEGORIES
+
+#restaurants.each { |rest| seed_item_categories(rest, 5) }
+
+
