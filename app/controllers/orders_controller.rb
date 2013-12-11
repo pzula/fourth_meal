@@ -26,13 +26,18 @@ class OrdersController < ApplicationController
     @items = @order.items.find_by_restaurant(params[:restaurant_id]).uniq!
     @order_items = @order.order_items.select{ |oi| oi.restaurant == @restaurant }
     @amount = (@order.subtotal_per_restaurant(@order_items) * 100).to_i
-    render "guest_checkout"
+    unless current_user
+      render "guest_checkout"
+    else 
+      render "checkout"
+    end
   end
 
   def checkout
     unless current_user
       @order_id = cookies[:order_id]
       @order = Order.find(@order_id)
+      @order_items = @order.order_items
       @items = @order.items
       @amount = (@order.subtotal * 100).to_i
       render "guest_checkout"
@@ -40,6 +45,7 @@ class OrdersController < ApplicationController
       current_user.associate_order(cookies[:order_id])
       @order = Order.where(user_id: current_user.id).last
       @items = @order.items
+      @order_items = @order.order_items
     end
   end
 

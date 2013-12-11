@@ -1,24 +1,7 @@
 <%= form_for :order_detail, url: charges_path, html: {id: "guest-order"} do |f| %>
+  
+  <%= render :partial => "items" %>
 
-<h3 class="main-heading">Finish Your Order</h3>
-
-<table>
-  <tr>
-    <td>
-      <h3>Order Overview</h3>
-      <div class="user_order">
-  <div class="checkout-container">
-    <div class="order">
-      <% @items.each do |item| %>
-        <h4><span class="glyphicon glyphicon-cutlery"></span><%= item.title %></h4>
-        <p><%= item.description %></p>
-        <p><%= print_price(item.price) %>
-      <% end %>
-    </div>
-  </div> <h4>Order Total: $<%= @order.subtotal_per_restaurant(@order_items) %>0</h4>
-</div>
-    </td>
-    <td>
       <h3>Customer Details</h3>
 <fieldset name="billing-details">
 	<p>

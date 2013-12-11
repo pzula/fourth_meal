@@ -1,18 +1,5 @@
 <div class="user_order">
-  <h1>Order for <%= current_user.username %></h1>
-  <div class="checkout-container">
-    <div class="order">
-      <% @items.each do |item| %>
-        <h4><span class="glyphicon glyphicon-cutlery"></span><%= item.title %></h4>
-        <p><%= item.description %></p>
-        <p><%= print_price(item.price) %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="total">
-    <h4>Order Total</h4>
-    <h4>$<%= @order.subtotal %>0</h4>
+    <%= render :partial => "items" %>
     <%= link_to "Place Order", new_charge_path, {class: "btn btn-primary"} %>
   </div>
 
