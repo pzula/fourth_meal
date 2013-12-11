@@ -296,7 +296,7 @@ entrees.items << quesadilla
 # def seed_users(count)
 #   count.times do |i|
 #     puts "Creating user #{i}"
-#     User.create(username: "user_number#{i}",
+#     User.create!(username: "user_number#{i}",
 #                 email: "user#{i}@example.com",
 #                 crypted_password: "password")
 #   end
@@ -336,15 +336,15 @@ entrees.items << quesadilla
 
 # RESTAURANT USERS
 
-# user_role2 = RestaurantUser.create(user_id: user5.id,
+# user_role2 = RestaurantUser.create!(user_id: user5.id,
 #                                   restaurant_id: ono.id,
 #                                   role: "owner")
 
-# user_role3 = RestaurantUser.create(user_id: user5.id,
+# user_role3 = RestaurantUser.create!(user_id: user5.id,
 #                                   restaurant_id: platable.id,
 #                                   role: "owner")
 
-# user_role4 = RestaurantUser.create(user_id: user5.id,
+# user_role4 = RestaurantUser.create!(user_id: user5.id,
 #                                   restaurant_id: pho.id,
 #                                   role: "owner")
 
