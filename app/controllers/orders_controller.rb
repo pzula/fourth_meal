@@ -23,6 +23,8 @@ class OrdersController < ApplicationController
       @order = Order.find(@order_id)
       @items = @order.items
       @amount = (@order.subtotal * 100).to_i
+
+      @details = OrderDetail.new
       render "guest_checkout"
       #redirect_to "/orders/guest_checkout"
      #flash.notice = "Login is required to checkout"
