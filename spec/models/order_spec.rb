@@ -43,7 +43,7 @@ describe Order do
     item2 = FactoryGirl.create(:item)
     order_item1 = FactoryGirl.create(:order_item, item: item1, order: order, quantity: 3)
     order_item2 = FactoryGirl.create(:order_item, item: item2, order: order)
-    order_with_url = order.update(:unique_url => generate_unique_url)
-    expect(order_with_url.unique_url).not_to eq(nil)
+    order.update(:unique_url => generate_unique_url)
+    expect(order.reload.unique_url).not_to eq(nil)
   end
 end
