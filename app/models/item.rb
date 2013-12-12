@@ -8,6 +8,10 @@ class Item < ActiveRecord::Base
   validates_presence_of :title, :description, :price
   validates_presence_of :restaurant_id
 
+  def self.find_by_restaurant(restaurant_id)
+    where(restaurant_id: restaurant_id)
+  end
+
   def self.active
     where(active: true)
   end

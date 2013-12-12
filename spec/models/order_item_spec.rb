@@ -14,4 +14,13 @@ describe OrderItem do
     order = OrderItem.new(quantity: 1.1)
     order.should_not be_valid
   end
+
+  # it "has method item_restaurant" do
+  #   restaurant = FactoryGirl.create(:restaurant)
+  #   item1 = FactoryGirl.create(:item_unique, title: "Bread", restaurant: restaurant)
+  #   order_item1 = FactoryGirl.create(:order_item, item_id: item1)
+  #   item2 = FactoryGirl.create(:item_unique, title: "Sweets", restaurant: restaurant) 
+  #   inactive_item = FactoryGirl.create(:item, title: "Eggs")
+  #   expect(Item.find_by_restaurant(restaurant.id).count).to eq(2)
+  # end
 end

@@ -1,48 +1,57 @@
 <div id="current-order">
-<h1>Current Order</h1>
+<h1>Current Orders</h1>
 
-
-<% if @order_items.count > 0 %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Dish</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Remove?</th>
-      </tr>
-    </thead>
-
-   <tbody>
-  <% @order_items.each do |order_item| %>
-    <% item = order_item.item %>
-    <tr id="item_<%= item.id %>">
-      <td class="item-title"><%= link_to item.title, item_path(item.id)  %></td>
-      <td><%= item.description %></td>
-      <td><%= print_price(item.price) %></td>
-
-      <%= form_for order_item do |f| %>
-       <td><%= f.number_field :quantity %>
-         <%= f.submit "Adjust Quantity", {:class => "btn btn-success"} %></td>
+  <% @restaurants.each do |restaurant| %>
+    
+      <h3 class="restaurant-<%= restaurant.id %>"> 
+        <%= link_to restaurant.name, restaurant_path(restaurant)%> 
+      </h3>
+      <div class="restaurant-<%= restaurant.url_slug %>">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Dish</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Remove?</th>
+            </tr>
+          </thead>
+         <tbody>
+        <% @order_items = @order.find_order_items_by_restaurant_id(@order, restaurant.id) %>
+        <% @order_items.each do |order_item| %>
+          <% item = order_item.item %>
+          <tr id="item_<%= item.id %>">
+            <td class="item-title"><%= link_to item.title, item_path(item.id)  %></td>
+            <td><%= item.description %></td>
+            <td><%= print_price(item.price) %></td>
+            <%= form_for order_item do |f| %>
+              <td><%= f.number_field :quantity %>
+              <%= f.submit "Adjust Quantity", {:class => "btn btn-success"} %></td>
+            <% end %> 
+            <td> <%= link_to "x", order_item_path(order_item), {method: 'delete', :class => "btn btn-danger remove-item", id: "remove_item_#{order_item.item_id}"} %></td>
+          </tr>
         <% end %>
-      <td>
-        <%= link_to "x", order_item_path(order_item), {method: 'delete', :class => "btn btn-danger remove-item", id: 'remove_item'} %></td>
-    </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td><h4><%= restaurant.name %>: Order Total</h4></td>
+            <td><h4>$<%= restaurant.order_items_subtotal(@order_items) %>0</h4></td>
+            <td> <%= link_to "Checkout", checkout_one_restaurant_path(:restaurant_id => restaurant.id), {:class => "btn btn-primary login"} %></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   <% end %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td></td>
-      <td><h4>Order Total</h4></td>
-      <td><h4>$<%= @order.subtotal %>0</h4></td>
-      <td>
-<%= link_to "Checkout", checkout_path, {:class => "btn btn-primary login"} %></td>
-      <td></td>
-    </tr>
-  </tfoot>
-</table>
-<% else %>
-  <h3>Your Cart is Empty</h3>
-<% end %>
+  <% if @order.order_items.count > 0 %>
+   <td><h4>All Orders Total</h4></td>
+    <td><h4>$<%= @order.subtotal %>0</h4></td>
+            <td> <%= link_to "Checkout All Orders", checkout_path, {:class => "btn btn-primary login"} %></td>
+            <td></td>
+  <% else %>
+      <h3>Your Cart is Empty</h3>
+  <% end %>
 </div>
+
