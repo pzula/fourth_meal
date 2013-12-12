@@ -42,21 +42,9 @@ class ChargesController < ApplicationController
      #   # puts @details.errors.inspect
      #   render "orders/guest_checkout" and return
      # end
-
-      customer = Stripe::Customer.create(
-        :email => params[:stripeEmail],
-        :card  => params[:stripeToken]
-      )
-      begin
-        charge = Stripe::Charge.create(
-          :customer    => customer.id,
-          :amount      => @amount,
-          :description => 'Rails Stripe customer',
-          :currency    => 'usd'
-        )
-      rescue Stripe::CardError => e
-        flash[:error] = e.message
-      else
+       
+      payment_success, message =  PAYMENT_PROCESSOR.process(params[:stripeEmail], params[:stripeToken], @amount)
+      if payment_success
         #current_user.change_order_to_completed
         flash.notice = "Your order was successful"
         @order.status = "paid"
@@ -64,6 +52,9 @@ class ChargesController < ApplicationController
         @order.save
         UserMailer.guest_email(params[:stripeEmail], Order.find(cookies[:order_id])).deliver
         cookies.delete :order_id
+      else
+        # flash error
+        # render redirect
       end
     end
   end
