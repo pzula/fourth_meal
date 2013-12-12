@@ -1,0 +1,5 @@
+<% @restaurants.each do |restaurant| %>
+  <h3 class="restaurant-<%= restaurant.id %>"> 
+    <%= link_to restaurant.name, restaurant_path(restaurant)%> 
+  </h3>
+<% end %>

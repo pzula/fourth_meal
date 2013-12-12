@@ -9,6 +9,6 @@ class RestaurantsController < ApplicationController
   end
 
   def index
-    @restaurant = Restaurant.all
+    @restaurants = Restaurant.where(:status => "approved")
   end
 end
