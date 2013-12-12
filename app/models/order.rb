@@ -2,6 +2,7 @@ class Order < ActiveRecord::Base
   require 'securerandom'
   has_many :order_items
   has_many :items, through: :order_items
+  belongs_to :order_detail
   belongs_to :user
 
   def find_order_items_by_restaurant_id(order, restaurant_id)

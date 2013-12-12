@@ -36,13 +36,13 @@ class ChargesController < ApplicationController
     else
       save_addresses
 
-      if @details.invalid?
-        @order_id = cookies[:order_id]
-        @order = Order.find(@order_id)
-        @items = @order.items
-        puts @details.errors.inspect
-        render "orders/guest_checkout" and return
-      end
+     # if @details.invalid?
+     #   @order_id = cookies[:order_id]
+     #   @order = Order.find(@order_id)
+     #   @items = @order.items
+     #   # puts @details.errors.inspect
+     #   render "orders/guest_checkout" and return
+     # end
 
       customer = Stripe::Customer.create(
         :email => params[:stripeEmail],
@@ -60,6 +60,7 @@ class ChargesController < ApplicationController
       else
         #current_user.change_order_to_completed
         flash.notice = "Your order was successful"
+
         UserMailer.guest_email(params[:stripeEmail], Order.find(cookies[:order_id])).deliver
         cookies.delete :order_id
       end
@@ -68,11 +69,11 @@ class ChargesController < ApplicationController
 
   private
 
-  def order_params
-    params.require(:order_detail).permit(:first_name, :last_name, :email, :phone, :delivery_street, :delivery_address_2, :delivery_city, :delivery_state, :delivery_zip)
-  end
+  #def order_params
+  #  params.require(:order_detail).permit(:first_name, :last_name, :email, :phone, :delivery_street, :delivery_address_2, :delivery_city, :delivery_state, :delivery_zip)
+  #end
 
   def save_addresses
-    @details = OrderDetail.create(order_params)
+    @details = OrderDetail.create(params)
   end
 end
