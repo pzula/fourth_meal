@@ -42,9 +42,6 @@ end
 # gem 'debugger', group: [:development, :test]
 #
 
-
-  gem 'quiet-assets'
-
 group :test, :development do
   #RSPEC Gems
   gem 'rspec-rails', '~> 3.0.0.beta'
