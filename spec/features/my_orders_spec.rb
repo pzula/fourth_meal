@@ -80,6 +80,32 @@ describe "Customer on my orders page", :type => :feature do
     expect(page).to have_text("Deviled Eggs")
     expect(page).to have_text("13")
   end
+end
 
-  it "checking out one restauarant should not remove all orders"
+describe "Signed in Customer", :type => :feature do 
+  context "on the my orders page" do
+
+    it "checking out one restaurant should not remove all orders" do
+      @platable = FactoryGirl.create(:restaurant, name: "Platable", url_slug: "platable")
+      @dive_bar = FactoryGirl.create(:restaurant, name: "Dive Bar", url_slug: "dive_bar")
+      @user = FactoryGirl.create(:user)
+      @order = FactoryGirl.create(:order, user: @user)
+      @item1 = FactoryGirl.create(:item_unique, title: "Deviled Eggs", description: "twelve luscious eggs", price: 1, restaurant: @platable)
+      @item2 = FactoryGirl.create(:item_unique, title: "Waffles", description: "syrup", price: 3, restaurant: @platable)
+      @item3 = FactoryGirl.create(:item_unique, title: "quinoa", description: "grainy", price: 9, restaurant: @dive_bar)
+      @order_item1 = FactoryGirl.create(:order_item, order: @order, item: @item1)
+      @order_item2 = FactoryGirl.create(:order_item, order: @order, item: @item2)
+      @order_item3 = FactoryGirl.create(:order_item, order: @order, item: @item3)
+      visit root_path
+      click_on "Login"
+      fill_in "Username", with: "Joe"
+      fill_in "Password", with: 'password'
+      click_button "Login"
+      visit restaurant_path(@platable)
+      click_on "My Order (3)"
+      save_and_open_page
+    end
+
+  end
+
 end
