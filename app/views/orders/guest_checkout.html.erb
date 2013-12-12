@@ -1,100 +1,85 @@
 <%= form_for :order_detail, url: charges_path, html: {id: "guest-order"} do |f| %>
-  
-  <%= render :partial => "items" %>
 
-    <td>   
-      <h3> Already a Customer? Log in now!</h3> 
-      <fieldset name="login">
-       <%= f.label :username %>
-          <%= f.text_field :username %>
-        </div>   
-    <div class="field">
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-  </div>
+<h3 class="main-heading">Finish Your Order</h3>
+
+<table>
+  <tr>
+    <td>
+      <h3>Order Overview</h3>
+      <div class="user_order">
+  <div class="checkout-container">
+    <div class="order">
+      <% @items.each do |item| %>
+        <h4><span class="glyphicon glyphicon-cutlery"></span><%= item.title %></h4>
+        <p><%= item.description %></p>
+        <p><%= print_price(item.price) %>
+      <% end %>
+    </div>
+  </div> <h4>Order Total: $<%= @order.subtotal %>0</h4>
+</div>
     </td>
-      </fieldset>
-      
-        <td>
-          <h3>Customer Details</h3>
-      <fieldset name="billing-details">
-	       <p>
-		      <%= f.label(:first_name, "First Name") %>
-		      <%= f.text_field(:first_name) %>
-    <div style="color: red;"><%= @details.errors[:first_name].join(", ") %></div>
-	      
-  </p>
+    <td>
+      <h3>Customer Details</h3>
+<fieldset name="billing-details">
+        <p>
+                <%= f.label(:first_name, "First Name") %>
+                <%= f.text_field(:first_name) %>
+        </p>
 
-	<p>
-		<%= f.label(:last_name, "Last Name") %>
-		<%= f.text_field(:last_name) %>
-    <div style="color: red;"><%= @details.errors[:last_name].join(", ") %></div>
+        <p>
+                <%= f.label(:last_name, "Last Name") %>
+                <%= f.text_field(:last_name) %>
+        </p> 
 
-	</p> 
+        <p>
+                <%= f.label(:email, "Email") %>
+                <%= f.text_field(:email) %>
+        </p>
 
-	<p>
-		<%= f.label(:email, "Email") %>
-		<%= f.text_field(:email) %>
-    <div style="color: red;"><%= @details.errors[:email].join(", ") %></div>
-
-	</p>
-
-	<p>
-		<%= f.label(:phone, "Phone Number") %>
-		<%= f.text_field(:phone) %>
-    <div style="color: red;"><%= @details.errors[:phone].join(", ") %></div>
-
-	</p>
+        <p>
+                <%= f.label(:phone, "Phone Number") %>
+                <%= f.text_field(:phone) %>
+        </p>
 
 </fieldset>
     </td>
+                <td>
 
-		<td>
-  	<h3>Delivery Address</h3>
-			<fieldset id="delivery-address">
-				<p>
-					<%= f.label(:delivery_street, "Street Address") %>
-					<%= f.text_field(:delivery_street, value: @details.delivery_street) %>
-          <div style="color: red;"><%= @details.errors[:delivery_street].join(", ") %></div>
-				</p>
+                        <h3>Delivery Address</h3>
+                        <fieldset id="delivery-address">
+                                <p>
+                                        <%= f.label(:delivery_street, "Street Address") %>
+                                        <%= f.text_field(:delivery_street) %>
+                                </p>
 
+                                <p> 
+                                        <%= f.label(:delivery_address_2, "Address Line 2") %>
+                                        <%= f.text_field(:delivery_address_2) %>
+                                </p>
 
+                                <p>
+                                        <%= f.label(:delivery_city, "City") %>
+                                        <%= f.text_field(:delivery_city) %>
+                                </p>
 
-				<p> 
-					<%= f.label(:delivery_address_2, "Address Line 2") %>
-					<%= f.text_field(:delivery_address_2) %>
-          <div style="color: red;"><%= @details.errors[:delivery_address_2].join(", ") %></div>
-				</p>
+                                <p>
+                                        <%= f.label(:delivery_state, "State") %>
+                                        <%= f.text_field(:delivery_state) %>
+                                </p>
 
-				<p>
-					<%= f.label(:delivery_city, "City") %>
-					<%= f.text_field(:delivery_city) %>
-          <div style="color: red;"><%= @details.errors[:delivery_city].join(", ") %></div>
-
-				</p>
-
-				<p>
-					<%= f.label(:delivery_state, "State") %>
-					<%= f.text_field(:delivery_state) %>
-          <div style="color: red;"><%= @details.errors[:delivery_state].join(", ") %></div>
-  
-				</p>
-
-				<p>
-					<%= f.label(:delivery_zip, "Zip") %>
-					<%= f.text_field(:delivery_zip) %>
-          <div style="color: red;"><%= @details.errors[:delivery_zip].join(", ") %></div>
-
-				</p>
+                                <p>
+                                        <%= f.label(:delivery_zip, "Zip") %>
+                                        <%= f.text_field(:delivery_zip) %>
+                                </p>
 
 
-			</fieldset>
+                        </fieldset>
 
-      
+                </td>
+        </tr>
 </table>
-<%end%>
- <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="Your Order"
-          data-amount="<%= @amount %>"></script> 
-
+          data-amount="<%= @amount %>"></script>
+<% end %>
