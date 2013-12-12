@@ -83,8 +83,9 @@
 
       
 </table>
-<%end%>
- <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="Your Order"
           data-amount="<%= @amount %>"></script> 
+
+<%end%>

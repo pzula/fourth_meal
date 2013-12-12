@@ -69,11 +69,11 @@ class ChargesController < ApplicationController
 
   private
 
-  #def order_params
-  #  params.require(:order_detail).permit(:first_name, :last_name, :email, :phone, :delivery_street, :delivery_address_2, :delivery_city, :delivery_state, :delivery_zip)
-  #end
+  def order_params
+    params.require(:order_detail).permit(:first_name, :last_name, :email, :phone, :delivery_street, :delivery_address_2, :delivery_city, :delivery_state, :delivery_zip)
+  end
 
   def save_addresses
-    @details = OrderDetail.create(params)
+    @details = OrderDetail.create(order_params)
   end
 end
