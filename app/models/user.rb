@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
   has_many :orders
+  has_many :restaurant_employees
+  has_many :restaurants, :through => :restaurant_employees
 
   def associate_order(order_id)
     orders << Order.find(order_id)
