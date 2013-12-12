@@ -1,5 +1,25 @@
 class RestaurantsController < ApplicationController
-  before_filter :set_restaurant_admin, only: :create
+  
+  def index
+    @restaurants = Restaurant.where(:status => "approved")
+    @pending_restaurants = Restaurant.where(:status => "pending")
+  end
+
+  def new
+    @restaurant = Restaurant.new
+  end
+
+  def create
+    @user_id = current_user.id
+    @restaurant = Restaurant.new(restaurant_params)
+    if @restaurant.save
+      redirect_to restaurants_path
+      set_restaurant_admin
+    else
+      redirect_to restaurants_path
+    end
+    # @restaurant_employee = Restaurant_employee.new(:restaurant_id)
+  end
 
   def show 
     set_order_cookie
@@ -9,14 +29,17 @@ class RestaurantsController < ApplicationController
     @items = @restaurant.items
   end
 
-  def index
-    @restaurants = Restaurant.where(:status => "approved")
-  end
-
   private
 
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :description, :url_slug, :food_type, :status)
+  end
+
   def set_restaurant_admin
-    #@user = User.find_by(current_user.id)
-    @restaurant_employee.create(:restaurant_id => params, )
+    @admin = RestaurantEmployee.new
+    @admin.user_id = current_user.id
+    @admin.restaurant_id = @restaurant.id
+    @admin.admin = true
+    @admin.save
   end
 end
