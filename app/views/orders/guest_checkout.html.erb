@@ -21,28 +21,24 @@
                <p>
                       <%= f.label(:first_name, "First Name") %>
                       <%= f.text_field(:first_name) %>
-    <div style="color: red;"><%= @details.errors[:first_name].join(", ") %></div>
-              
+             
   </p>
 
         <p>
                 <%= f.label(:last_name, "Last Name") %>
                 <%= f.text_field(:last_name) %>
-    <div style="color: red;"><%= @details.errors[:last_name].join(", ") %></div>
 
         </p> 
 
         <p>
                 <%= f.label(:email, "Email") %>
                 <%= f.text_field(:email) %>
-    <div style="color: red;"><%= @details.errors[:email].join(", ") %></div>
 
         </p>
 
         <p>
                 <%= f.label(:phone, "Phone Number") %>
                 <%= f.text_field(:phone) %>
-    <div style="color: red;"><%= @details.errors[:phone].join(", ") %></div>
 
         </p>
 
@@ -54,8 +50,7 @@
                         <fieldset id="delivery-address">
                                 <p>
                                         <%= f.label(:delivery_street, "Street Address") %>
-                                        <%= f.text_field(:delivery_street, value: @details.delivery_street) %>
-          <div style="color: red;"><%= @details.errors[:delivery_street].join(", ") %></div>
+                                        <%= f.text_field(:delivery_street) %>
                                 </p>
 
 
@@ -63,27 +58,23 @@
                                 <p> 
                                         <%= f.label(:delivery_address_2, "Address Line 2") %>
                                         <%= f.text_field(:delivery_address_2) %>
-          <div style="color: red;"><%= @details.errors[:delivery_address_2].join(", ") %></div>
                                 </p>
 
                                 <p>
                                         <%= f.label(:delivery_city, "City") %>
                                         <%= f.text_field(:delivery_city) %>
-          <div style="color: red;"><%= @details.errors[:delivery_city].join(", ") %></div>
 
                                 </p>
 
                                 <p>
                                         <%= f.label(:delivery_state, "State") %>
                                         <%= f.text_field(:delivery_state) %>
-          <div style="color: red;"><%= @details.errors[:delivery_state].join(", ") %></div>
   
                                 </p>
 
                                 <p>
                                         <%= f.label(:delivery_zip, "Zip") %>
                                         <%= f.text_field(:delivery_zip) %>
-          <div style="color: red;"><%= @details.errors[:delivery_zip].join(", ") %></div>
 
                                 </p>
 
