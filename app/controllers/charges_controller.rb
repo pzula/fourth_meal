@@ -34,7 +34,6 @@ class ChargesController < ApplicationController
 
       redirect_to user_path(current_user)
     else
-      save_addresses
 
      # if @details.invalid?
      #   @order_id = cookies[:order_id]
@@ -60,7 +59,9 @@ class ChargesController < ApplicationController
       else
         #current_user.change_order_to_completed
         flash.notice = "Your order was successful"
-
+        @order.status = "paid"
+        @order.order_details_id = save_addresses.id
+        @order.save
         UserMailer.guest_email(params[:stripeEmail], Order.find(cookies[:order_id])).deliver
         cookies.delete :order_id
       end
@@ -74,6 +75,6 @@ class ChargesController < ApplicationController
   end
 
   def save_addresses
-    @details = OrderDetail.create(order_params)
+    OrderDetail.create(order_params)
   end
 end
