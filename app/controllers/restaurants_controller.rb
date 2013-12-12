@@ -6,9 +6,6 @@ class RestaurantsController < ApplicationController
     cookies[:restaurant_slug] = @restaurant.url_slug
     cookies[:restaurant_id] = @restaurant.id
     @items = @restaurant.items
-    if cookies[:order_id]
-      @order = Order.find(cookies[:order_id])
-    end
   end
 
   def index
