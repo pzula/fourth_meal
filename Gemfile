@@ -60,6 +60,7 @@ group :test, :development do
   gem 'guard-minitest'
   gem 'sqlite3'
   gem 'pg'
+  gem 'faker'
 end
 
 group :production do
