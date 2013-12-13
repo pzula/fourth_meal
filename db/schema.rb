@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212155723) do
+ActiveRecord::Schema.define(version: 20131213150010) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -40,7 +43,7 @@ ActiveRecord::Schema.define(version: 20131212155723) do
     t.integer  "restaurant_id"
   end
 
-  add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id"
+  add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id", using: :btree
 
   create_table "order_details", force: true do |t|
     t.string "first_name"
@@ -62,8 +65,8 @@ ActiveRecord::Schema.define(version: 20131212155723) do
     t.integer  "quantity",   default: 1
   end
 
-  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id"
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
+  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
 
   create_table "orders", force: true do |t|
     t.integer  "user_id"
@@ -72,6 +75,20 @@ ActiveRecord::Schema.define(version: 20131212155723) do
     t.string   "status",           default: "pending"
     t.integer  "order_details_id"
     t.string   "unique_url"
+  end
+
+  create_table "restaurant_details", force: true do |t|
+    t.integer "restaurant_id"
+    t.string  "phone"
+    t.string  "street"
+    t.string  "street2"
+    t.string  "city"
+    t.string  "state"
+    t.integer "zip"
+    t.text    "description"
+    t.integer "hours_id"
+    t.boolean "delivery"
+    t.integer "delivery_range"
   end
 
   create_table "restaurant_employees", force: true do |t|

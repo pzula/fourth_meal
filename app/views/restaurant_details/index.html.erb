@@ -1,0 +1,45 @@
+<h1>Listing restaurant_details</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Phone</th>
+      <th>Street</th>
+      <th>Street2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Description</th>
+      <th>Hours</th>
+      <th>Delivery</th>
+      <th>Delivery range</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurant_details.each do |restaurant_detail| %>
+      <tr>
+        <td><%= restaurant_detail.phone %></td>
+        <td><%= restaurant_detail.street %></td>
+        <td><%= restaurant_detail.street2 %></td>
+        <td><%= restaurant_detail.city %></td>
+        <td><%= restaurant_detail.state %></td>
+        <td><%= restaurant_detail.zip %></td>
+        <td><%= restaurant_detail.description %></td>
+        <td><%= restaurant_detail.hours_id %></td>
+        <td><%= restaurant_detail.delivery %></td>
+        <td><%= restaurant_detail.delivery_range %></td>
+        <td><%= link_to 'Show', restaurant_detail %></td>
+        <td><%= link_to 'Edit', edit_restaurant_detail_path(restaurant_detail) %></td>
+        <td><%= link_to 'Destroy', restaurant_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Restaurant detail', new_restaurant_detail_path %>
