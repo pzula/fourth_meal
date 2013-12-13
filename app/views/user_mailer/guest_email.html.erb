@@ -8,6 +8,6 @@
 
     <p>You card has been charged $<%= @order.subtotal %>0</p>
 
-    <p>You can find your order at <%= past_orders_url(@order.unique_url) %></p>
+    <p>You can find your order at <%= past_orders_path(@order.unique_url) %></p>
   </body>
 </html>
