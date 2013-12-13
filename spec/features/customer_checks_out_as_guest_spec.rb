@@ -41,4 +41,7 @@ describe "a public visitor", :type => :feature do
       end
     end
   end
+
+  it "" do 
+  end
 end
