@@ -11,6 +11,12 @@
   <% end %>
 </p>
 
+<% if @restaurants %>
+<h2>My Restaurants</h2>
+  <% @restaurants.each do |restaurant| %>
+    <%= link_to restaurant.name, restaurant_path(restaurant.id) %>
+  <% end %>
+<% end %>
 
 
 <h2>Recent Orders</h2>

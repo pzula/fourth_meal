@@ -22,12 +22,12 @@ class ApplicationController < ActionController::Base
   end
 
   def find_order
-    @order = if current_user
-      current_user.orders.last
+    if current_user
+      @order = current_user.orders.last
     elsif cookies[:order_id]
-      Order.find_by_id(cookies[:order_id])
+      @order = Order.find_by_id(cookies[:order_id])
     else
-      set_order_cookie
+      @order = set_order_cookie
     end
   end
 end

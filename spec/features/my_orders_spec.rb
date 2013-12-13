@@ -103,7 +103,6 @@ describe "Signed in Customer", :type => :feature do
       click_button "Login"
       visit restaurant_path(@platable)
       click_on "My Order (3)"
-      save_and_open_page
     end
 
   end

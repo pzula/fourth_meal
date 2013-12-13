@@ -10,7 +10,7 @@ describe "Admin logged in to site", :type => :feature do
     click_button "Login"
   end
 
-  it "can log in" do
+  it "is logged in" do
     expect(page).not_to have_text("Login")
   end
 
