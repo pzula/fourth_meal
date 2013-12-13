@@ -352,7 +352,7 @@ entrees.items << quesadilla
 
 # CATEGORIES
 
-#restaurants.each { |rest| seed_categories(rest, 5) }
+#restaurants.each { |rest| seed_categories(rest, 5) } 
 
 # ITEMS
 
