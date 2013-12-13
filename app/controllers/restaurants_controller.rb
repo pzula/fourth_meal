@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :require_login, except: [:index, :show]
   
   def index
     @restaurants = Restaurant.where(:status => "approved")
@@ -18,7 +19,6 @@ class RestaurantsController < ApplicationController
     else
       redirect_to restaurants_path
     end
-    # @restaurant_employee = Restaurant_employee.new(:restaurant_id)
   end
 
   def show 

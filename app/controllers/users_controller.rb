@@ -21,6 +21,9 @@ class UsersController < ApplicationController
       @user = User.find(current_user.id)
     end
     @recent_orders = current_user.recent_orders
+    if current_user.restaurants 
+      @restaurants = current_user.restaurants
+    end
   end
 
   def new
