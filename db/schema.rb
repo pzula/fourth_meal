@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131213150010) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20131214014012) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -43,7 +40,7 @@ ActiveRecord::Schema.define(version: 20131213150010) do
     t.integer  "restaurant_id"
   end
 
-  add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id", using: :btree
+  add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id"
 
   create_table "order_details", force: true do |t|
     t.string "first_name"
@@ -65,8 +62,8 @@ ActiveRecord::Schema.define(version: 20131213150010) do
     t.integer  "quantity",   default: 1
   end
 
-  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id"
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
 
   create_table "orders", force: true do |t|
     t.integer  "user_id"
@@ -114,12 +111,6 @@ ActiveRecord::Schema.define(version: 20131213150010) do
     t.string   "crypted_password"
     t.string   "salt"
     t.boolean  "admin",            default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "visitor_users", force: true do |t|
-    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
