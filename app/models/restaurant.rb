@@ -8,6 +8,8 @@ class Restaurant < ActiveRecord::Base
   has_many :order_items, through: :items
   has_many :restaurant_employees
   has_many :users, :through => :restaurant_employees
+  has_one :restaurant_detail
+  accepts_nested_attributes_for :restaurant_detail
 
   def order_items_subtotal(items)
     items.inject(0) do |sum, order_item|
