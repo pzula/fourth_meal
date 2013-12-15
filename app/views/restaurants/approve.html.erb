@@ -1,0 +1,11 @@
+<h1><%= @restaurant.name %></h1>
+
+<%= form_for @restaurant, :method => :put do |f| %>
+    <%= f.hidden_field :status, :value => "approved" %> 
+  <%= f.submit "Approve", :class => "btn btn-success" %>
+<% end %>
+
+<%= form_for @restaurant, :method => :put do |f| %>
+    <%= f.hidden_field :status, :value => "denied" %> 
+  <%= f.submit "Deny", :class => "btn btn-danger" %>
+<% end %>

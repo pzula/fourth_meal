@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :require_login, except: [:index, :show]
-  
+  before_action :require_admin, only: [:approve]
+
   def index
     @restaurants = Restaurant.where(:status => "approved")
     @pending_restaurants = Restaurant.where(:status => "pending")
@@ -44,7 +45,22 @@ class RestaurantsController < ApplicationController
     @items = @restaurant.items
   end
 
+  def update
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.status = params[:restaurant][:status]
+    @restaurant.save
+    redirect_to restaurants_path
+  end
+
+  def approve
+    @restaurant = Restaurant.find(params[:id])
+  end
+
   private
+
+  def update_status
+    params.require(:restaurant).permit(:status)
+  end
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :url_slug, :food_type)

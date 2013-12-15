@@ -16,6 +16,8 @@ DinnerDash::Application.routes.draw do
 
   get "orders/guest_checkout"
 
+  get "approve/:id" => "restaurants#approve", as: 'approve'
+
   post "items/add_to_order/:id" => 'items#add_to_order', as: 'add_item'
   get "login" => "user_sessions#new"
   get "logout" => "user_sessions#destroy"
