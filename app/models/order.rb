@@ -3,8 +3,7 @@ class Order < ActiveRecord::Base
   has_many :order_items
   has_many :items, through: :order_items
   belongs_to :order_detail
-  belongs_to :user
-  belongs_to :customer
+  belongs_to :customer, polymorphic: true
 
   def find_order_items_by_restaurant_id(order, restaurant_id)
     self.order_items.select do |oi|

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-  has_many :orders, through: :customer
+  has_many :orders, as: :customer
   has_many :restaurant_employees
   has_many :restaurants, :through => :restaurant_employees
 
