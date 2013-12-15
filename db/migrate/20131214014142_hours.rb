@@ -1,6 +1,6 @@
 class Hours < ActiveRecord::Migration
   def change
-    create_table :hour do |t|
+    create_table :hours do |t|
       t.integer :restaurant_id
       t.integer :day
       t.time :start_at
