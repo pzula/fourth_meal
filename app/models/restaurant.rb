@@ -9,6 +9,7 @@ class Restaurant < ActiveRecord::Base
   has_many :restaurant_employees
   has_many :users, :through => :restaurant_employees
   has_one :restaurant_detail
+  has_many :hours
   accepts_nested_attributes_for :restaurant_detail
 
   def order_items_subtotal(items)

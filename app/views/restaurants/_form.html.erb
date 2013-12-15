@@ -52,6 +52,21 @@
       <%= f.text_field :delivery_range %>
     </p>
   <% end %>
+  <h3>Hours</h3>
+  <% @hours.days.each do |day| %>
+    <%= rest_form.fields_for day do |h| %>
+       <h4><%= day %></h4>
+       <%= h.hidden_field :day, :value => day %>
+        <p>
+          <%= h.label :start_at, "Opens" %>
+          <%= h.time_select :start_at, {minute_step: 15, ampm: true} %>
+        </p>
+        <p>
+          <%= h.label :end_at, "Closes" %>
+          <%= h.time_select :end_at, {minute_step: 15, ampm: true} %>
+        </p>
+    <% end %>
+  <% end %>
   <p>
     <br>
   <%= rest_form.submit "Apply for Restaurant Approval", :class => "btn btn-success" %>

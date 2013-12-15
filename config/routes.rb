@@ -11,6 +11,7 @@ DinnerDash::Application.routes.draw do
   resources :user_sessions, only: [:new, :create, :destroy]
   resources :charges
   resources :menus
+  resources :hours
   root to: 'static_pages#home'
 
   get "orders/guest_checkout"

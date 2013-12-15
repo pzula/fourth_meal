@@ -9,15 +9,24 @@ class RestaurantsController < ApplicationController
   def new
     @restaurant = Restaurant.new
     @restaurant_detail = RestaurantDetail.new
+    @hours = Hours.new
   end
 
   def create
     @user_id = current_user.id
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant_detail = RestaurantDetail.new(restaurant_detail_params)
+    @hours = Hours.new
     if @restaurant.save
       @restaurant_detail.restaurant_id = @restaurant.id
       @restaurant_detail.save
+      @hours.days.each do |day|
+        hours_info = hours_params(day)
+        @hours = Hours.new(hours_info)
+        @hours.restaurant_id = @restaurant.id
+        @hours.day = day
+        @hours.save
+      end
       redirect_to restaurants_path
       set_restaurant_admin
       RestaurantMailer.restaurant_created(current_user, @restaurant).deliver
@@ -37,11 +46,15 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :url_slug, :food_type, :status)
+    params.require(:restaurant).permit(:name, :url_slug, :food_type)
   end
 
   def restaurant_detail_params
     params[:restaurant].require(:restaurant_detail).permit(:restuarant_id, :phone, :street, :street2, :city, :state, :zip, :description, :hours_id, :delivery, :delivery_range)
+  end
+
+  def hours_params(day)
+    params[:restaurant].require(day.to_sym).permit(:restaurant_id, :start_at, :end_at)
   end
 
   def set_restaurant_admin
