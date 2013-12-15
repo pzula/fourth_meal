@@ -150,7 +150,7 @@ coco_cake.save
 
 desserts.items << coco_cake
 
-usr = User.new({username: 'wvmitchell', email: 'wvmitchell@gmail.com', password: 'password'})
+usr = User.new({username: 'meekaetal', email: 'meekaetal@gmail.com', password: 'password'})
 usr.admin = true
 usr.save
 
