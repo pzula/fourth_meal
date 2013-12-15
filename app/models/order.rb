@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
   has_many :items, through: :order_items
   belongs_to :order_detail
   belongs_to :user
+  belongs_to :customer
 
   def find_order_items_by_restaurant_id(order, restaurant_id)
     self.order_items.select do |oi|
@@ -39,8 +40,8 @@ class Order < ActiveRecord::Base
     end
   end
 
-    def generate_unique_url
-      update(:unique_url => SecureRandom.hex)
-    end
+  def generate_unique_url
+    update(:unique_url => SecureRandom.hex)
+  end
 
 end

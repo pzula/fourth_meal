@@ -1,0 +1,209 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AddColumnActiveToItems	db/migrate/20131105235819_add_column_active_to_items.rb	/^class AddColumnActiveToItems < ActiveRecord::Migration$/;"	c
+AddColumnToItems	db/migrate/20131105184110_add_column_to_items.rb	/^class AddColumnToItems < ActiveRecord::Migration$/;"	c
+AddCustomerToOrders	db/migrate/20131215165856_add_customer_to_orders.rb	/^class AddCustomerToOrders < ActiveRecord::Migration$/;"	c
+AddFieldsToOrders	db/migrate/20131106025413_add_fields_to_orders.rb	/^class AddFieldsToOrders < ActiveRecord::Migration$/;"	c
+AddOrderDetailIdToOrders	db/migrate/20131210005406_add_order_detail_id_to_orders.rb	/^class AddOrderDetailIdToOrders < ActiveRecord::Migration$/;"	c
+AddPaperclipFieldsToArticle	db/migrate/20131110232636_add_paperclip_fields_to_article.rb	/^class AddPaperclipFieldsToArticle < ActiveRecord::Migration$/;"	c
+AddQuantityToOrderItems	db/migrate/20131106155733_add_quantity_to_order_items.rb	/^class AddQuantityToOrderItems < ActiveRecord::Migration$/;"	c
+AddRestaurantIdToItems	db/migrate/20131207212943_add_restaurant_id_to_items.rb	/^class AddRestaurantIdToItems < ActiveRecord::Migration$/;"	c
+AddSlugToOrder	db/migrate/20131211004100_add_slug_to_order.rb	/^class AddSlugToOrder < ActiveRecord::Migration$/;"	c
+AddTypeToRestaurants	db/migrate/20131208202125_add_type_to_restaurants.rb	/^class AddTypeToRestaurants < ActiveRecord::Migration$/;"	c
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:DinnerDash
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+CategoriesController	app/controllers/categories_controller.rb	/^class CategoriesController < ApplicationController$/;"	c
+CategoriesHelper	app/helpers/categories_helper.rb	/^module CategoriesHelper$/;"	m
+Category	app/models/category.rb	/^class Category < ActiveRecord::Base$/;"	c
+ChangeDefaultValueForActiveItemsToFalse	db/migrate/20131106002654_change_default_value_for_active_items_to_false.rb	/^class ChangeDefaultValueForActiveItemsToFalse < ActiveRecord::Migration$/;"	c
+ChangePriceFromIntegerToDecimal	db/migrate/20131107205456_change_price_from_integer_to_decimal.rb	/^class ChangePriceFromIntegerToDecimal < ActiveRecord::Migration$/;"	c
+ChargesController	app/controllers/charges_controller.rb	/^class ChargesController < ApplicationController$/;"	c
+ChargesHelper	app/helpers/charges_helper.rb	/^module ChargesHelper$/;"	m
+CreateCategories	db/migrate/20131107172828_create_categories.rb	/^class CreateCategories < ActiveRecord::Migration$/;"	c
+CreateCustomers	db/migrate/20131214015139_create_customers.rb	/^class CreateCustomers < ActiveRecord::Migration$/;"	c
+CreateItemCategories	db/migrate/20131107175730_create_item_categories.rb	/^class CreateItemCategories < ActiveRecord::Migration$/;"	c
+CreateItems	db/migrate/20131105000940_create_items.rb	/^class CreateItems < ActiveRecord::Migration$/;"	c
+CreateOrderItems	db/migrate/20131106011907_create_order_items.rb	/^class CreateOrderItems < ActiveRecord::Migration$/;"	c
+CreateOrders	db/migrate/20131106010928_create_orders.rb	/^class CreateOrders < ActiveRecord::Migration$/;"	c
+CreateRestaurantDetails	db/migrate/20131213150010_create_restaurant_details.rb	/^class CreateRestaurantDetails < ActiveRecord::Migration$/;"	c
+CreateRestaurantEmployeeTable	db/migrate/20131212154700_create_restaurant_employee_table.rb	/^class CreateRestaurantEmployeeTable < ActiveRecord::Migration$/;"	c
+CreateRestaurants	db/migrate/20131207201704_create_restaurants.rb	/^class CreateRestaurants < ActiveRecord::Migration$/;"	c
+CreateVisitorUsers	db/migrate/20131209184017_create_visitor_users.rb	/^class CreateVisitorUsers < ActiveRecord::Migration$/;"	c
+Customer	app/models/customer.rb	/^class Customer < ActiveRecord::Base$/;"	c
+DinnerDash	config/application.rb	/^module DinnerDash$/;"	m
+Item	app/models/item.rb	/^class Item < ActiveRecord::Base$/;"	c
+ItemCategory	app/models/item_category.rb	/^class ItemCategory < ActiveRecord::Base$/;"	c
+ItemsController	app/controllers/items_controller.rb	/^class ItemsController < ApplicationController$/;"	c
+ItemsHelper	app/helpers/items_helper.rb	/^module ItemsHelper$/;"	m
+Menu	app/models/menu.rb	/^class Menu$/;"	c
+MenusController	app/controllers/menus_controller.rb	/^class MenusController < ApplicationController$/;"	c
+Order	app/models/order.rb	/^class Order < ActiveRecord::Base$/;"	c
+OrderDetail	app/models/order_detail.rb	/^class OrderDetail < ActiveRecord::Base$/;"	c
+OrderDetails	db/migrate/20131210004421_order_details.rb	/^class OrderDetails < ActiveRecord::Migration$/;"	c
+OrderDetailsController	app/controllers/order_details_controller.rb	/^class OrderDetailsController < ApplicationController$/;"	c
+OrderDetailsHelper	app/helpers/order_details_helper.rb	/^module OrderDetailsHelper$/;"	m
+OrderItem	app/models/order_item.rb	/^class OrderItem < ActiveRecord::Base$/;"	c
+OrderItemsController	app/controllers/order_items_controller.rb	/^class OrderItemsController < ApplicationController$/;"	c
+OrderItemsHelper	app/helpers/order_items_helper.rb	/^module OrderItemsHelper$/;"	m
+OrdersController	app/controllers/orders_controller.rb	/^class OrdersController < ApplicationController$/;"	c
+OrdersHelper	app/helpers/orders_helper.rb	/^module OrdersHelper$/;"	m
+PaymentProcessors	app/models/payment_processors/stripe.rb	/^module PaymentProcessors$/;"	m
+PaymentProcessors	app/models/payment_processors/stub.rb	/^module PaymentProcessors$/;"	m
+RemoveBillingInformationFromOrderDetails	db/migrate/20131210222914_remove_billing_information_from_order_details.rb	/^class RemoveBillingInformationFromOrderDetails < ActiveRecord::Migration$/;"	c
+RemoveCategoryFromItem	db/migrate/20131107184020_remove_category_from_item.rb	/^class RemoveCategoryFromItem < ActiveRecord::Migration$/;"	c
+RemoveVisitorUsersTable	db/migrate/20131214014012_remove_visitor_users_table.rb	/^class RemoveVisitorUsersTable < ActiveRecord::Migration$/;"	c
+Restaurant	app/models/restaurant.rb	/^class Restaurant < ActiveRecord::Base$/;"	c
+RestaurantDetailsController	app/controllers/restaurant_details_controller.rb	/^class RestaurantDetailsController < ApplicationController$/;"	c
+RestaurantDetailsHelper	app/helpers/restaurant_details_helper.rb	/^module RestaurantDetailsHelper$/;"	m
+RestaurantEmployee	app/models/restaurant_employee.rb	/^class RestaurantEmployee < ActiveRecord::Base$/;"	c
+RestaurantEmployeeChangeBooleanDefaultToFalse	db/migrate/20131212155723_restaurant_employee_change_boolean_default_to_false.rb	/^class RestaurantEmployeeChangeBooleanDefaultToFalse < ActiveRecord::Migration$/;"	c
+RestaurantEmployeesController	app/controllers/restaurant_employees_controller.rb	/^class RestaurantEmployeesController < ApplicationController$/;"	c
+RestaurantMailer	app/mailers/restaurant_mailer.rb	/^class RestaurantMailer < ActionMailer::Base$/;"	c
+RestaurantsController	app/controllers/restaurants_controller.rb	/^class RestaurantsController < ApplicationController$/;"	c
+RestaurantsHelper	app/helpers/restaurants_helper.rb	/^module RestaurantsHelper$/;"	m
+SorceryCore	db/migrate/20131107173238_sorcery_core.rb	/^class SorceryCore < ActiveRecord::Migration$/;"	c
+StaticPagesController	app/controllers/static_pages_controller.rb	/^class StaticPagesController < ApplicationController$/;"	c
+StaticPagesHelper	app/helpers/static_pages_helper.rb	/^module StaticPagesHelper$/;"	m
+Stripe	app/models/payment_processors/stripe.rb	/^  class Stripe$/;"	c	class:PaymentProcessors
+Stub	app/models/payment_processors/stub.rb	/^  class Stub$/;"	c	class:PaymentProcessors
+User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
+UserMailer	app/mailers/user_mailer.rb	/^class UserMailer < ActionMailer::Base$/;"	c
+UserSessionsController	app/controllers/user_sessions_controller.rb	/^class UserSessionsController < ApplicationController$/;"	c
+UserSessionsHelper	app/helpers/user_sessions_helper.rb	/^module UserSessionsHelper$/;"	m
+UsersController	app/controllers/users_controller.rb	/^class UsersController < ApplicationController$/;"	c
+UsersHelper	app/helpers/users_helper.rb	/^module UsersHelper$/;"	m
+active	app/models/item.rb	/^  def self.active$/;"	F	class:Item
+add_item_or_update	app/models/item.rb	/^  def self.add_item_or_update(order, item)$/;"	F	class:Item
+add_to_order	app/controllers/items_controller.rb	/^  def add_to_order$/;"	f	class:ItemsController
+admin?	app/models/restaurant_employee.rb	/^  def admin?$/;"	f	class:RestaurantEmployee
+associate_order	app/models/user.rb	/^  def associate_order(order_id)$/;"	f	class:User
+category_params	app/controllers/categories_controller.rb	/^  def category_params$/;"	f	class:CategoriesController
+change	db/migrate/20131105000940_create_items.rb	/^  def change$/;"	f	class:CreateItems
+change	db/migrate/20131105184110_add_column_to_items.rb	/^  def change$/;"	f	class:AddColumnToItems
+change	db/migrate/20131105235819_add_column_active_to_items.rb	/^  def change$/;"	f	class:AddColumnActiveToItems
+change	db/migrate/20131106002654_change_default_value_for_active_items_to_false.rb	/^  def change$/;"	f	class:ChangeDefaultValueForActiveItemsToFalse
+change	db/migrate/20131106010928_create_orders.rb	/^  def change$/;"	f	class:CreateOrders
+change	db/migrate/20131106011907_create_order_items.rb	/^  def change$/;"	f	class:CreateOrderItems
+change	db/migrate/20131106025413_add_fields_to_orders.rb	/^  def change$/;"	f	class:AddFieldsToOrders
+change	db/migrate/20131106155733_add_quantity_to_order_items.rb	/^  def change$/;"	f	class:AddQuantityToOrderItems
+change	db/migrate/20131107172828_create_categories.rb	/^  def change$/;"	f	class:CreateCategories
+change	db/migrate/20131107175730_create_item_categories.rb	/^  def change$/;"	f	class:CreateItemCategories
+change	db/migrate/20131107184020_remove_category_from_item.rb	/^  def change$/;"	f	class:RemoveCategoryFromItem
+change	db/migrate/20131107205456_change_price_from_integer_to_decimal.rb	/^  def change$/;"	f	class:ChangePriceFromIntegerToDecimal
+change	db/migrate/20131110232636_add_paperclip_fields_to_article.rb	/^  def change$/;"	f	class:AddPaperclipFieldsToArticle
+change	db/migrate/20131207201704_create_restaurants.rb	/^  def change$/;"	f	class:CreateRestaurants
+change	db/migrate/20131207212943_add_restaurant_id_to_items.rb	/^  def change$/;"	f	class:AddRestaurantIdToItems
+change	db/migrate/20131208202125_add_type_to_restaurants.rb	/^  def change$/;"	f	class:AddTypeToRestaurants
+change	db/migrate/20131209184017_create_visitor_users.rb	/^  def change$/;"	f	class:CreateVisitorUsers
+change	db/migrate/20131210004421_order_details.rb	/^  def change$/;"	f	class:OrderDetails
+change	db/migrate/20131210005406_add_order_detail_id_to_orders.rb	/^  def change$/;"	f	class:AddOrderDetailIdToOrders
+change	db/migrate/20131210222914_remove_billing_information_from_order_details.rb	/^  def change$/;"	f	class:RemoveBillingInformationFromOrderDetails
+change	db/migrate/20131211004100_add_slug_to_order.rb	/^  def change$/;"	f	class:AddSlugToOrder
+change	db/migrate/20131212154700_create_restaurant_employee_table.rb	/^  def change$/;"	f	class:CreateRestaurantEmployeeTable
+change	db/migrate/20131212155723_restaurant_employee_change_boolean_default_to_false.rb	/^  def change$/;"	f	class:RestaurantEmployeeChangeBooleanDefaultToFalse
+change	db/migrate/20131213150010_create_restaurant_details.rb	/^  def change$/;"	f	class:CreateRestaurantDetails
+change	db/migrate/20131214014012_remove_visitor_users_table.rb	/^  def change$/;"	f	class:RemoveVisitorUsersTable
+change	db/migrate/20131214015139_create_customers.rb	/^  def change$/;"	f	class:CreateCustomers
+change	db/migrate/20131215165856_add_customer_to_orders.rb	/^  def change$/;"	f	class:AddCustomerToOrders
+change_order_to_completed	app/models/user.rb	/^  def change_order_to_completed$/;"	f	class:User
+checkout	app/controllers/orders_controller.rb	/^  def checkout$/;"	f	class:OrdersController
+checkout_one_restaurant	app/controllers/orders_controller.rb	/^  def checkout_one_restaurant$/;"	f	class:OrdersController
+create	app/controllers/categories_controller.rb	/^  def create$/;"	f	class:CategoriesController
+create	app/controllers/charges_controller.rb	/^  def create$/;"	f	class:ChargesController
+create	app/controllers/items_controller.rb	/^  def create$/;"	f	class:ItemsController
+create	app/controllers/order_details_controller.rb	/^  def create$/;"	f	class:OrderDetailsController
+create	app/controllers/restaurant_details_controller.rb	/^  def create$/;"	f	class:RestaurantDetailsController
+create	app/controllers/restaurant_employees_controller.rb	/^  def create$/;"	f	class:RestaurantEmployeesController
+create	app/controllers/restaurants_controller.rb	/^  def create$/;"	f	class:RestaurantsController
+create	app/controllers/user_sessions_controller.rb	/^  def create$/;"	f	class:UserSessionsController
+create	app/controllers/users_controller.rb	/^  def create$/;"	f	class:UsersController
+create_order	app/controllers/application_controller.rb	/^  def create_order$/;"	f	class:ApplicationController
+dashboard	app/controllers/users_controller.rb	/^  def dashboard$/;"	f	class:UsersController
+destroy	app/controllers/order_items_controller.rb	/^  def destroy$/;"	f	class:OrderItemsController
+destroy	app/controllers/restaurant_details_controller.rb	/^  def destroy$/;"	f	class:RestaurantDetailsController
+destroy	app/controllers/user_sessions_controller.rb	/^  def destroy$/;"	f	class:UserSessionsController
+destroy	app/controllers/users_controller.rb	/^  def destroy$/;"	f	class:UsersController
+down	db/migrate/20131107173238_sorcery_core.rb	/^  def self.down$/;"	F	class:SorceryCore
+edit	app/controllers/categories_controller.rb	/^  def edit$/;"	f	class:CategoriesController
+edit	app/controllers/items_controller.rb	/^  def edit$/;"	f	class:ItemsController
+edit	app/controllers/restaurant_details_controller.rb	/^  def edit$/;"	f	class:RestaurantDetailsController
+edit	app/controllers/users_controller.rb	/^  def edit$/;"	f	class:UsersController
+find_by_restaurant	app/models/item.rb	/^  def self.find_by_restaurant(restaurant_id)$/;"	F	class:Item
+find_order	app/controllers/application_controller.rb	/^  def find_order$/;"	f	class:ApplicationController
+find_order_items_by_restaurant_id	app/models/order.rb	/^  def find_order_items_by_restaurant_id(order, restaurant_id)$/;"	f	class:Order
+generate_unique_url	app/models/order.rb	/^    def generate_unique_url$/;"	f	class:Order
+guest_email	app/mailers/user_mailer.rb	/^  def guest_email(email, order)$/;"	f	class:UserMailer
+guest_order_receipt	app/controllers/orders_controller.rb	/^  def guest_order_receipt$/;"	f	class:OrdersController
+guest_user	app/models/user.rb	/^  def self.guest_user(params)$/;"	F	class:User
+home	app/controllers/static_pages_controller.rb	/^  def home$/;"	f	class:StaticPagesController
+index	app/controllers/categories_controller.rb	/^  def index$/;"	f	class:CategoriesController
+index	app/controllers/items_controller.rb	/^  def index$/;"	f	class:ItemsController
+index	app/controllers/menus_controller.rb	/^  def index$/;"	f	class:MenusController
+index	app/controllers/orders_controller.rb	/^  def index$/;"	f	class:OrdersController
+index	app/controllers/restaurant_details_controller.rb	/^  def index$/;"	f	class:RestaurantDetailsController
+index	app/controllers/restaurants_controller.rb	/^  def index$/;"	f	class:RestaurantsController
+index	app/controllers/users_controller.rb	/^  def index$/;"	f	class:UsersController
+initialize	app/models/menu.rb	/^  def initialize$/;"	f	class:Menu
+item_params	app/controllers/items_controller.rb	/^  def item_params$/;"	f	class:ItemsController
+items_array	app/models/menu.rb	/^  def items_array$/;"	f	class:Menu
+new	app/controllers/categories_controller.rb	/^  def new$/;"	f	class:CategoriesController
+new	app/controllers/charges_controller.rb	/^  def new$/;"	f	class:ChargesController
+new	app/controllers/items_controller.rb	/^  def new$/;"	f	class:ItemsController
+new	app/controllers/order_details_controller.rb	/^  def new$/;"	f	class:OrderDetailsController
+new	app/controllers/orders_controller.rb	/^  def new$/;"	f	class:OrdersController
+new	app/controllers/restaurant_details_controller.rb	/^  def new$/;"	f	class:RestaurantDetailsController
+new	app/controllers/restaurant_employees_controller.rb	/^  def new$/;"	f	class:RestaurantEmployeesController
+new	app/controllers/restaurants_controller.rb	/^  def new$/;"	f	class:RestaurantsController
+new	app/controllers/user_sessions_controller.rb	/^  def new$/;"	f	class:UserSessionsController
+new	app/controllers/users_controller.rb	/^  def new$/;"	f	class:UsersController
+order_detail_params	app/controllers/order_details_controller.rb	/^  def order_detail_params$/;"	f	class:OrderDetailsController
+order_email	app/mailers/user_mailer.rb	/^  def order_email(user, order)$/;"	f	class:UserMailer
+order_item_params	app/controllers/order_items_controller.rb	/^  def order_item_params$/;"	f	class:OrderItemsController
+order_items_by_order	app/helpers/application_helper.rb	/^  def order_items_by_order(restaurant, order_id)$/;"	f	class:ApplicationHelper
+order_items_subtotal	app/models/restaurant.rb	/^  def order_items_subtotal(items)$/;"	f	class:Restaurant
+order_params	app/controllers/charges_controller.rb	/^  def order_params$/;"	f	class:ChargesController
+pending	app/models/order.rb	/^  def self.pending$/;"	F	class:Order
+place_order	app/controllers/orders_controller.rb	/^  def place_order$/;"	f	class:OrdersController
+print_price	app/helpers/application_helper.rb	/^  def print_price(price)$/;"	f	class:ApplicationHelper
+process	app/models/payment_processors/stripe.rb	/^    def self.process(email, token, amount)$/;"	F	class:PaymentProcessors.Stripe
+process	app/models/payment_processors/stub.rb	/^    def self.process(email, token, amount)$/;"	F	class:PaymentProcessors.Stub
+random_password	app/models/user.rb	/^  def self.random_password$/;"	F	class:User
+recent_orders	app/models/user.rb	/^  def recent_orders$/;"	f	class:User
+render	app/models/payment_processors/stripe.rb	/^    def self.render(amount) $/;"	F	class:PaymentProcessors.Stripe
+render	app/models/payment_processors/stub.rb	/^    def self.render(amount)$/;"	F	class:PaymentProcessors.Stub
+require_admin	app/controllers/application_controller.rb	/^  def require_admin$/;"	f	class:ApplicationController
+restaurant_created	app/mailers/restaurant_mailer.rb	/^  def restaurant_created(user, restaurant)$/;"	f	class:RestaurantMailer
+restaurant_detail_params	app/controllers/restaurant_details_controller.rb	/^    def restaurant_detail_params$/;"	f	class:RestaurantDetailsController
+restaurant_employee_params	app/controllers/restaurant_employees_controller.rb	/^  def restaurant_employee_params$/;"	f	class:RestaurantEmployeesController
+restaurant_params	app/controllers/restaurants_controller.rb	/^  def restaurant_params$/;"	f	class:RestaurantsController
+save_addresses	app/controllers/charges_controller.rb	/^  def save_addresses$/;"	f	class:ChargesController
+set_order	app/controllers/orders_controller.rb	/^  def set_order$/;"	f	class:OrdersController
+set_order_cookie	app/controllers/application_controller.rb	/^  def set_order_cookie$/;"	f	class:ApplicationController
+set_order_item	app/controllers/order_items_controller.rb	/^  def set_order_item$/;"	f	class:OrderItemsController
+set_restaurant_admin	app/controllers/restaurants_controller.rb	/^  def set_restaurant_admin$/;"	f	class:RestaurantsController
+set_restaurant_detail	app/controllers/restaurant_details_controller.rb	/^    def set_restaurant_detail$/;"	f	class:RestaurantDetailsController
+set_user	app/controllers/users_controller.rb	/^  def set_user$/;"	f	class:UsersController
+show	app/controllers/items_controller.rb	/^  def show$/;"	f	class:ItemsController
+show	app/controllers/orders_controller.rb	/^  def show$/;"	f	class:OrdersController
+show	app/controllers/restaurant_details_controller.rb	/^  def show$/;"	f	class:RestaurantDetailsController
+show	app/controllers/restaurants_controller.rb	/^  def show $/;"	f	class:RestaurantsController
+show	app/controllers/users_controller.rb	/^  def show$/;"	f	class:UsersController
+stocker?	app/models/restaurant_employee.rb	/^  def stocker?$/;"	f	class:RestaurantEmployee
+subtotal	app/models/order.rb	/^  def subtotal$/;"	f	class:Order
+subtotal_per_restaurant	app/models/order.rb	/^  def subtotal_per_restaurant(order_items_per_restaurant)$/;"	f	class:Order
+total_items	app/models/order.rb	/^  def total_items$/;"	f	class:Order
+up	db/migrate/20131107173238_sorcery_core.rb	/^  def self.up$/;"	F	class:SorceryCore
+update	app/controllers/categories_controller.rb	/^  def update$/;"	f	class:CategoriesController
+update	app/controllers/items_controller.rb	/^  def update$/;"	f	class:ItemsController
+update	app/controllers/order_items_controller.rb	/^  def update$/;"	f	class:OrderItemsController
+update	app/controllers/restaurant_details_controller.rb	/^  def update$/;"	f	class:RestaurantDetailsController
+update	app/controllers/users_controller.rb	/^  def update$/;"	f	class:UsersController
+update_categories	app/models/item.rb	/^  def update_categories(potential_categories)$/;"	f	class:Item
+update_status	app/models/order.rb	/^  def update_status(new_status)$/;"	f	class:Order
+user_params	app/controllers/users_controller.rb	/^  def user_params$/;"	f	class:UsersController
+welcome_email	app/mailers/user_mailer.rb	/^  def welcome_email(user)$/;"	f	class:UserMailer
