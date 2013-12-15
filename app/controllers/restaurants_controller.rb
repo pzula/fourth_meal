@@ -30,6 +30,7 @@ class RestaurantsController < ApplicationController
       redirect_to restaurants_path
       set_restaurant_admin
       RestaurantMailer.restaurant_created(current_user, @restaurant).deliver
+      RestaurantMailer.restaurant_created_admin_notification(@restaurant).deliver
     else
       redirect_to restaurants_path
     end
