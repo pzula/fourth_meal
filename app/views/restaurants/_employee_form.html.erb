@@ -1,0 +1,9 @@
+
+<%= form_tag restaurant_employees_path, method: :post %>
+
+<%= label_tag :email %>
+<%= text_field_tag :email %>
+<%= label_tag :role %>
+<%= select_tag "role", options_for_select(%w(stocker admin)) %>
+<%= hidden_field_tag :restaurant_id, @restaurant_id %> 
+<%= submit_tag "HIRE!", :class => "btn btn-large btn-success" %>

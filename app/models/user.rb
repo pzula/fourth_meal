@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
     orders.where(status: 'completed')
   end
 
+  def find_by_email(email)
+    User.where(email: email).first
+  end
+
   private
 
   def self.random_password

@@ -1,17 +1,19 @@
-<h2><%=	@item.title %></h2>
-<% if @item.image.exists? %>
-  <%= image_tag @item.image.url, {:class => "item-show-image"} %>
-    <% end %>
-<p><%= @item.description %></p>
-<p><%= print_price(@item.price) %></p>
-<ul class="categories">
-  <li class="glyphicon glyphicon-tag category"></li>
-  <% @item.categories.each do |category| %>
-    <li class="category"><%= category.name %></li>
-	<% end %>
-</ul>
-<% if @order %>
-<%= button_to "Add to Order", add_item_path(@item.id), {class: "btn btn-success"} %>
-<% else %>
-<%= link_to "Add to Order", new_order_path(:item_id => @item.id), {:class => "btn btn-success"} %>
+<% cache item do %>
+  <h2><%=	@item.title %></h2>
+  <% if @item.image.exists? %>
+    <%= image_tag @item.image.url, {:class => "item-show-image"} %>
+      <% end %>
+  <p><%= @item.description %></p>
+  <p><%= print_price(@item.price) %></p>
+  <ul class="categories">
+    <li class="glyphicon glyphicon-tag category"></li>
+    <% @item.categories.each do |category| %>
+      <li class="category"><%= category.name %></li>
+  	<% end %>
+  </ul>
+  <% if @order %>
+  <%= button_to "Add to Order", add_item_path(@item.id), {class: "btn btn-success"} %>
+  <% else %>
+  <%= link_to "Add to Order", new_order_path(:item_id => @item.id), {:class => "btn btn-success"} %>
+  <% end %>
 <% end %>

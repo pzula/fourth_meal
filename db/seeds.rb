@@ -1,6 +1,6 @@
 require 'open-uri'
 
-platable = Restaurant.create(name: "Platable", url_slug: "platable", description: "A great American restaurant", food_type: "American", status: "approved")
+platable = Restaurant.create(name: "Platable", url_slug: "platable", food_type: "American", status: "approved")
 
 plates = Category.create(name: "Plates")
 snacks = Category.create(name: "Snacks")
@@ -150,13 +150,13 @@ coco_cake.save
 
 desserts.items << coco_cake
 
-usr = User.new({username: 'wvmitchell', email: 'wvmitchell@gmail.com', password: 'password'})
+usr = User.new({username: 'meekaetal', email: 'meekaetal@gmail.com', password: 'password'})
 usr.admin = true
 usr.save
 
 User.create({username: 'bob', email: 'bob@example.com', password: 'password'})
 
-ono_burrito = Restaurant.create(name: "Ono Burrito", url_slug: "ono-burrito", description: "A fiesta wrapped in a flour wrapper", food_type: "Mexican", status: "approved")
+ono_burrito = Restaurant.create(name: "Ono Burrito", url_slug: "ono-burrito", food_type: "Mexican", status: "approved")
 
 ono_burrito_id = Restaurant.find_by(url_slug:"ono-burrito").id
 

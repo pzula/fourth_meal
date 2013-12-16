@@ -1,10 +1,27 @@
 <div id ="dashboard">
   <h2>Admin Dashboard</h2>
 
+  <%= link_to "Jump To Restaurants", dashboard_path(:anchor =>"restaurants") %> <br>
   <%= link_to "Jump To Menu Items", dashboard_path(:anchor =>"menu-items") %> <br>
   <%= link_to "Jump To Categories List", dashboard_path(:anchor =>"categories-list") %> <br>
   <%= link_to "Jump To Orders List", dashboard_path(:anchor =>"orders-list") %> <br>
   <%= link_to "Jump To Users List", dashboard_path(:anchor =>"users-list") %>
+
+  <div class="menu-items">
+  <h3>Pending Restaurants</h3>
+  <a id="restaurants"></a>
+  <% if @pending_restaurants %>
+    <% @pending_restaurants.each do |pending| %>
+      <div id="<%= pending.url_slug %>">
+        <tr>
+          <td><%= link_to pending.name, restaurant_path(pending) %>   </td>
+          <td><%= link_to "Approve Application", approve_path(pending), {:class => "btn btn-default" } %></td>
+          <td></td>
+        </tr>
+      </div>
+    <% end %>
+  <% end %>
+  
 
   <div class="menu-items">
   <h3>Menu Items</h3>
