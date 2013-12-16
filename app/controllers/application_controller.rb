@@ -21,6 +21,12 @@ class ApplicationController < ActionController::Base
    end
   end
 
+  def create_order
+    @customer = Customer.create
+    @order = @customer.orders.create
+  end
+
+
   def find_order
     if current_user
       @order = current_user.orders.last
