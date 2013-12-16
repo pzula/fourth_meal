@@ -1,87 +1,86 @@
 <%= form_for :order_detail, url: charges_path, html: {id: "guest-order"} do |f| %>
-  
-  <%= render :partial => "items" %>
 
-    <td>   
-      <h3> Already a Customer? Log in now!</h3> 
-      <fieldset name="login">
-       <%= f.label :username %>
-          <%= f.text_field :username %>
-        </div>   
-    <div class="field">
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-  </div>
-    </td>
-      </fieldset>
-      
-        <td>
-          <h3>Customer Details</h3>
-      <fieldset name="billing-details">
-               <p>
-                      <%= f.label(:first_name, "First Name") %>
-                      <%= f.text_field(:first_name) %>
-             
-  </p>
+<%= render :partial => "items" %>
 
-        <p>
-                <%= f.label(:last_name, "Last Name") %>
-                <%= f.text_field(:last_name) %>
+  <td>   
+    <h3> Already a Customer? Log in now!</h3> 
+    <fieldset name="login">
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </div>   
+  <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+ </div>
+  </td>
+    </fieldset>
+    
+  <td>
+    <h3>Customer Details</h3>
+    <fieldset name="billing-details">
+      <p>
+         <%= f.label(:first_name, "First Name") %>
+         <%= f.text_field(:first_name) %>
+           
+      </p>
 
-        </p> 
+      <p>
+          <%= f.label(:last_name, "Last Name") %>
+          <%= f.text_field(:last_name) %>
 
-        <p>
-                <%= f.label(:email, "Email") %>
-                <%= f.text_field(:email) %>
+      </p> 
 
-        </p>
+      <p>
+          <%= f.label(:email, "Email") %>
+          <%= f.text_field(:email) %>
 
-        <p>
-                <%= f.label(:phone, "Phone Number") %>
-                <%= f.text_field(:phone) %>
+      </p>
 
-        </p>
+      <p>
+          <%= f.label(:phone, "Phone Number") %>
+          <%= f.text_field(:phone) %>
 
-</fieldset>
-    </td>
+      </p>
 
-                <td>
-          <h3>Delivery Address</h3>
-                        <fieldset id="delivery-address">
-                                <p>
-                                        <%= f.label(:delivery_street, "Street Address") %>
-                                        <%= f.text_field(:delivery_street) %>
-                                </p>
+    </fieldset>
+  </td>
 
-
-
-                                <p> 
-                                        <%= f.label(:delivery_address_2, "Address Line 2") %>
-                                        <%= f.text_field(:delivery_address_2) %>
-                                </p>
-
-                                <p>
-                                        <%= f.label(:delivery_city, "City") %>
-                                        <%= f.text_field(:delivery_city) %>
-
-                                </p>
-
-                                <p>
-                                        <%= f.label(:delivery_state, "State") %>
-                                        <%= f.text_field(:delivery_state) %>
-  
-                                </p>
-
-                                <p>
-                                        <%= f.label(:delivery_zip, "Zip") %>
-                                        <%= f.text_field(:delivery_zip) %>
-
-                                </p>
+  <td>
+    <h3>Delivery Address</h3>
+    <fieldset id="delivery-address">
+      <p>
+          <%= f.label(:delivery_street, "Street Address") %>
+          <%= f.text_field(:delivery_street) %>
+      </p>
 
 
-                        </fieldset>
 
-      
+      <p> 
+          <%= f.label(:delivery_address_2, "Address Line 2") %>                                 <%= f.text_field(:delivery_address_2) %> 
+      </p>
+
+      <p>
+          <%= f.label(:delivery_city, "City") %>
+          <%= f.text_field(:delivery_city) %>
+
+      </p>
+
+      <p>
+          <%= f.label(:delivery_state, "State") %>
+          <%= f.text_field(:delivery_state) %>
+
+      </p>
+
+      <p>
+          <%= f.label(:delivery_zip, "Zip") %>
+          <%= f.text_field(:delivery_zip) %>
+
+      </p>
+
+
+    </fieldset>
+
+    
 </table>
-  <%= PAYMENT_PROCESSOR.render(@amount) %>
+<%= PAYMENT_PROCESSOR.render(@amount) %>
 <%end%>
