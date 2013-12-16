@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131215212924) do
+ActiveRecord::Schema.define(version: 20131216035109) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20131215212924) do
     t.string  "day"
     t.time    "start_at"
     t.time    "end_at"
+    t.boolean "closed",        default: false
   end
 
   create_table "item_categories", force: true do |t|

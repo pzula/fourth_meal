@@ -8,15 +8,22 @@
 <p>
   <% if current_user.admin? %>
   <%= link_to "Admin Dashboard",  dashboard_path, {:class => "btn btn-info" } %>
+  <% else %>
+<%= link_to "Create a New Craveyard Website", new_restaurant_path, {:class => "btn btn-info btn-large" } %>
   <% end %>
 </p>
 
 <% if @restaurants %>
 <h2>My Restaurants</h2>
   <% @restaurants.each do |restaurant| %>
-    <%= link_to restaurant.name, restaurant_path(restaurant.id) %>
+    <h3><%= link_to restaurant.name, restaurant_dashboard_path(restaurant) %></h3>
     <% if restaurant.restaurant_detail %>
       <%= restaurant.restaurant_detail.description %>
+    <% end %>
+    <% if restaurant.restaurant_employees.count > 1 %>
+      <% restaurant.restaurant_employees.each do |emp| %>
+        <%= emp.user.username %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

@@ -16,4 +16,18 @@ class RestaurantMailer < ActionMailer::Base
       mail(to: admin.email, subject: "A New Restaurant Application Has Been Submitted")
     end
   end
+
+  def restaurant_approved(user, restaurant)
+    @user = user
+    @restaurant = restaurant
+    @restaurant_name = @restaurant.name
+    mail(to: @user.email, subject: "Your Restaurant: #{@restaurant.name} Was Approved!")
+  end
+
+  def restaurant_denied(user, restaurant)
+    @user = user
+    @restaurant = restaurant
+    @restaurant_name = @restaurant.name
+    mail(to: @user.email, subject: "Your Restaurant: #{@restaurant.name} Was Denied")
+  end
 end

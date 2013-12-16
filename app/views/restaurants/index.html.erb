@@ -1,19 +1,23 @@
 <h1> Active Restaurants </h1>
-<% @restaurants.each do |restaurant| %>
-  <h3 class="restaurant-<%= restaurant.id %>"> 
-    <%= link_to restaurant.name, restaurant_path(restaurant)%> 
-  </h3>
-  <% if restaurant.restaurant_employees.any? %>
-    <p> There is an employee <p>
-  <% end %>
-<% end %>
-
-<h1> Pending Restaurants </h1>
-<% @pending_restaurants.each do |restaurant| %>
-  <h3 class="restaurant-<%= restaurant.id %>"> 
-    <%= link_to restaurant.name, restaurant_path(restaurant)%> 
-  </h3>
+<div class="active-restaurants">
+  <% @restaurants.each do |restaurant| %>
+    <h3 class="restaurant-<%= restaurant.id %>"> 
+      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
+    </h3>
     <% if restaurant.restaurant_employees.any? %>
-    <p> There is an employee <p>
+      <p> There is an employee <p>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
+<div class="pending-restaurants">
+<h1> Pending Restaurants </h1>
+  <% @pending_restaurants.each do |restaurant| %>
+    <h3 class="restaurant-<%= restaurant.id %>"> 
+      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
+    </h3>
+      <% if restaurant.restaurant_employees.any? %>
+      <p> There is an employee <p>
+    <% end %>
+  <% end %>
+</div>
