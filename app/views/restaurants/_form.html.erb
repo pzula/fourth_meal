@@ -1,21 +1,74 @@
-<%= form_for(@restaurant) do |f| %>
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </p>
+<h3>Required Details</h3>
+<%= form_for @restaurant do |rest_form| %>
     <p>
-    <%= f.label :url_slug %>
-    <%= f.text_field :url_slug %>
-  </p>
+      <%= rest_form.label :name %>
+      <%= rest_form.text_field :name %>
+    </p>
+      <p>
+      <%= rest_form.label :url_slug %>
+      <%= rest_form.text_field :url_slug %>
+    </p>
+      <p>
+      <%= rest_form.label :food_type %>
+      <%= rest_form.text_field :food_type %>
+    </p> 
+    <br>
+    <h3>Additional Details</h3>
+  <%= rest_form.fields_for @restaurant_detail do |f| %>
+      <p>
+        <%= f.label :phone, "Phone" %>
+        <%= f.text_field :phone %>
+      </p>
+      <p>
+        <%= f.label :street, "Street Address" %>
+        <%= f.text_field :street %>
+      </p>
+      <p>
+        <%= f.label :street2, "Street Address Continued" %>
+        <%= f.text_field :street2 %>
+      </p>
+      <p>
+        <%= f.label :city, "City" %>
+        <%= f.text_field :city %>
+      </p>
+      <p>
+        <%= f.label :state, "State" %>
+        <%= f.text_field :state %>
+      </p>
+      <p>
+      <%= f.label :zip, "Zipcode" %> 
+      <%= f.text_field :zip %>
+      </p>
+      <p>
+        <%= f.label :description, "Description" %>
+        <%= f.text_field :description %>
+      </p>
     <p>
-    <%= f.label :food_type %>
-    <%= f.text_field :food_type %>
-  </p> 
+        <%= f.label :delivery, "Do You Deliver?" %> 
+        <%= f.check_box :delivery %>
+    </p>
+    <p>
+      <%= f.label :delivery_range, "Delivery Range (in miles)" %>
+      <%= f.text_field :delivery_range %>
+    </p>
+  <% end %>
+  <h3>Hours</h3>
+  <% @hours.days.each do |day| %>
+    <%= rest_form.fields_for day do |h| %>
+       <h4><%= day %></h4>
+       <%= h.hidden_field :day, :value => day %>
+        <p>
+          <%= h.label :start_at, "Opens" %>
+          <%= h.time_select :start_at, {minute_step: 15, ampm: true} %>
+        </p>
+        <p>
+          <%= h.label :end_at, "Closes" %>
+          <%= h.time_select :end_at, {minute_step: 15, ampm: true} %>
+        </p>
+    <% end %>
+  <% end %>
   <p>
-  <%= f.submit "Apply for Restaurant Approval", :class => "btn btn-success" %>
+    <br>
+  <%= rest_form.submit "Apply for Restaurant Approval", :class => "btn btn-success" %>
   </p>
 <% end %>

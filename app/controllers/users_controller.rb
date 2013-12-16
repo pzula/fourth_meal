@@ -8,6 +8,8 @@ class UsersController < ApplicationController
     @categories = Category.all
     @orders = Order.all
     @users = User.all
+    @restaurants = Restaurant.all
+    @pending_restaurants = Restaurant.where(status: "pending")
   end
 
   def index
