@@ -13,6 +13,7 @@ DinnerDash::Application.routes.draw do
   resources :menus
   resources :hours
   resources :restaurant_employees
+  resources :locations
   root to: 'static_pages#home'
 
   get "orders/guest_checkout"

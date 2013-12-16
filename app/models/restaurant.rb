@@ -11,6 +11,7 @@ class Restaurant < ActiveRecord::Base
   has_one :restaurant_detail
   has_many :hours
   accepts_nested_attributes_for :restaurant_detail
+  belongs_to :location
 
   def order_items_subtotal(items)
     items.inject(0) do |sum, order_item|
