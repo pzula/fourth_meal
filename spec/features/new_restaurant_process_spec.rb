@@ -5,6 +5,7 @@ describe "Customer on creating a restaurant", :type => :feature do
   before :each do 
     @platable = FactoryGirl.create(:restaurant, name: "Platable", url_slug: "platable")
     @user = FactoryGirl.create(:user)
+    @admin = FactoryGirl.create(:user_admin)
     visit root_path
       click_on "Login"
       fill_in "Username", with: "Joe"
@@ -50,14 +51,44 @@ describe "Customer on creating a restaurant", :type => :feature do
     expect(page).to_not have_text("Platable")
   end
 
+  it "should not see a denied restaurant in dashboard" do
+    fill_in "Name", with: "Test Restaurant"
+    fill_in "Url slug", with: "test-restaurant"
+    fill_in "Food type", with: "Italian"
+    click_button "Apply for Restaurant Approval"
+    visit user_path(@user)
+    expect(page).to have_text("Test Restaurant")
+    click_on "Logout"
+      click_on "Login"
+      fill_in "Username", with: "Admin"
+      fill_in "Password", with: 'password'
+      click_button "Login"
+    visit dashboard_path(@admin)
+    within("#test-restaurant") do
+      click_on "Approve Application"
+    end
+    click_on "Deny"
+    click_on "Logout"
+      click_on "Login"
+      fill_in "Username", with: "Joe"
+      fill_in "Password", with: 'password'
+      click_button "Login"
+    visit user_path(@user)
+    expect(page).to_not have_text("Test Restaurant") 
+  end
+
 end
 
 describe "Admin After New Restaurant Was Created", :type => :feature do 
   
   before :each do 
     @platable = FactoryGirl.create(:restaurant, name: "Platable", url_slug: "platable")
+    @user = FactoryGirl.create(:user)
+    uid = @user.id
+    rid = @platable.id
+    @restaurant_employee = FactoryGirl.create(:restaurant_employee, restaurant_id: rid, user_id: uid, admin: true)
     @still_pending = FactoryGirl.create(:restaurant, name: "Still Pending", url_slug: "pending")
-    @user = FactoryGirl.create(:user_admin)
+    @admin = FactoryGirl.create(:user_admin)
     visit root_path
       click_on "Login"
       fill_in "Username", with: "Admin"
@@ -66,7 +97,7 @@ describe "Admin After New Restaurant Was Created", :type => :feature do
   end
 
   it "should see platable as a pending restaurant" do
-    visit dashboard_path(@user)
+    visit dashboard_path(@admin)
     expect(page).to have_text("Platable")
   end
 
@@ -79,8 +110,8 @@ describe "Admin After New Restaurant Was Created", :type => :feature do
     within(".active-restaurants") do
       expect(page).to_not have_text("Platable")
     end
-    visit dashboard_path(@user)
-    within("#Platable") do
+    visit dashboard_path(@admin)
+    within("#platable") do
       click_on "Approve Application"
     end
     click_on "Approve"

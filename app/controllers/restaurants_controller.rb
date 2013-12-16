@@ -46,9 +46,20 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    @restaurant = Restaurant.find(params[:id])
-    @restaurant.status = params[:restaurant][:status]
-    @restaurant.save
+    if params[:restaurant][:status]
+      @status = params[:restaurant][:status]
+      @restaurant = Restaurant.find(params[:id])
+      @restaurant.status = @status
+      restaurant_admin = @restaurant.restaurant_employees.first
+      @user = restaurant_admin.user
+      @restaurant.save
+      if @status == "approved"
+        RestaurantMailer.restaurant_approved(@user, @restaurant).deliver
+      else
+        RestaurantMailer.restaurant_denied(@user, @restaurant).deliver
+        @restaurant.destroy
+      end      
+    end
     redirect_to restaurants_path
   end
 

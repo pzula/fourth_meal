@@ -12,7 +12,7 @@
   <a id="restaurants"></a>
   <% if @pending_restaurants %>
     <% @pending_restaurants.each do |pending| %>
-      <div id="<%= pending.name %>">
+      <div id="<%= pending.url_slug %>">
         <tr>
           <td><%= link_to pending.name, restaurant_path(pending) %>   </td>
           <td><%= link_to "Approve Application", approve_path(pending), {:class => "btn btn-default" } %></td>
