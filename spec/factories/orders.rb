@@ -1,5 +1,9 @@
 FactoryGirl.define do
-  factory :order do
-    association :user
+  factory :user_order, class: "Order" do
+    association :customer, factory => :user
+  end
+
+  factory :guest_order, class: "Order" do
+    association :customer, factory => :guest
   end
 end
