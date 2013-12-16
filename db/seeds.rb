@@ -239,44 +239,245 @@ quesadilla.save
 
 salads.items << quesadilla
 entrees.items << quesadilla
+##################################################################################################
+
+
+# The data:
+# At least 10,000 restaurants
+# Broken into 30 regions
+# At least 20 items per restaurant
+# At least 3 categories per restaurant
+# 100,000 users
+# 2 restaurant admins per restaurant
+# 2 stockers per restaurant
+# 2 platform administrators
+
+####Regions######   
+
+ # denver = Location.create(city: "Denver")
+ #  dc = Location.create(city: "Washington, D.C.")
+ #  nyc = Location.create(city: "New York City")
+ #  atlanta = Location.create(city: "Atlanta")
+ #  philadelphia = Location.create(city: "Philadelphia")
+
+ #  pittsburgh = Location.create(city: "Pittsburgh")
+ #  boston = Location.create(city: "Boston")
+ #  durham = Location.create(city: "Durham")
+ #  orlando = Location.create(city: "Orlando")
+ #  burlington = Location.create(city: "Burlington")
+
+ #  fargo = Location.create(city: "Fargo")
+ #  minneapolis = Location.create(city: "Minneapolis")
+ #  chicago = Location.create(city: "Chicago")
+ #  madison = Location.create(city: "Madison")
+ #  cincinnati = Location.create(city: "Cincinatti")
+
+ #  albuquerque = Location.create(city: "Albuquerque")
+ #  santa_fe = Location.create(city: "Santa Fe")
+ #  colorado_springs = Location.create(city: "Colorado Springs")
+ #  boulder = Location.create(city: "Boulder")
+ #  slc = Location.create(city: "Salt Lake City")
+
+ #  austin = Location.create(city: "Austin")
+ #  dallas = Location.create(city: "Dallas")
+ #  seattle = Location.create(city: "Seattle")
+ #  portland = Location.create(city: "Portland")
+ #  la = Location.create(city: "Los Angeles")
+
+ #  sf = Location.create(city: "San Francisco")
+ #  san_diego = Location.create(city: "San Diego")
+ #  honolulu = Location.create(city: "Honolulu")
+ #  anchorage = Location.create(city: "Anchorage")
+ #  detroit = Location.create(city: "Detriot")
+
+ #  cities = [denver, dc, nyc, atlanta, philadelphia,
+ #            pittsburgh, boston, durham, orlando, burlington,
+ #            fargo, minneapolis, chicago, madison, cincinnati,
+ #            albuquerque, santa_fe, colorado_springs, boulder, slc,
+ #            austin, dallas, seattle, portland, la,
+ #            sf, san_diego, honolulu, anchorage, detroit]
 
 
 
-##################### New Seed Data For LOTS OF DATA!!!!! ###############################
+# RESTAURANTS
 
-# def seed_items(restaurant, count)
+#approved
+# ono = Restaurant.create(name: "Ono Burrito", description: "FIESTA BURRITOS, ya'll", url_slug: "ono-burrito", active: true, food_type: "mexican")
+# platable = Restaurant.create(name: "Platable", description: "This is AmericA", url_slug: "platable", active: true, food_type: "American")
+# pho = Restaurant.create(name: "WT Pho", description: "Knewdles", slug: "wtpho", active: true, food_type: asian)
+# meeka = Restaurant.create(name: "Meekas Menagerie", description: "We cuddle 'em, we don't eat 'em!", slug: "meekseats", active: true, food_type: "vegan")
+# persa = Restaurant.create(name: "Persa's Farm Treats", description: "I grew this and butchered this, now eat it", url_slug: "zulaeats", active: true, food_type: "organic")
+# teapane = Restaurant.create(name: "TeaPanes house of Tea...pain", description: "Tea with a drop of reality", url_slug: "teapanz", active: true, food_type: "beverages")
+
+#pending
+#dpz = Restaurant.create(name: "Denver Pizza CO", description: "GLUTEN!", url_slug: "dpc", status: "pending", food_type: "pizza")
+#colt_and_gray = Restaurant.create(name: "Colt and Gray", description: "All the tasty parts", slug: "C&G", status: "pending", food_type: "american")
+
+
+#restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
+
+  # def clone_restaurant(restaurant, locations, count)
+  #   count.times do |i|
+  #     puts "creating restaurant #{restaurant.name} #{i}..."
+  #     r = restaurant.dup
+  #     r.update(
+  #       name: restaurant.name + "#{i}",
+  #       status: restaurant.status,
+  #       slug: restaurant.slug + "#{i}",
+  #       location: locations[rand(30)])
+  #   end
+  # end
+
+  # restaurants.each {|r| clone_restaurant(r, cities, 10) }
+  #restaurants.each {|r| clone_restaurant(r, cities, 1000) }
+
+
+
+# USERS
+
+# frank = User.create(email: "demo+franklin@jumpstartlab.com", 
+#   username: "", 
+#   password: "password",
+#   admin => true)
+
+# jeff = User.create(email: "demo+jeff@jumpstartlab.com", 
+#   username: "j3",
+#   password: "password",
+#   admin => true)
+
+# katrina = User.create(email: "demo+katrina@jumpstartlab.com", 
+#   username: "kytrynx", 
+#   password: "password",
+#   admin => true)
+
+# meeka = User.create(email: "rrgayhart@gmail.com", 
+#   username: "meek", 
+#   password: "password")
+
+# persa = User.create(email: "pzula@persazula.com",
+#   username: "zulinator", 
+#   password: "password")
+
+# tyler = User.create(email: "adam.dev89@gmail.com", 
+#   display_name: "TeaPane", 
+#   password: "password")
+
+# def seed_users(count)
 #   count.times do |i|
-#     begin
-#       puts "Seeding item ##{i} for #{restaurant.name}..."
-#       title = Faker::Lorem.words(2).join(" ")
-#       desc = Faker::Lorem.sentence(word_count = 5)
-#       restaurant.items.create!( title: title,
-#                                 description: desc,
-                                #price: rand(20) + 1 )
-                                #image_file_name: File.open("app/assets/images/chicken_fried_chicken.png", 'r'),
-                                #retired: false,
-                                
-    # rescue
-    #   puts "Item already exists, bra! Trying again..."
-    #   retry
-#      end
+#     puts "Creating user #{i}"
+#     User.create(
+#       username: "user_#{i}",
+#       email: "user_#{i}@example.com",
+#       password: "password",)
 #   end
 # end
 
+# seed_users(10000)
+#seed_users(100)
 
-# def seed_categories(restaurant, count)
+
+
+
+# RESTAURANT USERS
+
+# def seed_restaurant_users(rest_id, role, count)
+#   unless ['stocker', 'admin'].include?(role)
+#     throw ArgumentError "Role must be stocker, or admin" 
+#   end
+
+#   count.times do |i|
+#     begin "Seeding #{role} number #{i} for restaurant #{rest_id}..."
+#       RestaurantUser.create(
+#         restaurant_id: rest_id,
+#         user_id: User.all[rand(@size)],
+#         role: role)
+#     rescue
+#       puts "Failed to create role! Trying again..."
+#       retry
+#     end
+#   end
+# end
+
+# @size = User.all.size
+
+# restaurants.each { |r| seed_restaurant_users(r.id, "stocker", 2) }
+# restaurants.each { |r| seed_restaurant_users(r.id, "admin", 2) }
+
+
+
+
+# ITEMS
+
+# def seed_items(restaurant, menu, count)
+#   count.times do |i|
+#     begin
+#       puts "Seeding item number #{i} for #{restaurant.name}..."
+#       title = menu[rand(5)] + "_#{i}"
+#       desc = title + ". It's so good!"
+#       item = restaurant.items.create( 
+#         title: title,
+#         description: desc,
+#         price: rand(20) + 1,
+#         photo: File.open("app/assets/images/seed/#{rand(10)}.jpg", 'r'),
+#         active: false,
+#         restaurant_id: restaurant.id)
+#     rescue
+#       binding.pry
+#       puts "Item failed to create! Trying again..."
+#       retry
+#     end
+#   end
+# end
+
+# restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
+# ono_menu = ["Taco Gumbo", "Steak Burrito", "Breakfast Burrito", "Taco Salad", "Signature Vegetable Burrito"]
+# platable_menu = ["Interstate Mac N Cheese", "Smores", "Chitlins", "Corn Bread", "Spicy Black Bean Burger"]
+# pho_menu = ["Pho 20", "Pho 39", "Spring Roll", "Steam Buns", "Coke"]
+# persa_menu = ["Leg of Lamb", "Bacon wrapped dates", "Curried Chicken", "Ginger BEER", "French Fries"]
+# meeka_menu = ["Cupcakes", "Brownies", "Gin and Tonic", "Tomato Soupd", "BIG SALAD"]
+# teapane_menu = ["Foie Gras", "Earl Grey", "Salade Perigourdine", "Braised lamb neck", "Bone Marrow"]
+# dpz_menu = ["Pepperoni", "Ham and Pineapple", "Veggy special", "Garden Salad", "Soda Pop"]
+# coltandgray_menu = ["Charcuterie", "Daily Pork Special", "Burger", "Manhattan", "Negroni"]
+
+# menu_lookup = { ono => ono_menu, 
+#                 platable => platable_menu,
+#                 pho => pho_menu,
+#                 persa => persa_menu,
+#                 meeka => meeka_menu,
+#                 tea_pane => teapane_menu,
+#                 dpz => dpz_menu,
+#                 coltandgray => colt_menu,
+
+# restaurants.each { |rest| seed_items(rest, menu_lookup[rest], 20) }
+
+
+
+
+# CATEGORIES
+
+# cats = ["Entrees", "Appetizers", "Dessert", "Beverages", "Specialties", 
+#   "Apéritifs", "Digestifs", "Vegetarian", "Salads", "Kids Menu"]
+
+# def seed_categories(restaurant, category_name, count)
 #   count.times do |i|
 #     begin
 #       puts "Creating category #{i} for #{restaurant.name}..."
-#       title = Faker::Lorem.words(2).join(" ")
-#       restaurant.categories.create!(name: name,
-#                                     restaurant_id: restaurant.id)
-#     # rescue
-#     #   puts "Category already exists, bra! Trying again..."
-#     #   retry
-#      end
-#   end
+#       restaurant.categories.create(name: category_name,
+#                                   restaurant_id: restaurant.id)
+#     rescue
+#       binding.pry
+#       puts "Category already exists! Trying again..."
+#       retry
+#     end
+#   end 
 # end
+
+# restaurants.each { |rest| seed_categories(rest, cats[rand(10)], 5) }
+
+
+
+
+# ITEM CATEGORIES
 
 # def seed_item_categories(restaurant, count)
 #   count.times do |i|
@@ -286,80 +487,12 @@ entrees.items << quesadilla
 #       category_id = restaurant.categories[rand(5)].id
 #       ItemCategory.create!( item_id: item_id,
 #                             category_id: category_id)
-#     # rescue
-#     #   puts "Item category already exists! Trying again..."
-#     #   retry
-#      end
+#     rescue
+#       puts "Item category failed to create! Trying again..."
+#       retry
+#     end
 #   end
 # end
 
-# def seed_users(count)
-#   count.times do |i|
-#     puts "Creating user #{i}"
-#     User.create!(username: "user_number#{i}",
-#                 email: "user#{i}@example.com",
-#                 crypted_password: "password")
-#   end
-# end
-
-# USERS
-
-# user1 = User.create!(email: "demo+franklin@jumpstartlab.com", 
-#   username: "Franklin Webber",  
-#   crypted_password: "password")
-
-# user2 = User.create!(email: "demo+jeff@jumpstartlab.com", 
-#   username: "Jeff", 
-#   crypted_password: "password")
-
-# user3 = User.create!(email: "demo+katrina@jumpstartlab.com", 
-#   username: "Katrina Owen", 
-#   crypted_password: "password")
-
-# user4 = User.create!(email: "Meeka@example.com", 
-#   username: "Meeka BraveHeart",  
-#   crypted_password: "password")
-
-# user5 = User.create!(email: "Persa@example.com", 
-#   username: "Persa Zulinator",  
-#   crypted_password: "password")
-
-# seed_users(10)
-
-# RESTAURANTS
-
-# platable = Restaurant.create!(name: "Platable", description: "Delicious American Food Stuffs", food_type: "American", url_slug: "platable1")
-# ono = Restaurant.create!(name: "Ono Burrito", description: "FIESTAAAAA FARE!!!!!!!!", food_type: "Mexican", url_slug: "Ono-Burrito2")
-# pho = Restaurant.create!(name: "WT Pho", description: "KNEWDLES", food_type: "Asian", url_slug: "WTPho3")
-
-# restaurants = [ono, platable, pho]
-
-# RESTAURANT USERS
-
-# user_role2 = RestaurantUser.create!(user_id: user5.id,
-#                                   restaurant_id: ono.id,
-#                                   role: "owner")
-
-# user_role3 = RestaurantUser.create!(user_id: user5.id,
-#                                   restaurant_id: platable.id,
-#                                   role: "owner")
-
-# user_role4 = RestaurantUser.create!(user_id: user5.id,
-#                                   restaurant_id: pho.id,
-#                                   role: "owner")
-
-
-
-# CATEGORIES
-
-#restaurants.each { |rest| seed_categories(rest, 5) } 
-
-# ITEMS
-
-#restaurants.each { |rest| seed_items(rest, 10) }
-
-# ITEM CATEGORIES
-
-#restaurants.each { |rest| seed_item_categories(rest, 5) }
-
+# restaurants.each { |rest| seed_item_categories(rest, 20) }
 

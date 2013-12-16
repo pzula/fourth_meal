@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe "a public visitor", :type => :feature do
 
   before :each do
@@ -42,6 +41,13 @@ describe "a public visitor", :type => :feature do
     end
   end
 
-  it "" do 
+  it "can check out as a guest" do
+    pending
+   PAYMENT_PROCESSOR = PaymentProcessors::Stub
+
+   visit restaurant_path(@restaurant)
+      click_on "My Order (1)" 
+      click_button("submit")
+      expect(page).to have_text("Thanks, you paid all the things!")
   end
 end
