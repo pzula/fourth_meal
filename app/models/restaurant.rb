@@ -19,4 +19,9 @@ class Restaurant < ActiveRecord::Base
     end
   end
 
+  def make_employee_admin(restaurant, employee)
+    RestaurantEmployee.create(restaurant_id: restaurant.id, user_id: employee.id, admin: true)
+  end
+
+
 end

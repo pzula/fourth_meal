@@ -89,7 +89,7 @@ class RestaurantsController < ApplicationController
   end
 
   def hours_params(day)
-    params[:restaurant].require(day.to_sym).permit(:restaurant_id, :start_at, :end_at)
+    params[:restaurant].require(day.to_sym).permit(:restaurant_id, :start_at, :end_at, :closed)
   end
 
   def set_restaurant_admin

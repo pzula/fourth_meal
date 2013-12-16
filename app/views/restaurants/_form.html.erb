@@ -58,6 +58,10 @@
        <h4><%= day %></h4>
        <%= h.hidden_field :day, :value => day %>
         <p>
+          <%= h.label :closed, "Closed on #{day}?" %>
+          <%= h.check_box :closed %>
+        </p>
+        <p>
           <%= h.label :start_at, "Opens" %>
           <%= h.time_select :start_at, {minute_step: 15, ampm: true} %>
         </p>

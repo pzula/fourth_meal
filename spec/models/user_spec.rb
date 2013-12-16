@@ -25,11 +25,19 @@ describe User do
     @user.orders.last.status.should eq("completed")
   end
 
-  it "can find it's recent completed orders" do
-    order = FactoryGirl.create(:order, user:@user, status: 'completed')
+  it "can find its recent completed orders" do
+    order = FactoryGirl.create( :order, user: @user, status: 'completed')
     @user.recent_orders.each do |order|
       expect(order.status).to eq('completed')
     end
+  end
+
+  it "can find by username" do
+    pam = FactoryGirl.create(:user, :username => "pam", :email => "pam@example.com")
+    steve = FactoryGirl.create(:user, :username => "steve", :email => "steve@example.com")
+    searched_user = User.find_by_email("pam@example.com")
+    expect(searched_user.username).to eq("pam")
+    expect(searched_user.username).to_not eq("steve")
   end
 
 end
