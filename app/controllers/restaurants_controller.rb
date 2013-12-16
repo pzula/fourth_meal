@@ -72,6 +72,7 @@ class RestaurantsController < ApplicationController
 
   def restaurant_dashboard
     @restaurant = current_user.restaurants.find(params[:id])
+    @restaurant_id = @restaurant.id
   end
 
   private
