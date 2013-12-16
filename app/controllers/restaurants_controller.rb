@@ -29,10 +29,12 @@ class RestaurantsController < ApplicationController
         @hours.save
       end
       redirect_to restaurants_path
+      flash.notice = "#{@restaurant.name} was successfully created!"
       set_restaurant_admin
       RestaurantMailer.restaurant_created(current_user, @restaurant).deliver
       RestaurantMailer.restaurant_created_admin_notification(@restaurant).deliver
     else
+      flash.notice = "#{@restaurant.name} application was incomplete!"
       redirect_to restaurants_path
     end
   end
