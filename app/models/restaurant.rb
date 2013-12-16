@@ -23,5 +23,10 @@ class Restaurant < ActiveRecord::Base
     RestaurantEmployee.create(restaurant_id: restaurant.id, user_id: employee.id, admin: true)
   end
 
+  def get_hours(restaurant)
+    rid = restaurant.id
+    Hours.where(restaurant_id: rid)
+  end
+
 
 end

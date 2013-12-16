@@ -27,6 +27,9 @@ class RestaurantEmployeesController < ApplicationController
     end
   end
 
+  def update
+  end
+
   def destroy
     @employee = RestaurantEmployee.find(params[:id])
     @employee.destroy

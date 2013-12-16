@@ -1,0 +1,16 @@
+<%= form_for @restaurant do |f| %>
+<p>
+<%= f.label :name %>
+<%= f.text_field :name %>
+</p>
+<p>
+<%= f.label :url_slug %>
+<%= f.text_field :url_slug %>
+</p>
+<p>  
+<%= f.label :food_type %>
+<%= f.text_field :food_type %>
+</p>
+
+<%= f.submit :class => "btn-primary btn-large" %>
+<% end %>

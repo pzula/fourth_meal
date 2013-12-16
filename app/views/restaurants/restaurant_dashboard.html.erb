@@ -1,5 +1,4 @@
-<%= @restaurant.name %>
-<br>
+<h1><%= @restaurant.name %></h1>
 <% if @restaurant.restaurant_employees.count > 1 %>
   <% @restaurant.restaurant_employees.each do |emp| %>
     <div class="employee<%= emp.user.username %>" >
@@ -8,5 +7,9 @@
     </div>
   <% end %>
 <% end %>
-<h3> Add more employees </h3>
+
+<h3> Edit Details </h3>
+<%= render partial: 'small_form' %>
+
+<h3> Hire Employees </h3>
 <%= render partial: "employee_form" %>

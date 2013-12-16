@@ -47,6 +47,10 @@ class RestaurantsController < ApplicationController
     @items = @restaurant.items
   end
 
+  def edit
+    @restaurant = Restaurant.find(params[:id])
+  end
+
   def update
     if params[:restaurant][:status]
       @status = params[:restaurant][:status]
@@ -60,7 +64,10 @@ class RestaurantsController < ApplicationController
       else
         RestaurantMailer.restaurant_denied(@user, @restaurant).deliver
         @restaurant.destroy
-      end      
+      end
+    else
+      @restaurant = Restaurant.find(params[:id])
+      @restaurant.update(restaurant_params)
     end
     redirect_to restaurants_path
   end
@@ -73,6 +80,8 @@ class RestaurantsController < ApplicationController
   def restaurant_dashboard
     @restaurant = current_user.restaurants.find(params[:id])
     @restaurant_id = @restaurant.id
+    @all_hours = @restaurant.get_hours(@restaurant)
+    @hours = @all_hours.first
   end
 
   private
