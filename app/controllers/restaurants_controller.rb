@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :require_login, except: [:index, :show]
+  before_action :require_login, except: [:index, :show, :restaurant_admin]
   before_action :require_admin, only: [:approve]
 
   def index
@@ -67,6 +67,11 @@ class RestaurantsController < ApplicationController
 
   def approve
     @restaurant = Restaurant.find(params[:id])
+    @user = current_user
+  end
+
+  def restaurant_dashboard
+    @restaurant = current_user.restaurants.find(params[:id])
   end
 
   private
