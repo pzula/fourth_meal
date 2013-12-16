@@ -77,9 +77,27 @@ describe "Customer on creating a restaurant", :type => :feature do
     expect(page).to_not have_text("Test Restaurant") 
   end
 
+  it "should be able to hire and fire employees" do
+    @new_employee = FactoryGirl.create(:user, username: "new_employee", email: "employee@example.com")
+    @restaurant_employee = FactoryGirl.create(:restaurant_employee, restaurant_id: @platable.id, user_id: @user.id, admin: true)
+    visit user_path(@user)
+    click_on "Platable"
+    fill_in "Email", with: "employee@example.com"
+    select 'admin', :from => 'Role'
+    click_on "HIRE!"
+    expect(page).to have_text("new_employee")
+    within(".employeenew_employee") do
+      click_on "Fire"
+    end
+    expect(page).to have_text("has been terminated")
+    visit user_path(@user)
+    click_on "Platable"
+    expect(page).to_not have_text("new_employee")
+  end
+
 end
 
-describe "Admin After New Restaurant Was Created", :type => :feature do 
+describe "SuperAdmin After New Restaurant Was Created", :type => :feature do 
   
   before :each do 
     @platable = FactoryGirl.create(:restaurant, name: "Platable", url_slug: "platable")
