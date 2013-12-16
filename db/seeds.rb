@@ -264,7 +264,7 @@ entrees.items << quesadilla
  #  boston = Location.create(city: "Boston")
  #  durham = Location.create(city: "Durham")
  #  orlando = Location.create(city: "Orlando")
- #  burlington = Location.create(city: "Burlington")
+ #  harrisburg = Location.create(city: "Harrisburg")
 
  #  fargo = Location.create(city: "Fargo")
  #  minneapolis = Location.create(city: "Minneapolis")
@@ -272,7 +272,7 @@ entrees.items << quesadilla
  #  madison = Location.create(city: "Madison")
  #  cincinnati = Location.create(city: "Cincinatti")
 
- #  albuquerque = Location.create(city: "Albuquerque")
+ #  Akron = Location.create(city: "Akron")
  #  santa_fe = Location.create(city: "Santa Fe")
  #  colorado_springs = Location.create(city: "Colorado Springs")
  #  boulder = Location.create(city: "Boulder")
