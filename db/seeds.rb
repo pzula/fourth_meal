@@ -358,7 +358,7 @@ entrees.items << quesadilla
 #   username: "zulinator", 
 #   password: "password")
 
-# tyler = User.create(email: "adam.dev89@gmail.com", 
+# tyler = User.create(email: "tyler.long@gmail.com", 
 #   display_name: "TeaPane", 
 #   password: "password")
 
