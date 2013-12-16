@@ -2,7 +2,8 @@
 <br>
 <% if @restaurant.restaurant_employees.count > 1 %>
   <% @restaurant.restaurant_employees.each do |emp| %>
-    <%= emp.user.username %>
+    <%= emp.user.username %> 
+    <%= link_to 'Fire', emp, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 <% end %>
 <h3> Add more employees </h3>

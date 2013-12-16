@@ -27,6 +27,13 @@ class RestaurantEmployeesController < ApplicationController
     end
   end
 
+  def destroy
+    @employee = RestaurantEmployee.find(params[:id])
+    @employee.destroy
+    notice = "Employee #{@employee.user.username}'s employment has been terminated."
+    redirect_to :back, notice: notice
+  end
+
   private
 
   def restaurant_employee_params
