@@ -11,8 +11,8 @@ class UserMailer < ActionMailer::Base
     @user = user
     @order = order
     @items = order.items
-    @url = "http://craveyard.herokuapp.com"
-    mail(to: @user.email, subject: "Your Grub is Forthcoming!")
+    @url = "http://craveyard.herokuapp.com/past_orders/#{order.unique_url}"
+    mail(to: @user.email, subject: "Your Grub is Coming!")
   end
 
   def guest_email(email, order)
