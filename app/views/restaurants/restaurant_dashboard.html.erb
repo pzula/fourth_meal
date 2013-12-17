@@ -13,3 +13,20 @@
 
 <h3> Hire Employees </h3>
 <%= render partial: "employee_form" %>
+
+<div class="menu-items">
+  <h3>Menu Items</h3>
+  <a id="menu-items"></a>
+  <%= link_to "Create New Menu Item", new_item_path, {:class => "btn btn-success create-new-item"} %>
+  <br>
+  <br>
+  <table>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= link_to item.title, item_path(item.id) %></td>
+      <td><%= link_to "Edit", edit_item_path(item.id), {:class => "btn btn-warning edit-item" } %></td>
+      <td></td>
+    </tr>
+  <% end %>
+  </table>
+</div>

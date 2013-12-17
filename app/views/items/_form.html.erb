@@ -20,6 +20,12 @@
     </p>
   <% end %>
   <br>
+  <h4>Select a Restaurant</h4>
+    <p class="restaurant-checkbox">
+    <%= f.collection_select :restaurant_id, @restaurants, :id, :name  %>
+    <%= f.label "Restaurant" %>
+    </p>
+  <br>
   <h4>Is this menu item active?</h4>
   <p class="active-checkbox">  <%= f.check_box :active %>
    <%= f.label :active, "Yes" %>

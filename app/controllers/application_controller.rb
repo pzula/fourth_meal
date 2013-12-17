@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def require_admin
     if current_user
-      unless current_user.admin
+      unless current_user.admin || current_user.restaurant_employees.any?
         redirect_to user_path(current_user)
       end
     end

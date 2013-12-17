@@ -22,6 +22,11 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @categories = Category.all
+    unless current_user.admin?
+      @restaurants = current_user.restaurants
+    else
+      @restaurants = Restaurant.all
+    end
   end
 
   def create
@@ -43,6 +48,11 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @categories = Category.all
+    unless current_user.admin?
+      @restaurants = current_user.restaurants
+    else
+      @restaurants = Restaurant.all
+    end
   end
 
   def update

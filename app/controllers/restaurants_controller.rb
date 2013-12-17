@@ -80,6 +80,7 @@ class RestaurantsController < ApplicationController
   def restaurant_dashboard
     @restaurant = current_user.restaurants.find(params[:id])
     @restaurant_id = @restaurant.id
+    @items = @restaurant.items
     @all_hours = @restaurant.get_hours(@restaurant)
     @hours = @all_hours.first
   end

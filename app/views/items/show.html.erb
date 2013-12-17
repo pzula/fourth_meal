@@ -1,4 +1,4 @@
-<% cache item do %>
+<% cache @item do %>
   <h2><%=	@item.title %></h2>
   <% if @item.image.exists? %>
     <%= image_tag @item.image.url, {:class => "item-show-image"} %>
