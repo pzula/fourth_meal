@@ -385,7 +385,8 @@ meeks = User.create(email: "rrgayhart@gmail.com",
 
 zula = User.create(email: "pzula@persazula.com",
   username: "zulinator", 
-  password: "password")
+  password: "password"
+  :admin => true)
 
 tyler = User.create(email: "tyler.long@gmail.com", 
   username: "TeaPane", 
@@ -447,7 +448,7 @@ def seed_items(restaurant, menu, count)
         title: title,
         description: desc,
         price: rand(20) + 1,
-        #image_file_name: File.open("app/assets/images/seed/#{rand(10)}.jpg", 'r'),
+        image_file_name: open("https://platable.s3.amazonaws.com/items/images/000/000/013/small/tacos.jpg"),
         active: true,
         restaurant_id: restaurant_id)
       puts "#{item.restaurant_id}"

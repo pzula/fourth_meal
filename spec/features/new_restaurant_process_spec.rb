@@ -23,7 +23,6 @@ describe "Customer on creating a restaurant", :type => :feature do
 
   it "can create restaurant and restaurant details" do
     fill_in "Name", with: "Test Restaurant"
-    #fill_in "Url slug", with: "test-restaurant"
     fill_in "Food type", with: "Italian"
     fill_in "Phone", with: "8008764545"
     fill_in "Street Address", with: "425 Walking St."
