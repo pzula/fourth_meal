@@ -78,7 +78,11 @@ class RestaurantsController < ApplicationController
   end
 
   def restaurant_dashboard
-    @restaurant = current_user.restaurants.find(params[:id])
+    unless current_user.admin?
+      @restaurant = current_user.restaurants.find(params[:id])
+    else
+      @restaurant = Restaurant.find(params[:id])
+    end
     @restaurant_id = @restaurant.id
     @items = @restaurant.items
     @all_hours = @restaurant.get_hours(@restaurant)
