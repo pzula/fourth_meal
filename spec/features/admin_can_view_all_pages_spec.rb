@@ -49,7 +49,7 @@ describe "Admin logged in to site", :type => :feature do
 
   it "can see current orders" do
     item = FactoryGirl.create(:item, title: "bunny")
-    order = FactoryGirl.create(:order)
+    order = FactoryGirl.create(:user_order)
     order_item = FactoryGirl.create(:order_item, item: item, order: order)
     visit orders_path
     within("#orders") do

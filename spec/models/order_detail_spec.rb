@@ -3,7 +3,7 @@ require 'spec_helper'
 describe OrderDetail do
   before :each do
     user = FactoryGirl.create(:user)
-    order = FactoryGirl.create(:order, user: user)
+    order = FactoryGirl.create(:user_order, customer: user)
     item = FactoryGirl.create(:item)
     order_item = FactoryGirl.create(:order_item, order: order, item: item)
   end
