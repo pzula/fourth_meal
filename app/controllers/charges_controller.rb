@@ -54,7 +54,7 @@ class ChargesController < ApplicationController
         @order.status = "paid"
         @order.order_details_id = save_addresses.id
         @order.save
-        UserMailer.guest_email(params[:stripeEmail], Order.find(current_order)).deliver
+        UserMailer.guest_email(params[:stripeEmail], current_order).deliver
         @order = create_order
       else
         # flash error

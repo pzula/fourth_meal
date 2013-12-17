@@ -4,12 +4,12 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to Platable, <%= @user.username %></h1>
+    <h1>Welcome to Craveyard, <%= @user.username %></h1>
     <p>
       You're moments away from ordering the best food the internet has to offer!
     </p>
     <p>
-      To login to the site, just follow this link: <%= @url %>.
+      To login to the site, just follow <%= link_to "this link", @url %>.
     </p>
     <p>Thanks for joining and have a great day!</p>
   </body>

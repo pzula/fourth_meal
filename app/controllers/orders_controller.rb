@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
 
   def new
     order = current_order
-    order.generate_unique_url
     redirect_to items_path
   end
 
