@@ -43,6 +43,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 #
+gem 'kaminari' 
 
 group :test, :development do
   #RSPEC Gems
