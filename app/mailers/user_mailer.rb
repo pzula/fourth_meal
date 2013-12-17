@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def welcome_email(user)
     @user = user
-    @url = "http://craveyard.herokuapp.com/login"
+    @url = "http://fourth-meal-group7.herokuapp.com/login"
     mail(to: @user.email, subject: "Welcome to Craveyard!")
   end
 
@@ -11,13 +11,13 @@ class UserMailer < ActionMailer::Base
     @user = user
     @order = order
     @items = order.items
-    @url = "http://craveyard.herokuapp.com/past_orders/#{order.unique_url}"
+    @url = "http://fourth-meal-group7.herokuapp.com/past_orders/#{order.unique_url}"
     mail(to: @user.email, subject: "Your Grub is Coming!")
   end
 
   def guest_email(email, order)
     @order = order
-    @url = "http://craveyard.herokuapp.com/past_orders/#{order.unique_url}"
+    @url = "http://fourth-meal-group7.herokuapp.com/past_orders/#{order.unique_url}"
     @items = order.items
     mail(to: email, subject: "Your Grub is Coming!")
   end
