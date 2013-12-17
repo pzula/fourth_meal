@@ -33,20 +33,11 @@ class ChargesController < ApplicationController
         current_user.change_order_to_completed
         flash.notice = "Your order was successful"
         create_order
-        UserMailer.order_email(current_user, current_user.orders.last).deliver
+        UserMailer.order_email(current_user, current_order).deliver
       end
 
       redirect_to user_path(current_user)
     else
-
-     # if @details.invalid?
-     #   @order_id = cookies[:order_id]
-     #   @order = Order.find(@order_id)
-     #   @items = @order.items
-     #   # puts @details.errors.inspect
-     #   render "orders/guest_checkout" and return
-     # end
-
       payment_success, message =  PAYMENT_PROCESSOR.process(params[:stripeEmail], params[:stripeToken], @amount)
       if payment_success
         #current_user.change_order_to_completed
