@@ -366,8 +366,7 @@ restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
 
 frank = User.create(email: "demo+franklin@jumpstartlab.com", 
   username: "", 
-  password: "password",
-  :admin => true)
+  password: "password")
 
 jeff = User.create(email: "demo+jeff@jumpstartlab.com", 
   username: "j3",
@@ -385,7 +384,7 @@ meeks = User.create(email: "rrgayhart@gmail.com",
 
 zula = User.create(email: "pzula@persazula.com",
   username: "zulinator", 
-  password: "password"
+  password: "password",
   :admin => true)
 
 tyler = User.create(email: "tyler.long@gmail.com", 
