@@ -24,9 +24,11 @@ class ApplicationController < ActionController::Base
   def create_order
     if current_user
       order = current_user.orders.create
+      order.generate_unique_url
     else
       guest = Guest.create
       order = guest.orders.create
+      order.generate_unique_url
     end
 
     session[:order_id] = order.id
