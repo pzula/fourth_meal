@@ -1,8 +1,0 @@
-<%= form_for :order_detail, url: charges_path, html: {id: "guest-order"} do |f| %>
-
-<%= @restaurant.name %>
-
-<% @items.each do |item| %>
-<%= item.title %>
-<% end %>
-<% end %>

@@ -34,8 +34,8 @@
 <h2>Recent Orders</h2>
 <hr>
 <div id="recent_orders">
-  <% if @current_orders %>
-  <% @current_orders.each do |order| %>
+  <% if @user.orders %>
+  <% @user.orders.each do |order| %>
   <h3>Order Number: <%= order.id %> </h3>
   <p><strong>Date Placed:</strong> <%= order.updated_at.to_s(:long) %></p>
   <p><strong>User:</strong> <%= order.order_username(order.customer_id) %> </p>

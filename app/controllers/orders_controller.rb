@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
   def checkout_one_restaurant
     @order = current_order
     @restaurant = Restaurant.find(params[:restaurant_id])
+    restaurant_id = @restaurant.id
     @items = @order.items.find_by_restaurant(params[:restaurant_id]).uniq!
     @order_items = @order.order_items.select{ |oi| oi.restaurant == @restaurant }
     @amount = (@order.subtotal_per_restaurant(@order_items) * 100).to_i
@@ -49,8 +50,7 @@ class OrdersController < ApplicationController
   end
 
   def place_order
-    @order = current_order
-    current_user.change_order_to_completed
+    current_order.update_status("completed")
     flash.notice = "Your order is successfull"
     UserMailer.order_email(current_user, current_user.orders.last).deliver
     create_order

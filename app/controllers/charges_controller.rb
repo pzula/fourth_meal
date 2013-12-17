@@ -1,14 +1,16 @@
 class ChargesController < ApplicationController
 
   def new
-    # @order = current_user.orders.last
     @order = current_order
     @amount = (@order.subtotal * 100).to_i
   end
 
   def create
-    # @order_id = cookies[:order_id]
-    # @order = Order.find(@order_id)
+    current_order.items.each do |item|
+      order_id = current_order.id
+      restaurant_id = item.restaurant_id
+      OrderRestaurant.create(order_id: order_id, restaurant_id: restaurant_id)
+    end
     @order = current_order
     @amount = (@order.subtotal * 100).to_i
 
@@ -30,7 +32,7 @@ class ChargesController < ApplicationController
       else
         current_user.change_order_to_completed
         flash.notice = "Your order was successful"
-        cookies.delete :order_id
+        create_order
         UserMailer.order_email(current_user, current_user.orders.last).deliver
       end
 
