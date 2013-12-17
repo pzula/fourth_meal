@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   has_many :restaurant_employees
   has_many :restaurants, :through => :restaurant_employees
 
-  def associate_order(order_id)
-    orders << Order.find(order_id)
+  def associate_order(order)
+    orders << order
   end
 
   def change_order_to_completed

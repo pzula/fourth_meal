@@ -39,8 +39,8 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  def show 
-    set_order_cookie
+  def show
+    @order = current_order
     @restaurant = Restaurant.find(params[:id])
     cookies[:restaurant_slug] = @restaurant.url_slug
     cookies[:restaurant_id] = @restaurant.id

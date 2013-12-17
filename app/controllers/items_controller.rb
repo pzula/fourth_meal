@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :require_admin, except: [:index, :show, :add_to_order]
 
   def index
-    redirect_to new_order_path unless cookies[:order_id]
+    @order = current_order
     if params["Categories"]
       @category = Category.find(params["Categories"])
       @items = Item.active.find_all {|item| item.categories.include? @category}
@@ -12,11 +12,6 @@ class ItemsController < ApplicationController
       @items = Item.active
     end
     @categories = Category.all
-    if cookies[:order_id]
-      @order = Order.find(cookies[:order_id])
-    else
-      @order = nil
-    end
   end
 
   def new
@@ -33,11 +28,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    if cookies[:order_id]
-      @order = Order.find(cookies[:order_id])
-    else
-      @order = nil
-    end
+    @order = current_order
   end
 
   def edit
@@ -52,7 +43,7 @@ class ItemsController < ApplicationController
   end
 
   def add_to_order
-    order = Order.find(cookies[:order_id])
+    order = current_order
     item = Item.find(params[:id])
     Item.add_item_or_update(order, item)
     flash.notice = item.title + " added to cart!"
