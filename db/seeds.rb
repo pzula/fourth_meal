@@ -254,7 +254,7 @@
 
 ###Regions######   
 
- denver = Location.create(name: "Denver")
+  denver = Location.create(name: "Denver")
   dc = Location.create(name: "Washington, D.C.")
   nyc = Location.create(name: "New York City")
   atlanta = Location.create(name: "Atlanta")
@@ -474,7 +474,14 @@ menu_lookup = { ono => ono_menu,
                 dpz => dpz_menu,
                 coltandgray => coltandgray_menu}
 
-db_restaurants.each { |rest| seed_items(rest, ono_menu, 20) }
+ menu_lookup = [ono_menu, platable_menu, pho_menu, persa_menu, meeka_menu, teapane_menu, dpz_menu, coltandgray_menu]               
+
+db_restaurants.each do |rest|
+  menu = menu_lookup.first
+    menu_lookup.rotate!
+    seed_items(rest, menu, 20) 
+  end
+
 
 
 
