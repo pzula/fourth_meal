@@ -16,7 +16,7 @@
 <% if @restaurants %>
 <h2>My Restaurants</h2>
   <% @restaurants.each do |restaurant| %>
-    <h3><%= link_to restaurant.name, restaurant_dashboard_path(restaurant) %></h3>
+  <h3><%= link_to restaurant.name, restaurant_dashboard_path(restaurant) %> | <%= restaurant.status %> </h3>
     <% if restaurant.restaurant_detail %>
       <%= restaurant.restaurant_detail.description %>
     <% end %>

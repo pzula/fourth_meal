@@ -304,7 +304,7 @@
 #approved
 ono = Restaurant.create(name: "Ono Burrito", url_slug: "ono-burrito", status: "approved", food_type: "mexican")
 rd = RestaurantDetail.create(description: "Burritos YA'LL", restaurant_id: ono.id)
-platable = Restaurant.create(name: "Platable", url_slug: "platable", status: "approved", food_type: "American")
+platable = Restaurant.create(name: "Platable", url_slug: "platable", status: "approved", food_type: "american")
 pt = RestaurantDetail.create(description: "This is america!", restaurant_id: platable.id )
 pho = Restaurant.create(name: "WT Pho", url_slug: "wtpho", status: "approved", food_type: "asian")
 ph= RestaurantDetail.create(description: "Knewdles", restaurant_id: pho.id)

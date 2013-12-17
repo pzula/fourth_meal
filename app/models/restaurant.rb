@@ -31,5 +31,7 @@ class Restaurant < ActiveRecord::Base
     Hours.where(restaurant_id: rid)
   end
 
-
+  def self.food_style(style)
+    where(food_type: style).where(status: "approved")
+  end
 end
