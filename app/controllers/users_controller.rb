@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @order = current_order
     if current_user.admin
       @user = User.find(params[:id])
     else
