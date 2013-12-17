@@ -1,7 +1,8 @@
 class StaticPagesController < ApplicationController
 
   def home
-    @restaurant = Restaurant.all
+    @restaurants = Restaurant.all
+   
   end
   
 end

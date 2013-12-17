@@ -1,49 +1,83 @@
-<header>
+<div>
+  <h1>Hungry? Order from one of these restaurants</h1>
+  <table id="homepage">
+    <tr>
+      <td>
 
-  <div id="header-signup">
-    <% if current_user %>
-    <%= link_to "Log Out" %>
+  <h3>American</h3>
+  <% @restaurants.food_style("american").each do |restaurant| %>
+   
+    <p class="listing restaurant-<%= restaurant.id %>"> 
+      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
+    </h3>
+
+<% end %>
+</td>
+<td>
+<h3>Asian</h3>
+  <% @restaurants.food_style("asian").each do |restaurant| %>
+   
+    <p class="listing restaurant-<%= restaurant.id %>"> 
+      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
+    </h3>
+
     <% end %>
-  </div>
-</header>
+  </td>
+  <td>
 
-<body>
-  <div id="wrapper">
-    <header class="grid-container" id="page_header" role="header">
-      <div class="grid-container" id="header-container"> 
-        <a href="/"></a>
-      </div>
-    </header>
+<h3>Beverages</h3>
+  <% @restaurants.food_style("beverages").each do |restaurant| %>
+   
+    <p class="listing restaurant-<%= restaurant.id %>"> 
+      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
+    </h3>
 
-<div id="wrapper">
-    <header class="grid-container" id="page_header" role="header">
-      <%= render 'static_pages/main_nav' %>
-    </header>
+<% end %>
+</td></tr>
+<tr>
+  <td>
+
+<h3>Organic</h3>
+  <% @restaurants.food_style("organic").each do |restaurant| %>
+   
+    <p class="listing restaurant-<%= restaurant.id %>"> 
+      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
+    </h3>
+
+    <% end %>
+  </td>
+  <td>
+
+<h3>Pizza</h3>
+  <% @restaurants.food_style("pizza").each do |restaurant| %>
+   
+    <p class="listing restaurant-<%= restaurant.id %>"> 
+      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
+    </h3>
+
+    <% end %>
+  </td>
+  <td>
 
 
+<h3>Vegan</h3>
+  <% @restaurants.food_style("vegan").each do |restaurant| %>
+   
+    <p class="listing restaurant-<%= restaurant.id %>"> 
+      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
+    </h3>
 
-<div>
-<p>Pick a Restaurant =====></p>
-<%=  link_to "Platabale", restaurant_path(@restaurant.first) %>
-<p></p>
-<%= link_to "Ono Burrito", restaurant_path(@restaurant.last) %>
-
-<p>
+<% end %>
+</td>
 
 
-</p>
+</tr>
+</table>
+
 </div>
 
 
-<div>
-<p>Build a meal</p>
-<p> "Choose from many restaurants!"</p>
-<p>Order your meal</p>
-<p> "Your Order Will be Ready ASAP!!" </p>
-</div>
-<div id="food-types">
-  <%= link_to "Bars" %>
-  </div>
+
 
 
 

@@ -1,0 +1,20 @@
+
+#homepage tr td {
+  width:20%;
+  padding-right: 10%;
+  padding-left:2%;
+  border-right: 5px dotted white;
+}
+
+#homepage tr td:last-child {
+  border-right:none;
+}
+
+#homepage tr td:first-child {
+  padding-left:0px;
+}
+
+#homepage tr {
+  margin-bottom:10px;
+  border-bottom: 5px dotted white;
+}
