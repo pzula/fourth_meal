@@ -302,19 +302,47 @@ entrees.items << quesadilla
 # RESTAURANTS
 
 #approved
-# ono = Restaurant.create(name: "Ono Burrito", description: "FIESTA BURRITOS, ya'll", url_slug: "ono-burrito", active: true, food_type: "mexican")
-# platable = Restaurant.create(name: "Platable", description: "This is AmericA", url_slug: "platable", active: true, food_type: "American")
-# pho = Restaurant.create(name: "WT Pho", description: "Knewdles", slug: "wtpho", active: true, food_type: asian)
-# meeka = Restaurant.create(name: "Meekas Menagerie", description: "We cuddle 'em, we don't eat 'em!", slug: "meekseats", active: true, food_type: "vegan")
-# persa = Restaurant.create(name: "Persa's Farm Treats", description: "I grew this and butchered this, now eat it", url_slug: "zulaeats", active: true, food_type: "organic")
-# teapane = Restaurant.create(name: "TeaPanes house of Tea...pain", description: "Tea with a drop of reality", url_slug: "teapanz", active: true, food_type: "beverages")
-
+# ono = Restaurant.create(name: "Ono Burrito", url_slug: "ono-burrito", status: "approved", food_type: "mexican")
+# rd = RestaurantDetail.create(description: "Burritos YA'LL", restaurant_id: ono.id)
+# platable = Restaurant.create(name: "Platable", url_slug: "platable", status: "approved", food_type: "American")
+#pt = RestaurantDetail.create(description: "This is america!", restaurant_id: platable.id )
+# pho = Restaurant.create(name: "WT Pho", url_slug: "wtpho", status: "approved", food_type: asian)
+# ph= RestaurantDetail.create(description: "Knewdles", restaurant_id: pho.id)
+# meeka = Restaurant.create(name: "Meekas Menagerie", url_slug: "meekseats", status: "approved", food_type: "vegan")
+# mk = RestaurantDetail.create(description: "We cuddle 'em, we don't eat 'em!", restaurant_id: meeka.id)
+# persa = Restaurant.create(name: "Persa's Farm Treats", url_slug: "zulaeats", status: "approved", food_type: "organic")
+# pz = RestaurantDetail.create(description: "I grew this and butchered it, now eat it!", restaurant_id: persa.id)
+# teapane = Restaurant.create(name: "Teapanes house of Tea PAIN", url_slug: "teapanz", status: "approved", food_type: "beverages")
+# tp = RestaurantDetail.create(description: "Teapanes house of Tea...PAIN!", restaurant_id: teapane.id)
 #pending
-#dpz = Restaurant.create(name: "Denver Pizza CO", description: "GLUTEN!", url_slug: "dpc", status: "pending", food_type: "pizza")
-#colt_and_gray = Restaurant.create(name: "Colt and Gray", description: "All the tasty parts", slug: "C&G", status: "pending", food_type: "american")
-
+#dpz = Restaurant.create(name: "Denver Pizza CO", url_slug: "dpc", food_type: "pizza")
+#dpz = RestaurantDetail.create(description: " GLUTEN!", restaurant_id: dpz.id)
+#colt_and_gray = Restaurant.create(name: "Colt and Gray", url_slug: "CandG", food_type: "american")
+#cg = RestaurantDetail.create(description: "All the tasty parts", restaurants_id: colt_and_gray.id )
 
 #restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
+
+  # def random_hour(from, to)
+  #   (Date.today + rand(from..to).hour + rand(0..60).minutes).to_datetime
+  # end
+
+ #days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
+    #def restaurant_hours(rest)
+      # days.each do |day|
+      #   h = Hours.new
+      #   h.restaurant_id = rest.id
+      #   h.day = day 
+      #   start_at = random_hour(4, 10)
+      #   end_at = random_hour(11, 24)
+      #   h.save
+        #end
+      #end
+
+    #restaurants.each do |rest|
+      #restaurant_hours(rest)
+    #end
+
 
   # def clone_restaurant(restaurant, locations, count)
   #   count.times do |i|
@@ -323,8 +351,9 @@ entrees.items << quesadilla
   #     r.update(
   #       name: restaurant.name + "#{i}",
   #       status: restaurant.status,
-  #       slug: restaurant.slug + "#{i}",
+  #       url_slug: restaurant.url_slug + "#{i}",
   #       location: locations[rand(30)])
+  #       restaurant_hours(r)
   #   end
   # end
 
@@ -380,17 +409,15 @@ entrees.items << quesadilla
 
 # RESTAURANT USERS
 
-# def seed_restaurant_users(rest_id, role, count)
-#   unless ['stocker', 'admin'].include?(role)
-#     throw ArgumentError "Role must be stocker, or admin" 
-#   end
-
+# def seed_restaurant_users(rest_id, boolean_stocker, boolean_admin,  count)
+#   
 #   count.times do |i|
 #     begin "Seeding #{role} number #{i} for restaurant #{rest_id}..."
-#       RestaurantUser.create(
+#       RestaurantEmployee.create(
 #         restaurant_id: rest_id,
 #         user_id: User.all[rand(@size)],
-#         role: role)
+#         stocker: boolean_stocker,
+#         admin: boolean_admin )
 #     rescue
 #       puts "Failed to create role! Trying again..."
 #       retry
@@ -400,8 +427,8 @@ entrees.items << quesadilla
 
 # @size = User.all.size
 
-# restaurants.each { |r| seed_restaurant_users(r.id, "stocker", 2) }
-# restaurants.each { |r| seed_restaurant_users(r.id, "admin", 2) }
+# restaurants.each { |r| seed_restaurant_users(r.id, true, false, 2) }
+# restaurants.each { |r| seed_restaurant_users(r.id, false, true, 2) }
 
 
 
@@ -418,8 +445,8 @@ entrees.items << quesadilla
 #         title: title,
 #         description: desc,
 #         price: rand(20) + 1,
-#         photo: File.open("app/assets/images/seed/#{rand(10)}.jpg", 'r'),
-#         active: false,
+#         image_file_name: File.open("app/assets/images/seed/#{rand(10)}.jpg", 'r'),
+#         active: true,
 #         restaurant_id: restaurant.id)
 #     rescue
 #       binding.pry
