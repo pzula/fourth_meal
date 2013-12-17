@@ -43,4 +43,7 @@ class Order < ActiveRecord::Base
     update(:unique_url => SecureRandom.hex)
   end
 
+  def order_username(customer_id)
+    User.find(customer_id).username
+  end
 end

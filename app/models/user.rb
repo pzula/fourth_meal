@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     User.where(email: email).first
   end
 
-  private
+   private
 
 
 end

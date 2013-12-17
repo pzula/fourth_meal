@@ -35,7 +35,7 @@
   <% @recent_orders.each do |order| %>
   <h3>Order Number: <%= order.id %> </h3>
   <p><strong>Date Placed:</strong> <%= order.updated_at.to_s(:long) %></p>
-  <p><strong>User:</strong> <%= order.user.username %> </p>
+  <p><strong>User:</strong> <%= order.order_username(order.customer_id) %> </p>
   <h5>Order Status: <%= order.status %></h5>
     <table class="table">
       <thead>
