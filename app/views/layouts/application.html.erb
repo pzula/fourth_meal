@@ -40,14 +40,7 @@
               <%= yield %>
             </div>
           </div>
-          <footer>
-            <div class="container">
-              <p>Craveyard. An open-source food ordering service built by gSchool class[1]</p>
-              <p>Romeeka Gayhart, Persa Zula, &amp; Tyler Long</p>
-            </div>
-            <div> <p>Restaurant Owner? <%= link_to "Sign up now!", new_restaurant_path %></p>
-          </footer>
-        </div>
+          <%= render 'layouts/footer' %>
       </div>
     </main>
   </body>
