@@ -4,7 +4,7 @@ describe User do
  
   before :each do 
     @user = FactoryGirl.create(:user)
-    @order = FactoryGirl.create(:order, user: @user)
+    @order = FactoryGirl.create(:user_order, customer: @user)
   end
 
   it "should have orders" do
@@ -25,8 +25,9 @@ describe User do
     @user.orders.last.status.should eq("completed")
   end
 
-  it "can find its recent completed orders" do
-    order = FactoryGirl.create( :order, user: @user, status: 'completed')
+
+  it "can find it's recent completed orders" do
+    order = FactoryGirl.create(:user_order, customer: @user, status: 'completed')
     @user.recent_orders.each do |order|
       expect(order.status).to eq('completed')
     end

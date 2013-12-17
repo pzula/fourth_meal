@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-  has_many :orders
+  has_many :orders, as: :customer
   has_many :restaurant_employees
   has_many :restaurants, :through => :restaurant_employees
 
-  def associate_order(order_id)
-    orders << Order.find(order_id)
+  def associate_order(order)
+    orders << order
   end
 
   def change_order_to_completed
@@ -20,14 +20,7 @@ class User < ActiveRecord::Base
     User.where(email: email).first
   end
 
-  private
+   private
 
-  def self.random_password
-    (0...50).map{ ('a'..'z').to_a[rand(16)] }.join
-  end
 
-  def self.guest_user(params)
-    user = User.new(username: "Guest", email: params, password: random_password)
-    user.save
-  end
 end

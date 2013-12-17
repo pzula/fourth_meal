@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(version: 20131216232959) do
     t.datetime "updated_at"
   end
 
+  create_table "guests", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "hours", force: true do |t|
     t.integer "restaurant_id"
     t.string  "day"
@@ -81,13 +86,16 @@ ActiveRecord::Schema.define(version: 20131216232959) do
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
 
   create_table "orders", force: true do |t|
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status",           default: "pending"
     t.integer  "order_details_id"
     t.string   "unique_url"
+    t.integer  "customer_id"
+    t.string   "customer_type"
   end
+
+  add_index "orders", ["customer_id", "customer_type"], name: "index_orders_on_customer_id_and_customer_type", using: :btree
 
   create_table "restaurant_details", force: true do |t|
     t.integer "restaurant_id"
@@ -126,12 +134,6 @@ ActiveRecord::Schema.define(version: 20131216232959) do
     t.string   "crypted_password"
     t.string   "salt"
     t.boolean  "admin",            default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "visitor_users", force: true do |t|
-    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

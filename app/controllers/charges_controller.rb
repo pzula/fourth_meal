@@ -1,13 +1,15 @@
 class ChargesController < ApplicationController
 
   def new
-    @order = current_user.orders.last
+    # @order = current_user.orders.last
+    @order = current_order
     @amount = (@order.subtotal * 100).to_i
   end
 
   def create
-    @order_id = cookies[:order_id]
-    @order = Order.find(@order_id)
+    # @order_id = cookies[:order_id]
+    # @order = Order.find(@order_id)
+    @order = current_order
     @amount = (@order.subtotal * 100).to_i
 
     if current_user
@@ -42,7 +44,7 @@ class ChargesController < ApplicationController
      #   # puts @details.errors.inspect
      #   render "orders/guest_checkout" and return
      # end
-       
+
       payment_success, message =  PAYMENT_PROCESSOR.process(params[:stripeEmail], params[:stripeToken], @amount)
       if payment_success
         #current_user.change_order_to_completed
@@ -50,8 +52,8 @@ class ChargesController < ApplicationController
         @order.status = "paid"
         @order.order_details_id = save_addresses.id
         @order.save
-        UserMailer.guest_email(params[:stripeEmail], Order.find(cookies[:order_id])).deliver
-        cookies.delete :order_id
+        UserMailer.guest_email(params[:stripeEmail], Order.find(current_order)).deliver
+        @order = create_order
       else
         # flash error
         # render redirect

@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe OrdersController do
 
-  it "should store the order in a cookie" do
+  it "should store the order in a session" do
     item = FactoryGirl.create(:item)
-    order = FactoryGirl.create(:order)
+    order = FactoryGirl.create(:guest_order)
     order_item = FactoryGirl.create(:order_item, item: item, order: order)
-    cookies[:order_id] = order.id
-    get :show, id: cookies[:order_id]
-    expect(response.status).to eq(200)     
+    session[:order_id] = order.id
+    get :show, id: session[:order_id]
+    expect(response.status).to eq(200)
   end
 end

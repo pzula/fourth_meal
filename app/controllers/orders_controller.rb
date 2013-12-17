@@ -1,24 +1,25 @@
 class OrdersController < ApplicationController
   #before_action :require_login, except: [:new, :show, :checkout]
   before_action :require_admin, only: [:index]
-  before_action :set_order, only: [:show]
-  
+  # before_action :set_order, only: [:show]
+
   def index
     @orders = Order.all
   end
 
   def new
-    order = Order.create
-    cookies[:order_id] = order.id
+    order = current_order
     order.generate_unique_url
     redirect_to items_path
   end
 
   def show
+    @order = current_order
     @restaurants = @order.items.map(&:restaurant).uniq
   end
 
   def checkout_one_restaurant
+    @order = current_order
     @restaurant = Restaurant.find(params[:restaurant_id])
     @items = @order.items.find_by_restaurant(params[:restaurant_id]).uniq!
     @order_items = @order.order_items.select{ |oi| oi.restaurant == @restaurant }
@@ -26,12 +27,13 @@ class OrdersController < ApplicationController
     unless current_user
       @details = OrderDetail.new
       render "guest_checkout"
-    else 
+    else
       render "checkout"
     end
   end
 
   def checkout
+    @order = current_order
     unless current_user
       @order_items = @order.order_items
       @items = @order.items
@@ -40,17 +42,18 @@ class OrdersController < ApplicationController
       @details = OrderDetail.new
       render "guest_checkout"
     else
-      current_user.associate_order(cookies[:order_id])
+      current_user.associate_order(current_order)
       @items = @order.items
       @order_items = @order.order_items
     end
   end
 
   def place_order
+    @order = current_order
     current_user.change_order_to_completed
     flash.notice = "Your order is successfull"
-    cookies.delete :order_id
     UserMailer.order_email(current_user, current_user.orders.last).deliver
+    create_order
     redirect_to user_path(current_user)
   end
 
@@ -61,11 +64,4 @@ class OrdersController < ApplicationController
 
   private
 
-  def set_order
-    if cookies[:order_id]
-      @order = Order.find(cookies[:order_id])
-    elsif params[:id]
-      @order = Order.find(params[:id])
-    end
-  end
 end
