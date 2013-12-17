@@ -8,7 +8,7 @@
 
     <p>You card has been charged $<%= @order.subtotal %>0</p>
 
-   <p>You can find a copy of order <a href="http://craveyard-staging.herokuapp.com/<%= past_orders_path(@order.unique_url) %>">here</a></p>
+    <p>You can find a copy of order <%= link_to "here", @url %> </p>
     
   </body>
 </html>
