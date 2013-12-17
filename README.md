@@ -9,7 +9,7 @@ The original tutorial was created by Jumpstart Lab. Fourth Meal [Fourth Meal](ht
 
 ####Instructions
 
-#####Seting Up Locally
+#####Setting Up Locally
 
 1. Clone the repository.
   `https://github.com/pzula/fourth_meal.git'
@@ -59,5 +59,3 @@ need to sign up for a free Stripe account, visit your account settings, and expo
 To integrate email on account creation and payment success, we use the SendGrid API.
 In order for this to function correctly, you must create a SendGrid account, and set your environment variables with the following: `SENDGRID_USERNAME` and `SENDGRID_PASSWORD`.
 
-#####Version in Production
-Visit  
