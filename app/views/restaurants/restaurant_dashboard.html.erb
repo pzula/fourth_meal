@@ -1,15 +1,17 @@
 <h1><%= @restaurant.name %></h1>
+ <h3>Current Employees</h3>
 <% if @restaurant.restaurant_employees.count > 1 %>
   <% @restaurant.restaurant_employees.each do |emp| %>
   <% if emp.user %>
     <div class="employee<%= emp.user.username %>" >
       <%= emp.user.username %> 
-      <%= link_to 'Fire', emp, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Fire', emp, :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure you want to fire this person??' } %>
     </div>
   <% end %>
   <% end %>
 <% end %>
 
+<h3> Total Orders for Your Restaurant</h3>
 <%= @restaurant.order_restaurants.count %>
 
 <h3> Edit Details </h3>

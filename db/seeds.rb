@@ -375,7 +375,7 @@ jeff = User.create(email: "demo+jeff@jumpstartlab.com",
   :admin => true)
 
 katrina = User.create(email: "demo+katrina@jumpstartlab.com", 
-  username: "kytrynx", 
+  username: "kytrinyx", 
   password: "password",
   :admin => true)
 
@@ -387,7 +387,7 @@ zula = User.create(email: "pzula@persazula.com",
   username: "zulinator", 
   password: "password")
 
-tyler = User.create(email: "adam.dev89@gmail.com", 
+tyler = User.create(email: "tyler.long@gmail.com", 
   username: "TeaPane", 
   password: "password")
 

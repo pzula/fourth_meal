@@ -34,7 +34,7 @@ class RestaurantsController < ApplicationController
       RestaurantMailer.restaurant_created(current_user, @restaurant).deliver
       RestaurantMailer.restaurant_created_admin_notification(@restaurant).deliver
     else
-      flash.notice = "#{@restaurant.name} application was incomplete!"
+      flash[:error] = "#{@restaurant.name} application was incomplete!"
       redirect_to restaurants_path
     end
   end

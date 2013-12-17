@@ -1,0 +1,20 @@
+
+#restaurant-dash tr td {
+  width:20%;
+  padding-right: 10%;
+  padding-left:2%;
+  border-right: 5px dotted white;
+}
+
+#restaurant-dash tr td:last-child {
+  border-right:none;
+}
+
+#restaurant-dash tr td:first-child {
+  padding-left:0px;
+}
+
+#restaurant-dash tr {
+  margin-bottom:10px;
+  border-bottom: 5px dotted white;
+}
