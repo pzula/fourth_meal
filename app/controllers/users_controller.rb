@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     else
       @user = User.find(current_user.id)
     end
-    @recent_orders = current_user.recent_orders
+    @recent_orders = Order.where(user_id: current_user.id)
     if current_user.restaurants 
       @restaurants = current_user.restaurants
     end
