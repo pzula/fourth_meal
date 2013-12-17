@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20131216232959) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -56,7 +53,7 @@ ActiveRecord::Schema.define(version: 20131216232959) do
     t.integer  "restaurant_id"
   end
 
-  add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id", using: :btree
+  add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id"
 
   create_table "locations", force: true do |t|
     t.string "name"
@@ -82,8 +79,8 @@ ActiveRecord::Schema.define(version: 20131216232959) do
     t.integer  "quantity",   default: 1
   end
 
-  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id"
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
 
   create_table "orders", force: true do |t|
     t.datetime "created_at"
@@ -95,7 +92,7 @@ ActiveRecord::Schema.define(version: 20131216232959) do
     t.string   "customer_type"
   end
 
-  add_index "orders", ["customer_id", "customer_type"], name: "index_orders_on_customer_id_and_customer_type", using: :btree
+  add_index "orders", ["customer_id", "customer_type"], name: "index_orders_on_customer_id_and_customer_type"
 
   create_table "restaurant_details", force: true do |t|
     t.integer "restaurant_id"

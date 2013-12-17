@@ -1,10 +1,12 @@
 <h1><%= @restaurant.name %></h1>
 <% if @restaurant.restaurant_employees.count > 1 %>
   <% @restaurant.restaurant_employees.each do |emp| %>
+  <% if emp.user %>
     <div class="employee<%= emp.user.username %>" >
       <%= emp.user.username %> 
       <%= link_to 'Fire', emp, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
+  <% end %>
   <% end %>
 <% end %>
 

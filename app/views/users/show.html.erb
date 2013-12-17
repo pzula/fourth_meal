@@ -22,7 +22,9 @@
     <% end %>
     <% if restaurant.restaurant_employees.count > 1 %>
       <% restaurant.restaurant_employees.each do |emp| %>
-        <%= emp.user.username %>
+        <% if emp.user %>
+          <%= emp.user.username %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
