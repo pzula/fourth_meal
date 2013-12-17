@@ -4,7 +4,7 @@
   <% if emp.user %>
     <div class="employee<%= emp.user.username %>" >
       <%= emp.user.username %> 
-      <%= link_to 'Fire', emp, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Fire', emp, :class => "btn btn-warning", method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>
   <% end %>
