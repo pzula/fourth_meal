@@ -1,5 +1,30 @@
 <h1><%= @restaurant.name %></h1>
 
+<% if @restaurant.restaurant_detail %>
+  <h4><%= @restaurant.restaurant_detail.description %></h4>
+<% end %>
+
+<% if @restaurant.get_hours(@restaurant) %>
+  Open:
+  <br>
+  <% @restaurant.get_hours(@restaurant).each do |hour| %>
+    <% if hour.closed == false %>
+      <a href="#" class="btn btn-success btn-mini"><i class="icon-white icon-thumbs-up"></i></a>
+    <% else %>
+      <a href="#" class="btn btn-danger btn-mini"><i class="icon-white icon-thumbs-up"></i></a>
+    <% end %>
+    <%= hour.day %> |
+  <% end %>
+<% end %>
+<% if @restaurant.restaurant_employees %>
+  <h3>Current Employees</h3>
+  <% @restaurant.restaurant_employees.each do |emp| %>
+    <% if emp.user %>
+        <%= emp.user.username %> 
+    <% end %>
+  <% end %>
+<% end %>
+
 <%= form_for @restaurant, :method => :put do |f| %>
     <%= f.hidden_field :status, :value => "approved" %> 
   <%= f.submit "Approve", :class => "btn btn-success" %>

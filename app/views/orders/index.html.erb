@@ -1,32 +1,34 @@
 <div id="orders">
   <h1>All Orders</h1>
   <% @orders.each do |order| %>
-  <h3>Order #<%= order.id %></h3>
-  <table class="table">
-    <thead>
+    <% if order.not_empty? %>
+    <h3>Order #<%= order.id %></h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Dish</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Categories</th>
+        </tr>
+      </thead>
+      <% items = order.items %>
+      <% items.each do |item| %>
+      <tbody>
       <tr>
-        <th>Dish</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Categories</th>
+        <td><%= item.title %></td>
+        <td><%= item.description %></td>
+        <td><%= print_price(item.price) %></td>
+        <td>
+        <% item.categories.each do |category| %>
+            <%= category.name %>
+            <% end %></td>
       </tr>
-    </thead>
-    <% items = order.items %>
-    <% items.each do |item| %>
-    <tbody>
-    <tr>
-      <td><%= item.title %></td>
-      <td><%= item.description %></td>
-      <td><%= print_price(item.price) %></td>
-      <td>
-      <% item.categories.each do |category| %>
-          <%= category.name %>
-          <% end %></td>
-    </tr>
-    </tbody>
+      </tbody>
+      <% end %>
+    </table>
+    <p>Order Status: <%= order.status %></p>
     <% end %>
-  </table>
-  <p>Order Status: <%= order.status %></p>
   <% end %>
 <br />
 </div>

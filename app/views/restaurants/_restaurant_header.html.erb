@@ -1,0 +1,20 @@
+<nav>
+  <div class="container">
+    <h1><%= @restaurant.name %></h1>
+    <% if @restaurant.restaurant_detail %>
+      <h4><%= @restaurant.restaurant_detail.description %></h4>
+    <% end %>
+    <% if @restaurant.get_hours(@restaurant) %>
+    Open:
+    <br>
+      |<% @restaurant.get_hours(@restaurant).each do |hour| %>
+      <% if hour.closed == false %>
+        <a href="#" class="btn btn-success btn-mini"><i class="icon-white icon-thumbs-up"></i></a>
+      <% else %>
+        <a href="#" class="btn btn-danger btn-mini"><i class="icon-white icon-thumbs-up"></i></a>
+      <% end %>
+      <%= hour.day %> |
+      <% end %>
+    <% end %>
+  </div>
+</nav>

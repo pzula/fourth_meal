@@ -7,6 +7,10 @@ class Order < ActiveRecord::Base
   has_many :order_restaurants
   has_many :restaurants, through: :order_restaurants
 
+  def not_empty?
+    self.order_items.count > 0
+  end
+
   def find_order_items_by_restaurant_id(order, restaurant_id)
     self.order_items.select do |oi|
       oi.item.restaurant.id.to_i == restaurant_id

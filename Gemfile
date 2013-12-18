@@ -44,6 +44,7 @@ end
 # gem 'debugger', group: [:development, :test]
 #
 gem 'kaminari' 
+gem 'resque'
 
 gem 'simplecov', :require => false, :group => :test
 

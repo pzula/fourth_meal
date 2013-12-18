@@ -124,7 +124,7 @@ describe "SuperAdmin After New Restaurant Was Created", :type => :feature do
     end
     visit dashboard_path(@admin)
     within("#platable") do
-      click_on "Approve Application"
+      click_on "Review Application"
     end
     click_on "Approve"
     visit restaurants_path

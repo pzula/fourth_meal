@@ -1,3 +1,5 @@
+require 'resque/server'
+
 DinnerDash::Application.routes.draw do
 
   resources :visitor_users
@@ -39,5 +41,5 @@ DinnerDash::Application.routes.draw do
   get "static_pages/home"
 
   get "past_orders/:unique_url" => "orders#guest_order_receipt", as: "past_orders"
-
+  mount Resque::Server.new, at: "/resque"
 end

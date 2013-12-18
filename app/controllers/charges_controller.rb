@@ -15,21 +15,9 @@ class ChargesController < ApplicationController
     @amount = (@order.subtotal * 100).to_i
 
     if current_user
-      customer = Stripe::Customer.create(
-        :email => params[:stripeEmail],
-        :card  => params[:stripeToken]
-      )
-
-      begin
-        charge = Stripe::Charge.create(
-          :customer    => customer.id,
-          :amount      => @amount,
-          :description => 'Rails Stripe customer',
-          :currency    => 'usd'
-        )
-      rescue Stripe::CardError => e
-        flash[:error] = e.message
-      else
+      payment_success, message =  PAYMENT_PROCESSOR.process(params[:stripeEmail], params[:stripeToken], @amount)
+        if payment_success
+      
         current_user.change_order_to_completed
         flash.notice = "Your order was successful"
         create_order
@@ -40,16 +28,12 @@ class ChargesController < ApplicationController
     else
       payment_success, message =  PAYMENT_PROCESSOR.process(params[:stripeEmail], params[:stripeToken], @amount)
       if payment_success
-        #current_user.change_order_to_completed
         flash.notice = "Your order was successful"
         @order.status = "paid"
         @order.order_details_id = save_addresses.id
         @order.save
         UserMailer.guest_email(params[:stripeEmail], current_order).deliver
         @order = create_order
-      else
-        # flash error
-        # render redirect
       end
     end
   end

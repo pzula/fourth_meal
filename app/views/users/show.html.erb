@@ -1,20 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<h2>
   <strong>Username:</strong>
   <%= @user.username %>
-</p>
-
-<p>
+</h2>
+<%= link_to 'Edit Profile', edit_user_path(@user) %>
+<br>
   <% if current_user.admin? %>
+  <br>
   <%= link_to "Admin Dashboard",  dashboard_path, {:class => "btn btn-info" } %>
+  <br>
+  <br>
+  <%= link_to 'All Users', users_path %>
   <% else %>
+  <br>
 <%= link_to "Create a New Craveyard Website", new_restaurant_path, {:class => "btn btn-info btn-large" } %>
   <% end %>
-</p>
+<hr>
 
 <% if @restaurants %>
 <h2>My Restaurants</h2>
+<hr>
   <% @restaurants.each do |restaurant| %>
   <h3><%= link_to restaurant.name, restaurant_dashboard_path(restaurant) %> | <%= restaurant.status %> </h3>
     <% if restaurant.restaurant_detail %>
@@ -29,49 +35,46 @@
     <% end %>
   <% end %>
 <% end %>
-
-
+<br>
+<%= paginate @restaurants %>
+<hr>
 <h2>Recent Orders</h2>
 <hr>
 <div id="recent_orders">
   <% if @user.orders %>
   <% @user.orders.each do |order| %>
-  <h3>Order Number: <%= order.id %> </h3>
-  <p><strong>Date Placed:</strong> <%= order.updated_at.to_s(:long) %></p>
-  <p><strong>User:</strong> <%= order.order_username(order.customer_id) %> </p>
-  <h5>Order Status: <%= order.status %></h5>
-    <table class="table">
-      <thead>
+    <% if order.not_empty? %>
+      <h3>Order Number: <%= order.id %> </h3>
+      <p><strong>Date Placed:</strong> <%= order.updated_at.to_s(:long) %></p>
+      <p><strong>User:</strong> <%= order.order_username(order.customer_id) %> </p>
+      <h5>Order Status: <%= order.status %></h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <td>Dish</td>
+              <td>Description</td>
+              <td>Price</td>
+              <td>Quantity</td>
+            </tr>
+          </thead>
+        <% order.items.each do |item| %>
         <tr>
-          <td>Dish</td>
-          <td>Description</td>
-          <td>Price</td>
-          <td>Quantity</td>
+          <% oi = OrderItem.where(order_id: order.id, item_id: item.id).first %>
+          <td><%= link_to item.title, item_path(item.id) %></td>
+          <td><%= item.description %></td>
+          <td><%= print_price(item.price) %></td>
+          <td> <%= oi.quantity %></td>
         </tr>
-      </thead>
-    <% order.items.each do |item| %>
-    <tr>
-      <% oi = OrderItem.where(order_id: order.id, item_id: item.id).first %>
-      <td><%= link_to item.title, item_path(item.id) %></td>
-      <td><%= item.description %></td>
-      <td><%= print_price(item.price) %></td>
-      <td> <%= oi.quantity %></td>
-    </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td><h4>Order Total:</h4></td>
+          <td><h4><%= print_price(order.subtotal) %></h4></td>
+          <td></td>
+        </tr>
+        </table>
+        <hr>
+      <% end %>
     <% end %>
-    <tr>
-      <td></td>
-      <td><h4>Order Total:</h4></td>
-      <td><h4><%= print_price(order.subtotal) %></h4></td>
-      <td></td>
-    </tr>
-    </table>
-    <hr>
-  <% end %>
   <% end %>
 </div>
-
-
-<% if current_user.admin? %>
-<%= link_to 'Edit Profile', edit_user_path(@user) %> |
-<%= link_to 'All Users', users_path %>
-<% end %>

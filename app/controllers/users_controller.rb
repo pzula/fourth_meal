@@ -23,12 +23,12 @@ class UsersController < ApplicationController
     else
       @user = User.find(current_user.id)
     end
-    @recent_orders = Order.where(user_id: current_user.id)
+    @user_orders = Order.where(user_id: current_user.id)
     if current_user.admin?
-      @restaurants = Restaurant.all
+      @restaurants = Restaurant.all.page(params[:page]).per(5)
     else
       if current_user.restaurants 
-        @restaurants = current_user.restaurants
+        @restaurants = current_user.restaurants.page(params[:page]).per(5)
       end
     end
   end

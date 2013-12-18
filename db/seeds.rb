@@ -314,13 +314,21 @@ persa = Restaurant.create(name: "Persa's Farm Treats", url_slug: "zulaeats", sta
 pz = RestaurantDetail.create(description: "I grew this and butchered it, now eat it!", restaurant_id: persa.id)
 teapane = Restaurant.create(name: "Teapanes house of Tea PAIN", url_slug: "teapanz", status: "approved", food_type: "beverages")
 tp = RestaurantDetail.create(description: "Teapanes house of Tea...PAIN!", restaurant_id: teapane.id)
+
 #pending
 dpz = Restaurant.create(name: "Denver Pizza CO", url_slug: "dpc", food_type: "pizza")
+dpz.restaurant_employees.create(user_id: 6, admin:true)
 dpzz = RestaurantDetail.create(description: " GLUTEN!", restaurant_id: dpz.id)
 coltandgray = Restaurant.create(name: "Colt and Gray", url_slug: "CandG", food_type: "american")
+coltandgray.restaurant_employees.create(user_id:6, admin: true)
 cg = RestaurantDetail.create(description: "All the tasty parts", restaurant_id: coltandgray.id )
 
 restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
+# 2.times do |n|
+# restaurants.each do |details|
+#   Resque.enqueue(RestaurantBuilder, details.name, details.url_slug, details.status, details.food_type, n )
+#   end
+# end
 
   def random_hour(from, to)
     (Date.today + rand(from..to).hour + rand(0..60).minutes).to_datetime
@@ -417,9 +425,6 @@ def seed_restaurant_users(rest_id, boolean_stocker, boolean_admin,  count)
         user_id: User.all[rand(@size)],
         stocker: boolean_stocker,
         admin: boolean_admin )
-  #   rescue
-  #     puts "Failed to create role! Trying again..."
-  #     retry
      end
    end
 end
@@ -436,20 +441,41 @@ restaurants.each { |r| seed_restaurant_users(r.id, false, true, 2) }
 
 db_restaurants = Restaurant.all
 
+  @pictures = ["https://platable.s3.amazonaws.com/craveyard/arugala-salad.png",
+    "https://platable.s3.amazonaws.com/craveyard/berry-trifle.png",
+    "https://platable.s3.amazonaws.com/craveyard/chicken-fried-chicken.jpeg",
+    "https://platable.s3.amazonaws.com/craveyard/classic-burger.png",
+    "https://platable.s3.amazonaws.com/craveyard/coffee-cake.png",
+    "https://platable.s3.amazonaws.com/craveyard/french-omlettes.png",
+    "https://platable.s3.amazonaws.com/craveyard/french-toast.png",
+    "https://platable.s3.amazonaws.com/craveyard/half-grapefruit.jpeg",
+    "https://platable.s3.amazonaws.com/craveyard/hoe-platter.png",
+    "https://platable.s3.amazonaws.com/craveyard/house-made-veggie-burger.png",
+    "https://platable.s3.amazonaws.com/craveyard/ice-box-cake.png",
+    "https://platable.s3.amazonaws.com/craveyard/monte-cristo.png",
+    "https://platable.s3.amazonaws.com/craveyard/porterhouse.jpeg",
+    "https://platable.s3.amazonaws.com/craveyard/seared-ribeye.png",
+    "https://platable.s3.amazonaws.com/craveyard/smores.png",
+    "https://platable.s3.amazonaws.com/craveyard/spoon-bread.jpeg",
+    "https://platable.s3.amazonaws.com/craveyard/street-tacos.png",
+    "https://platable.s3.amazonaws.com/craveyard/tomato-sauce.jpeg"]
+
 def seed_items(restaurant, menu, count)
   count.times do |i|
     begin
       puts "Seeding item number #{i} for #{restaurant.name}..."
       title = menu[rand(5)] + "_#{i}"
-      desc = title + ". It's so good!"
+      desc = "#{title} + . It's so good!"
       restaurant_id = restaurant.id
-      item = Item.create( 
+      item = Item.new( 
         title: title,
         description: desc,
         price: rand(20) + 1,
-        #image_file_name: File.open("app/assets/images/seed/#{rand(10)}.jpg", 'r'),
         active: true,
         restaurant_id: restaurant_id)
+      item.image = open(@pictures.first)
+      item.save
+      @pictures.rotate!
       puts "#{item.restaurant_id}"
     end
   end

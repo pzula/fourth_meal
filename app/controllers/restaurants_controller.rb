@@ -58,9 +58,13 @@ class RestaurantsController < ApplicationController
       @user = restaurant_admin.user
       @restaurant.save
       if @status == "approved"
-        RestaurantMailer.restaurant_approved(@user, @restaurant).deliver
+        if @user
+          RestaurantMailer.restaurant_approved(@user, @restaurant).deliver
+        end
       else
-        RestaurantMailer.restaurant_denied(@user, @restaurant).deliver
+        if @user
+          RestaurantMailer.restaurant_denied(@user, @restaurant).deliver
+        end
         @restaurant.destroy
       end
     else
