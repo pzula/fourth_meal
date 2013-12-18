@@ -348,8 +348,8 @@ restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
       end
 
     def random_closings
-      2.times do
-        hour = Hours.find(rand(1..50))
+      1000.times do
+        hour = Hours.find(rand(1..5000))
         hour.closed = true
         hour.save
       end
@@ -370,8 +370,8 @@ restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
     end
   end
 
+  restaurants.each {|r| clone_restaurant(r, cities, 1000) }
   restaurants.each {|r| clone_restaurant(r, cities, 10) }
-  restaurants.each {|r| clone_restaurant(r, cities, 5) }
 
   restaurants.each do |rest|
       restaurant_hours(rest)
@@ -420,8 +420,8 @@ def seed_users(count)
   end
 end
 
-seed_users(5)
-seed_users(10)
+seed_users(100)
+seed_users(1000)
 
 
 
@@ -541,7 +541,7 @@ def seed_categories(restaurant, category_name, count)
   end 
 end
 
-db_restaurants.each { |rest| seed_categories(rest, cats[rand(10)], 5) }
+db_restaurants.each { |rest| seed_categories(rest, cats[rand(10)], 3) }
 
 #ITEM CATEGORIES
 
@@ -560,5 +560,5 @@ def seed_item_categories(restaurant, count)
   end
 end
 
-db_restaurants.each { |rest| seed_item_categories(rest, 20) }
+db_restaurants.each { |rest| seed_item_categories(rest, 10) }
 
