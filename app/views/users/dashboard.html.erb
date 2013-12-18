@@ -15,8 +15,8 @@
       <div id="<%= pending.url_slug %>">
         <tr>
           <td><%= link_to pending.name, restaurant_path(pending) %>   </td>
-          <td><%= link_to "Approve Application", approve_path(pending), {:class => "btn btn-default" } %></td>
-          <td></td>
+          <td><%= link_to "Approve Application", approve_path(pending), {:class => "btn btn-success" } %></td>
+          
         </tr>
       </div>
     <% end %>
