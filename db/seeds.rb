@@ -314,6 +314,7 @@ persa = Restaurant.create(name: "Persa's Farm Treats", url_slug: "zulaeats", sta
 pz = RestaurantDetail.create(description: "I grew this and butchered it, now eat it!", restaurant_id: persa.id)
 teapane = Restaurant.create(name: "Teapanes house of Tea PAIN", url_slug: "teapanz", status: "approved", food_type: "beverages")
 tp = RestaurantDetail.create(description: "Teapanes house of Tea...PAIN!", restaurant_id: teapane.id)
+
 #pending
 dpz = Restaurant.create(name: "Denver Pizza CO", url_slug: "dpc", food_type: "pizza")
 dpz.restaurant_employees.create(user_id: 6, admin:true)
