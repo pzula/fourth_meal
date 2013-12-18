@@ -46,6 +46,8 @@ end
 gem 'kaminari' 
 gem 'resque'
 
+gem 'simplecov', :require => false, :group => :test
+
 group :test, :development do
   #RSPEC Gems
   gem 'rspec-rails', '~> 3.0.0.beta'
