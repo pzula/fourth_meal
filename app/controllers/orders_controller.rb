@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
 
   def new
     order = current_order
-    order.generate_unique_url
     redirect_to items_path
   end
 
@@ -18,34 +17,15 @@ class OrdersController < ApplicationController
     @restaurants = @order.items.map(&:restaurant).uniq
   end
 
-  def checkout_one_restaurant
-    @order = current_order
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    restaurant_id = @restaurant.id
-    @items = @order.items.find_by_restaurant(params[:restaurant_id]).uniq!
-    @order_items = @order.order_items.select{ |oi| oi.restaurant == @restaurant }
-    @amount = (@order.subtotal_per_restaurant(@order_items) * 100).to_i
-    unless current_user
-      @details = OrderDetail.new
-      render "guest_checkout"
-    else
-      render "checkout"
-    end
-  end
-
   def checkout
     @order = current_order
-    unless current_user
-      @order_items = @order.order_items
-      @items = @order.items
+    @items = @order.items
+    @order_items = @order.order_items
+    unless current_user   
       @amount = (@order.subtotal * 100).to_i
-
-      @details = OrderDetail.new
       render "guest_checkout"
     else
       current_user.associate_order(current_order)
-      @items = @order.items
-      @order_items = @order.order_items
     end
   end
 

@@ -1,0 +1,13 @@
+<footer>
+            <div class="container">
+              <p>Craveyard. An open-source food ordering service built by gSchool class[1]</p>
+              <p>Romeeka Gayhart, Persa Zula, &amp; Tyler Long</p>
+            </div>
+            <div id="Open A Restaurant"> 
+              <% if current_user %>
+                <p>Restaurant Owner? <%= link_to "Add Your Restaurant Now!", new_restaurant_path %></p>
+              <% else %>
+                <p>Restaurant Owner? <%= link_to "Sign Up Now!", new_user_path %></p>
+              <% end %>
+            </div>
+          </footer>

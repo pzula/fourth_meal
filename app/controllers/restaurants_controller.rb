@@ -14,13 +14,11 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @user_id = current_user.id
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant_detail = RestaurantDetail.new(restaurant_detail_params)
     @hours = Hours.new
+    @restaurant_detail = RestaurantDetail.new(restaurant_detail_params)
     if @restaurant.save
-      @restaurant_detail.restaurant_id = @restaurant.id
-      @restaurant_detail.save
+      @restaurant.create_restaurant_detail(restaurant_detail_params)
       @hours.days.each do |day|
         hours_info = hours_params(day)
         @hours = Hours.new(hours_info)
@@ -34,8 +32,8 @@ class RestaurantsController < ApplicationController
       RestaurantMailer.restaurant_created(current_user, @restaurant).deliver
       RestaurantMailer.restaurant_created_admin_notification(@restaurant).deliver
     else
-      flash.notice = "#{@restaurant.name} application was incomplete!"
-      redirect_to restaurants_path
+      flash[:error] = "#{@restaurant.name} application was incomplete!"
+      render 'new'
     end
   end
 
@@ -108,10 +106,10 @@ class RestaurantsController < ApplicationController
   end
 
   def set_restaurant_admin
-    @admin = RestaurantEmployee.new
-    @admin.user_id = current_user.id
-    @admin.restaurant_id = @restaurant.id
-    @admin.admin = true
-    @admin.save
+    admin = RestaurantEmployee.new
+    admin.user_id = current_user.id
+    admin.restaurant_id = @restaurant.id
+    admin.admin = true
+    admin.save
   end
 end

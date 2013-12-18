@@ -4,6 +4,8 @@
     <tr>
       <td>
 
+
+
   <h3>American</h3>
   <% @restaurants.food_style("american").each do |restaurant| %>
    
@@ -15,12 +17,10 @@
 </td>
 <td>
 <h3>Asian</h3>
-  <% @restaurants.food_style("asian").each do |restaurant| %>
-   
+  <% @restaurants.food_style("asian").each do |restaurant| %> 
     <p class="listing restaurant-<%= restaurant.id %>"> 
       <%= link_to restaurant.name, restaurant_path(restaurant)%> 
     </h3>
-
     <% end %>
   </td>
   <td>
@@ -31,11 +31,10 @@
     <p class="listing restaurant-<%= restaurant.id %>"> 
       <%= link_to restaurant.name, restaurant_path(restaurant)%> 
     </h3>
-
-<% end %>
-</td></tr>
-<tr>
-  <td>
+    <% end %>
+  </td></tr>
+  <tr>
+    <td>
 
 <h3>Organic</h3>
   <% @restaurants.food_style("organic").each do |restaurant| %>
@@ -58,21 +57,18 @@
     <% end %>
   </td>
   <td>
-
-
 <h3>Vegan</h3>
   <% @restaurants.food_style("vegan").each do |restaurant| %>
    
     <p class="listing restaurant-<%= restaurant.id %>"> 
       <%= link_to restaurant.name, restaurant_path(restaurant)%> 
     </h3>
+    <% end %>
+  </td>
+    </tr>
+  </table>
 
-<% end %>
-</td>
-
-
-</tr>
-</table>
+          <%= paginate @restaurants%>
 
 </div>
 
