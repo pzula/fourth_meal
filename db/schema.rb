@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131218194912) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -39,8 +42,8 @@ ActiveRecord::Schema.define(version: 20131218194912) do
     t.datetime "updated_at"
   end
 
-  add_index "item_categories", ["category_id"], name: "index_item_categories_on_category_id"
-  add_index "item_categories", ["item_id"], name: "index_item_categories_on_item_id"
+  add_index "item_categories", ["category_id"], name: "index_item_categories_on_category_id", using: :btree
+  add_index "item_categories", ["item_id"], name: "index_item_categories_on_item_id", using: :btree
 
   create_table "items", force: true do |t|
     t.string   "title"
@@ -56,7 +59,7 @@ ActiveRecord::Schema.define(version: 20131218194912) do
     t.integer  "restaurant_id"
   end
 
-  add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id"
+  add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.string "name"
@@ -82,16 +85,16 @@ ActiveRecord::Schema.define(version: 20131218194912) do
     t.integer  "quantity",   default: 1
   end
 
-  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id"
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
+  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
 
   create_table "order_restaurants", force: true do |t|
     t.integer "order_id"
     t.integer "restaurant_id"
   end
 
-  add_index "order_restaurants", ["order_id"], name: "index_order_restaurants_on_order_id"
-  add_index "order_restaurants", ["restaurant_id"], name: "index_order_restaurants_on_restaurant_id"
+  add_index "order_restaurants", ["order_id"], name: "index_order_restaurants_on_order_id", using: :btree
+  add_index "order_restaurants", ["restaurant_id"], name: "index_order_restaurants_on_restaurant_id", using: :btree
 
   create_table "orders", force: true do |t|
     t.datetime "created_at"
@@ -104,8 +107,8 @@ ActiveRecord::Schema.define(version: 20131218194912) do
     t.integer  "restaurant_id"
   end
 
-  add_index "orders", ["customer_id", "customer_type"], name: "index_orders_on_customer_id_and_customer_type"
-  add_index "orders", ["status"], name: "index_orders_on_status"
+  add_index "orders", ["customer_id", "customer_type"], name: "index_orders_on_customer_id_and_customer_type", using: :btree
+  add_index "orders", ["status"], name: "index_orders_on_status", using: :btree
 
   create_table "restaurant_details", force: true do |t|
     t.integer "restaurant_id"
@@ -121,7 +124,7 @@ ActiveRecord::Schema.define(version: 20131218194912) do
     t.integer "delivery_range"
   end
 
-  add_index "restaurant_details", ["restaurant_id"], name: "index_restaurant_details_on_restaurant_id"
+  add_index "restaurant_details", ["restaurant_id"], name: "index_restaurant_details_on_restaurant_id", using: :btree
 
   create_table "restaurant_employees", force: true do |t|
     t.integer "restaurant_id"
