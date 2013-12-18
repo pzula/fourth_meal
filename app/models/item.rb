@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
   has_many :categories, through: :item_categories
   has_many :item_categories
   belongs_to :restaurant
-  has_attached_file :image, styles: { small: "200x200" }, bucket: 'platable'
+  has_attached_file :image, bucket: 'platable'
   validates_presence_of :title, :description, :price
   validates_presence_of :restaurant_id
 
