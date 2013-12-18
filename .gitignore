@@ -17,3 +17,6 @@
 
 # Ignore generated images
 /public/system/items/images/*
+
+# Ignore simplecov files
+coverage
