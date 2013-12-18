@@ -1,11 +1,9 @@
 <div>
-  <h1>Hungry? Order from one of these restaurants</h1>
-  <table id="homepage">
-    <tr>
-      <td>
-
-
-
+  
+<div class="jumbotron">
+<h1>Hungry? </h1>
+  <p class="">We offer online food ordering all over the country, any time. </p>
+</div>
   <h3>American</h3>
   <% @restaurants.food_style("american").each do |restaurant| %>
    
@@ -14,16 +12,14 @@
     </h3>
 
 <% end %>
-</td>
-<td>
+
 <h3>Asian</h3>
   <% @restaurants.food_style("asian").each do |restaurant| %> 
     <p class="listing restaurant-<%= restaurant.id %>"> 
       <%= link_to restaurant.name, restaurant_path(restaurant)%> 
     </h3>
     <% end %>
-  </td>
-  <td>
+
 
 <h3>Beverages</h3>
   <% @restaurants.food_style("beverages").each do |restaurant| %>
@@ -32,9 +28,7 @@
       <%= link_to restaurant.name, restaurant_path(restaurant)%> 
     </h3>
     <% end %>
-  </td></tr>
-  <tr>
-    <td>
+
 
 <h3>Organic</h3>
   <% @restaurants.food_style("organic").each do |restaurant| %>
@@ -44,8 +38,7 @@
     </h3>
 
     <% end %>
-  </td>
-  <td>
+
 
 <h3>Pizza</h3>
   <% @restaurants.food_style("pizza").each do |restaurant| %>
@@ -55,8 +48,7 @@
     </h3>
 
     <% end %>
-  </td>
-  <td>
+
 <h3>Vegan</h3>
   <% @restaurants.food_style("vegan").each do |restaurant| %>
    
@@ -64,11 +56,9 @@
       <%= link_to restaurant.name, restaurant_path(restaurant)%> 
     </h3>
     <% end %>
-  </td>
-    </tr>
-  </table>
 
-          <%= paginate @restaurants%>
+
+<%= paginate @restaurants%>
 
 </div>
 
