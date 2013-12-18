@@ -36,37 +36,39 @@
 <div id="recent_orders">
   <% if @user.orders %>
   <% @user.orders.each do |order| %>
-  <h3>Order Number: <%= order.id %> </h3>
-  <p><strong>Date Placed:</strong> <%= order.updated_at.to_s(:long) %></p>
-  <p><strong>User:</strong> <%= order.order_username(order.customer_id) %> </p>
-  <h5>Order Status: <%= order.status %></h5>
-    <table class="table">
-      <thead>
+    <% if order.not_empty? %>
+      <h3>Order Number: <%= order.id %> </h3>
+      <p><strong>Date Placed:</strong> <%= order.updated_at.to_s(:long) %></p>
+      <p><strong>User:</strong> <%= order.order_username(order.customer_id) %> </p>
+      <h5>Order Status: <%= order.status %></h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <td>Dish</td>
+              <td>Description</td>
+              <td>Price</td>
+              <td>Quantity</td>
+            </tr>
+          </thead>
+        <% order.items.each do |item| %>
         <tr>
-          <td>Dish</td>
-          <td>Description</td>
-          <td>Price</td>
-          <td>Quantity</td>
+          <% oi = OrderItem.where(order_id: order.id, item_id: item.id).first %>
+          <td><%= link_to item.title, item_path(item.id) %></td>
+          <td><%= item.description %></td>
+          <td><%= print_price(item.price) %></td>
+          <td> <%= oi.quantity %></td>
         </tr>
-      </thead>
-    <% order.items.each do |item| %>
-    <tr>
-      <% oi = OrderItem.where(order_id: order.id, item_id: item.id).first %>
-      <td><%= link_to item.title, item_path(item.id) %></td>
-      <td><%= item.description %></td>
-      <td><%= print_price(item.price) %></td>
-      <td> <%= oi.quantity %></td>
-    </tr>
+        <% end %>
+        <tr>
+          <td></td>
+          <td><h4>Order Total:</h4></td>
+          <td><h4><%= print_price(order.subtotal) %></h4></td>
+          <td></td>
+        </tr>
+        </table>
+        <hr>
+      <% end %>
     <% end %>
-    <tr>
-      <td></td>
-      <td><h4>Order Total:</h4></td>
-      <td><h4><%= print_price(order.subtotal) %></h4></td>
-      <td></td>
-    </tr>
-    </table>
-    <hr>
-  <% end %>
   <% end %>
 </div>
 
