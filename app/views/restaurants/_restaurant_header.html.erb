@@ -2,7 +2,7 @@
   <div class="container">
     <h1><%= @restaurant.name %></h1>
     <% if @restaurant.restaurant_detail %>
-      <%= @restaurant.restaurant_detail.description %>
+      <h4><%= @restaurant.restaurant_detail.description %></h4>
     <% end %>
     <% if @restaurant.get_hours(@restaurant) %>
     Open:

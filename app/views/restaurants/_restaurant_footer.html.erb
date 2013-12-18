@@ -1,18 +1,6 @@
 <nav>
   <br>
   <div class="container">
-    <br>
-    <% if @restaurant.get_hours(@restaurant) %>
-    Open:
-    <br>
-      |<% @restaurant.get_hours(@restaurant).each do |hour| %>
-      <% if hour.closed == false %>
-        <a href="#" class="btn btn-success btn-mini"><i class="icon-white icon-thumbs-up"></i></a>
-      <% else %>
-        <a href="#" class="btn btn-danger btn-mini"><i class="icon-white icon-thumbs-up"></i></a>
-      <% end %>
-      <%= hour.day %> |
-      <% end %>
-    <% end %>
+
   </div>
 </nav>
