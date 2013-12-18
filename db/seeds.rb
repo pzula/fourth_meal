@@ -349,7 +349,7 @@ restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
 
     def random_closings
       2.times do
-        hour = Hours.find(rand(50))
+        hour = Hours.find(rand(1..50))
         hour.closed = true
         hour.save
       end
