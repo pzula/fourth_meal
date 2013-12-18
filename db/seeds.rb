@@ -416,6 +416,7 @@ seed_users(10)
 
 
 #RESTAURANT USERS
+@size = User.all.size
 
 def seed_restaurant_users(rest_id, boolean_stocker, boolean_admin,  count) 
   count.times do |i|
@@ -429,10 +430,11 @@ def seed_restaurant_users(rest_id, boolean_stocker, boolean_admin,  count)
    end
 end
 
-@size = User.all.size
 
-restaurants.each { |r| seed_restaurant_users(r.id, true, false, 2) }
-restaurants.each { |r| seed_restaurant_users(r.id, false, true, 2) }
+@rest_size = Restaurant.all.count
+@rest_size.times  { |r| seed_restaurant_users(r, true, false, 2) }
+ @rest_size.times { |r| seed_restaurant_users(r, false, true, 2) }
+
 
 
 
