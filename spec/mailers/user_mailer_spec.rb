@@ -59,6 +59,32 @@ end
     end
   end
 
+  context "guest email" do
+    before(:each) do
+      item = FactoryGirl.create(:item)
+      @order = FactoryGirl.create(:guest_order)
+      @order_item = FactoryGirl.create(:order_item, item: item, order:@order)
+      @email = "guest_user@example.com"
+      UserMailer.guest_email(@email, @order).deliver
+    end
+  
+    it 'should send a order email' do
+      ActionMailer::Base.deliveries.count.should == 1
+    end
+
+    it 'renders the receiver email address for order email' do
+      ActionMailer::Base.deliveries.first.to.should == [@email]
+    end
+
+    it 'should set the subject to the correct subject for welcome email' do
+      ActionMailer::Base.deliveries.first.subject.should == 'Your Grub is Coming!'
+    end
+
+    it 'renders the sender email for welcome email' do
+    ActionMailer::Base.deliveries.first.from.should == ['customer_service@craveyard.com']
+    end
+  end
+
 end
 
 
