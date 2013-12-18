@@ -1,11 +1,14 @@
 <div id ="dashboard">
   <h2>Admin Dashboard</h2>
-
-  <%= link_to "Jump To Restaurants",  dashboard_path(:anchor =>"restaurants") %> <br>
-  <%= link_to "Jump To Menu Items", dashboard_path(:anchor =>"menu-items") %> <br>
-  <%= link_to "Jump To Categories List", dashboard_path(:anchor =>"categories-list") %> <br>
-  <%= link_to "Jump To Orders List", dashboard_path(:anchor =>"orders-list") %> <br>
-  <%= link_to "Jump To Users List", dashboard_path(:anchor =>"users-list") %>
+  <td>
+    <form>
+  <%= link_to "Jump To Restaurants",  dashboard_path(:anchor =>"restaurants"), {:class => "btn btn-info"  } %> <br>
+  <%= link_to "Jump To Menu Items", dashboard_path(:anchor =>"menu-items"), {:class => "btn btn-info"} %> <br>
+  <%= link_to "Jump To Categories List", dashboard_path(:anchor =>"categories-list"), {:class => "btn btn-info"} %> <br>
+  <%= link_to "Jump To Orders List", dashboard_path(:anchor =>"orders-list"), {:class => "btn btn-info"} %> <br>
+  <%= link_to "Jump To Users List", dashboard_path(:anchor =>"users-list"), {:class => "btn btn-info"} %>
+</td>
+</form>
 
   <div class="menu-items">
   <h3>Pending Restaurants</h3>
@@ -16,14 +19,13 @@
         <tr>
           <td><%= link_to pending.name, restaurant_path(pending) %> 
           <br>  </td> 
-          <td><%= link_to "Review Application", approve_path(pending), {:class => "btn btn-success" } %></td>
-        </br>
-          
+          <td><%= link_to "Accept/Deny Application", approve_path(pending), {:class => "btn btn-success" } %></td>
+        </br>     
         </tr>
       </div>
     <% end %>
   <% end %>
-  
+      <%= paginate @restaurants %> 
   <div class="menu-items">
   <h3>Menu Items</h3>
   <a id="menu-items"></a>
@@ -41,6 +43,8 @@
   </table>
   </div>
 
+      <%= paginate @items%>
+
   <div class="categories-list">
     <h3>Categories</h3>
     <a id="categories-list"></a>
@@ -56,13 +60,12 @@
       <% end %>
   </div>
   </table>
-
   <div class="orders-list">
     <h3>Orders</h3>
     <a id="orders-list"></a>
     <%= link_to "Order History", orders_path %>
   </div>
-
+  <%= paginate @orders %>
   <div class="users-list">
     <h3>Users</h3>
     <a id="users-list"></a>
@@ -71,8 +74,9 @@
       <tr>
         <td><%= link_to user.username, user_path(user.id) %></td>
       </tr>
-     <% end %>
-    </table>
+     <% end %>     
+   </table>     
   </div>
-
+   <%= paginate @users %>
 </div>
+
