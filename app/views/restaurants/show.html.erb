@@ -1,5 +1,6 @@
 <%= render 'restaurants/restaurant_header' %>
 <div id="items">
+<% cache @items do %>
   <ul>
     <% @items.each do |item| %>
     <li id="item_<%= item.id %>" class="item">
@@ -13,15 +14,18 @@
        <p><%=print_price(item.price) %></p>
        <ul class="categories">
          <li class="glyphicon glyphicon-tag category"></li>
+      <% cache item.categories do %>
          <% item.categories.each do |category| %>
          <li class="category"><%= link_to category.name, items_path(Categories: category.id) %></li>
           <% end %>
         </ul>
+      <% end %>
         <%= button_to "Add to Order", add_item_path(item.id), {:class => "btn btn-success" } %>
     </div>
     </div>
     </li>
     <% end %>
+<% end %>
   </ul>
 </div>
 
