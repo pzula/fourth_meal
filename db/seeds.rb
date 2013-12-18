@@ -347,10 +347,15 @@ restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
         end
       end
 
-    restaurants.each do |rest|
-      restaurant_hours(rest)
+    def random_closings
+      2.times do
+        hour = Hours.find(rand(50))
+        hour.closed = true
+        hour.save
+      end
     end
 
+    
 
   def clone_restaurant(restaurant, locations, count)
     count.times do |i|
@@ -367,6 +372,12 @@ restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
 
   restaurants.each {|r| clone_restaurant(r, cities, 10) }
   restaurants.each {|r| clone_restaurant(r, cities, 5) }
+
+  restaurants.each do |rest|
+      restaurant_hours(rest)
+      random_closings
+  end
+
 
 
 
@@ -467,7 +478,7 @@ def seed_items(restaurant, menu, count)
     begin
       puts "Seeding item number #{i} for #{restaurant.name}..."
       title = menu[rand(5)] + "_#{i}"
-      desc = "#{title} + . It's so good!"
+      desc = "#{title} +  It's so good!"
       restaurant_id = restaurant.id
       item = Item.new( 
         title: title,
