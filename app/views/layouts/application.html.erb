@@ -16,15 +16,15 @@
           <div class="controls">
               
               <% if @order %>
-                <%= link_to "My Order (#{@order.total_items})", order_path(@order.id), {:class => "btn btn-default"} %>  |
+                <%= link_to "My Order (#{@order.total_items})", order_path(@order.id), {:class => "btn btn-default"} %>  
               <% end %>
-            <%= link_to "Stores", static_pages_home_path, {:class => "btn btn-primary"} %>
+            <%= link_to "Restaurants", static_pages_home_path, {:class => "btn btn-primary"} %>
             <% if current_user %>
             <%= link_to "My Account", user_path(current_user), {:class => "btn btn-info"} %>
               <%= link_to "Logout", logout_path, {:class => "btn btn-warning"} %>
             <% else %>
-              <%= link_to "Login", login_path, {:class => "btn btn-success login"} %>
-              <%= link_to "Sign Up", new_user_path, {:class => "btn btn-primary sign-up"} %>
+              <%= link_to "Login", login_path, {:class => "btn btn-primary login"} %>
+              <%= link_to "Sign Up", new_user_path, {:class => "btn btn-success sign-up"} %>
             <% end %>
           </div>
         <div class="container">

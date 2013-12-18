@@ -1,28 +1,35 @@
 
-#homepage tr td {
-  width:20%;
-  padding-right: 10%;
-  padding-left:2%;
-  border-right: 5px dotted white;
-}
-
-#homepage tr td:last-child {
-  border-right:none;
-}
-
-#homepage tr td:first-child {
-  padding-left:0px;
-}
-
-#homepage tr {
-  margin-bottom:10px;
-  border-bottom: 5px dotted white;
-}
 
 .jumbotron h1 {
 	color:#000;
 }
 
 .jumbotron p {
-	color:#ccc;
+	color:#666;
+}
+
+ul.food-types {
+	list-style:none;
+	padding:0;
+	margin:0;
+	overflow:hidden;
+}
+
+ul.food-types li {
+	border:1px solid #ccc;
+	border-radius:5px;
+	width:15%;
+	padding:1%;
+	float:left
+}
+
+ul.food-types li h2 {
+	margin-top:10px;
+	margin-bottom:0;
+	text-align:center;
+}
+
+.centered-icon {
+	margin:0 auto;
+	display:block;
 }
