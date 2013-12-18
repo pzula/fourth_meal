@@ -412,14 +412,11 @@ def seed_users(count)
     User.create(
       username: "user_#{i}",
       email: "user_#{i}@example.com",
-      password: "password",)
+      password: "password")
   end
 end
 
-seed_users(100)
-seed_users(1000)
-
-
+seed_users(100000)
 
 
 #RESTAURANT USERS
@@ -430,7 +427,7 @@ def seed_restaurant_users(rest_id, boolean_stocker, boolean_admin,  count)
     begin "Seeding number #{i} for restaurant #{rest_id}..."
       RestaurantEmployee.create!(
         restaurant_id: rest_id,
-        user_id: User.all[rand(@size)],
+        user_id: User.all[rand(1..@size)],
         stocker: boolean_stocker,
         admin: boolean_admin )
      end
@@ -537,11 +534,8 @@ def seed_categories(restaurant, category_name, count)
   end 
 end
 
-db_restaurants.each { |rest| seed_categories(rest, cats[rand(10)], 3) }
+db_restaurants.each { |rest| seed_categories(rest, cats[rand(9)], 3) }
 
-#ITEM CATEGORIES
-
-# db_restaurants = Restaurant.all
 
 def seed_item_categories(restaurant, count)
   count.times do |i|
