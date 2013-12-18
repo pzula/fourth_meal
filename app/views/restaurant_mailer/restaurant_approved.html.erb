@@ -6,6 +6,6 @@
   <body>
   <h1>Your Craveyard Application for <%=@restaurant_name%> was Approved!</h1>
   <h2>Congratulations!</h2>
-  <p>You can check out your new restaurant at: <%= restaurant_path(@restaurant) %></p>
+  <p>You can check out your new restaurant <%= link_to "here", @url %></p>
   </body>
 </html>
