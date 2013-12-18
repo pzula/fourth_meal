@@ -4,12 +4,12 @@ class UsersController < ApplicationController
   before_action :require_admin, only: [:index, :dashboard]
 
   def dashboard
-    @items = Item.all
+    @items = Item.all.page(params[:page]).per(5)
     @categories = Category.all
-    @orders = Order.all
-    @users = User.all
-    @restaurants = Restaurant.all
-    @pending_restaurants = Restaurant.where(status: "pending")
+    @orders = Order.all.page(params[:page]).per(5)
+    @users = User.all.page(params[:page]).per(5)
+    @restaurants = Restaurant.all.page(params[:page]).per(5)
+    @pending_restaurants = Restaurant.where(status: "pending").page(params[:page]).per(5)
   end
 
   def index

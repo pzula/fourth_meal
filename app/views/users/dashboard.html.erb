@@ -17,12 +17,12 @@
           <td><%= link_to pending.name, restaurant_path(pending) %> 
           <br>  </td> 
           <td><%= link_to "Review Application", approve_path(pending), {:class => "btn btn-success" } %></td>
-        </br>
-          
+        </br>     
         </tr>
       </div>
     <% end %>
   <% end %>
+      <%= paginate @restaurants %>
   
   <div class="menu-items">
   <h3>Menu Items</h3>
@@ -40,6 +40,8 @@
   <% end %>
   </table>
   </div>
+
+      <%= paginate @items%>
 
   <div class="categories-list">
     <h3>Categories</h3>
@@ -62,6 +64,8 @@
     <a id="orders-list"></a>
     <%= link_to "Order History", orders_path %>
   </div>
+  <%= paginate @orders %>
+
 
   <div class="users-list">
     <h3>Users</h3>
@@ -72,7 +76,10 @@
         <td><%= link_to user.username, user_path(user.id) %></td>
       </tr>
      <% end %>
-    </table>
-  </div>
 
+      
+   </table>     
+  </div>
+   <%= paginate @users %>
 </div>
+
