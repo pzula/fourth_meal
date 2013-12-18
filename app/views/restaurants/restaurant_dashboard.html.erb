@@ -1,4 +1,10 @@
 <h1><%= @restaurant.name %></h1>
+<hr>
+
+<h3> Edit Details </h3>
+<%= render partial: 'small_form' %>
+<hr>
+
  <h3>Current Employees</h3>
 <% if @restaurant.restaurant_employees.count > 1 %>
   <% @restaurant.restaurant_employees.each do |emp| %>
@@ -11,14 +17,10 @@
   <% end %>
 <% end %>
 
-<h3> Total Orders for Your Restaurant</h3>
-<%= @restaurant.order_restaurants.count %>
-
-<h3> Edit Details </h3>
-<%= render partial: 'small_form' %>
-
 <h3> Hire Employees </h3>
 <%= render partial: "employee_form" %>
+
+<hr>
 
 <div class="menu-items">
   <h3>Menu Items</h3>
@@ -35,4 +37,6 @@
     </tr>
   <% end %>
   </table>
+  <hr>
+  <%= render partial: 'restaurant_orders' %>
 </div>

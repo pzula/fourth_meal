@@ -89,6 +89,7 @@ class RestaurantsController < ApplicationController
     @items = @restaurant.items
     @all_hours = @restaurant.get_hours(@restaurant)
     @hours = @all_hours.first
+    @orders = @restaurant.orders.page(params[:page]).per(5)
   end
 
   private
