@@ -48,4 +48,25 @@ class Order < ActiveRecord::Base
   def order_username(customer_id)
     User.find(customer_id).username
   end
+
+  def place
+    update_status("completed")
+    notifier.order_placed(customer, self)
+  end
+
+  def notifier
+    USER_NOTIFIER.new
+  end
+end
+
+class UserNotifierEmail
+  def order_placed(customer, self)
+    UserMailer.order_email(customer, self).deliver
+  end
+end
+
+class UserNotifierFake
+  def order_placed(customer, self)
+    true
+  end
 end

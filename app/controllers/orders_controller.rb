@@ -15,7 +15,9 @@ class OrdersController < ApplicationController
 
   def show
     @order = current_order
-    @restaurants = @order.items.map(&:restaurant).uniq
+    #@restaurants = @order.items.map(&:restaurant).uniq
+
+    @grouped_order_items = @order.order_items.group_by{|oi| oi.restaurant}
   end
 
   def checkout_one_restaurant
@@ -50,9 +52,8 @@ class OrdersController < ApplicationController
   end
 
   def place_order
-    current_order.update_status("completed")
+    current_order.place
     flash.notice = "Your order is successfull"
-    UserMailer.order_email(current_user, current_user.orders.last).deliver
     create_order
     redirect_to user_path(current_user)
   end
