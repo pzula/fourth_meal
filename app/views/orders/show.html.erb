@@ -1,7 +1,7 @@
 <div id="current-order">
 <h1>Current Orders</h1>
 
-  <% @restaurants.each do |restaurant| %>
+  <% @grouped_order_item.each do |restaurant, order_items| %>
     
       <h3 class="restaurant-<%= restaurant.id %>"> 
         <%= link_to restaurant.name, restaurant_path(restaurant)%> 
@@ -18,8 +18,7 @@
             </tr>
           </thead>
          <tbody>
-        <% @order_items = @order.find_order_items_by_restaurant_id(@order, restaurant.id) %>
-        <% @order_items.each do |order_item| %>
+        <% order_items.each do |order_item| %>
           <% item = order_item.item %>
           <tr id="item_<%= item.id %>">
             <td class="item-title"><%= link_to item.title, item_path(item.id)  %></td>

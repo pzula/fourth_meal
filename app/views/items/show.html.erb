@@ -11,9 +11,10 @@
       <li class="category"><%= category.name %></li>
   	<% end %>
   </ul>
+<% end %>
   <% if @order %>
   <%= button_to "Add to Order", add_item_path(@item.id), {class: "btn btn-success"} %>
   <% else %>
   <%= link_to "Add to Order", new_order_path(:item_id => @item.id), {:class => "btn btn-success"} %>
   <% end %>
-<% end %>
+

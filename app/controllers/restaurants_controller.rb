@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    @restaurant = Restaurant.new
+    @restaurant = current_user.restaurants.new
     @restaurant_detail = RestaurantDetail.new
     @hours = Hours.new
   end
@@ -54,7 +54,8 @@ class RestaurantsController < ApplicationController
   def update
     if params[:restaurant][:status]
       @status = params[:restaurant][:status]
-      @restaurant = Restaurant.find(params[:id])
+      #@restaurant = Restaurant.find(params[:id])
+      @restaurant = current_user.restaurants.find(params[:id])
       @restaurant.status = @status
       restaurant_admin = @restaurant.restaurant_employees.first
       @user = restaurant_admin.user
