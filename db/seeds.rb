@@ -324,11 +324,7 @@ coltandgray.restaurant_employees.create(user_id:6, admin: true)
 cg = RestaurantDetail.create(description: "All the tasty parts", restaurant_id: coltandgray.id )
 
 restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
-# 2.times do |n|
-# restaurants.each do |details|
-#   Resque.enqueue(RestaurantBuilder, details.name, details.url_slug, details.status, details.food_type, n )
-#   end
-# end
+
 
   def random_hour(from, to)
     (Date.today + rand(from..to).hour + rand(0..60).minutes).to_datetime
