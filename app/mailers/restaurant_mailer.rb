@@ -22,6 +22,7 @@ class RestaurantMailer < ActionMailer::Base
   def restaurant_approved(user, restaurant)
     @user = user
     @restaurant = restaurant
+    @url = "http://fourth-meal-group7.herokuapp.com/restaurants/#{@restaurant.id}"
     @restaurant_name = @restaurant.name
     mail(to: @user.email, subject: "Craveyard: Your Restaurant: #{@restaurant.name} Was Approved!")
   end
