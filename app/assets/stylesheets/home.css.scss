@@ -1,6 +1,6 @@
 
 
-.jumbotron h1 {
+.jumbotron h1, h2, h3 {
 	color:#000;
 }
 
@@ -22,6 +22,10 @@ ul.food-types li {
 	padding:1%;
 	float:left;
 	margin-right:1.65%;
+}
+
+ul.food-types li a, ul.food-types li a h2 {
+  color:#fff;
 }
 
 ul.food-types li.last-child {

@@ -1,3 +1,4 @@
+require 'pry'
 class Restaurant < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 3}
   validates :status, presence: true
@@ -38,6 +39,12 @@ class Restaurant < ActiveRecord::Base
   def open?
     Hours.where(closed:false).each do |hour|
       hour.restaurant
+    end
+  end
+
+  def description
+    if restaurant_detail
+      return self.restaurant_detail.description
     end
   end
 end
