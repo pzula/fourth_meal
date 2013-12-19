@@ -45,63 +45,6 @@
 </ul>
 
 
-
-  <h3>American</h3>
-  <% @restaurants.food_style("american").each do |restaurant| %>
-   
-    <p class="listing restaurant-<%= restaurant.id %>"> 
-      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
-    </h3>
-
-<% end %>
-
-<h3>Asian</h3>
-  <% @restaurants.food_style("asian").each do |restaurant| %> 
-    <p class="listing restaurant-<%= restaurant.id %>"> 
-      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
-    </h3>
-    <% end %>
-
-
-<h3>Beverages</h3>
-  <% @restaurants.food_style("beverages").each do |restaurant| %>
-   
-    <p class="listing restaurant-<%= restaurant.id %>"> 
-      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
-    </h3>
-    <% end %>
-
-
-<h3>Organic</h3>
-  <% @restaurants.food_style("organic").each do |restaurant| %>
-   
-    <p class="listing restaurant-<%= restaurant.id %>"> 
-      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
-    </h3>
-
-    <% end %>
-
-
-<h3>Pizza</h3>
-  <% @restaurants.food_style("pizza").each do |restaurant| %>
-   
-    <p class="listing restaurant-<%= restaurant.id %>"> 
-      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
-    </h3>
-
-    <% end %>
-
-<h3>Vegan</h3>
-  <% @restaurants.food_style("vegan").each do |restaurant| %>
-   
-    <p class="listing restaurant-<%= restaurant.id %>"> 
-      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
-    </h3>
-    <% end %>
-
-
-<%= paginate @restaurants%>
-
 </div>
 
 

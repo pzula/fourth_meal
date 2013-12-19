@@ -1,0 +1,9 @@
+<h3><%= @restaurants.first.food_type %></h3>
+
+<% @restaurants.each do |restaurant| %>
+    <p class="listing restaurant-<%= restaurant.id %>"> 
+      <%= link_to restaurant.name, restaurant_path(restaurant)%> 
+    </h3>
+<% end %>
+
+<%= paginate @restaurants%>
