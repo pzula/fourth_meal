@@ -252,7 +252,7 @@
 # 2 stockers per restaurant
 # 2 platform administrators
 
-###Regions######   
+###Regions######
 
 #   denver = Location.create(name: "Denver")
 #   dc = Location.create(name: "Washington, D.C.")
@@ -336,7 +336,7 @@
 #       @days.each do |day|
 #         h = Hours.new
 #         h.restaurant_id = rest.id
-#         h.day = day 
+#         h.day = day
 #         start_at = random_hour(4, 10)
 #         end_at = random_hour(11, 24)
 #         h.save
@@ -351,7 +351,7 @@
 #       end
 #     end
 
-    
+
 
 #   def clone_restaurant(restaurant, locations, count)
 #     count.times do |i|
@@ -379,31 +379,31 @@
 
 # #USERS
 
-# frank = User.create(email: "demo+franklin@jumpstartlab.com", 
-#   username: "", 
+# frank = User.create(email: "demo+franklin@jumpstartlab.com",
+#   username: "",
 #   password: "password",
 #   :admin => true)
 
-# jeff = User.create(email: "demo+jeff@jumpstartlab.com", 
+# jeff = User.create(email: "demo+jeff@jumpstartlab.com",
 #   username: "j3",
 #   password: "password",
 #   :admin => true)
 
-# katrina = User.create(email: "demo+katrina@jumpstartlab.com", 
-#   username: "kytrinyx", 
+# katrina = User.create(email: "demo+katrina@jumpstartlab.com",
+#   username: "kytrinyx",
 #   password: "password",
 #   :admin => true)
 
-# meeks = User.create(email: "rrgayhart@gmail.com", 
-#   username: "meek", 
+# meeks = User.create(email: "rrgayhart@gmail.com",
+#   username: "meek",
 #   password: "password")
 
 # zula = User.create(email: "pzula@persazula.com",
-#   username: "zulinator", 
+#   username: "zulinator",
 #   password: "password")
 
-# tyler = User.create(email: "tyler.long@gmail.com", 
-#   username: "TeaPane", 
+# tyler = User.create(email: "tyler.long@gmail.com",
+#   username: "TeaPane",
 #   password: "password")
 
 # def seed_users(count)
@@ -422,7 +422,7 @@
 #RESTAURANT USERS
 @size = User.all.size
 
-def seed_restaurant_users(rest_id, boolean_stocker, boolean_admin,  count) 
+def seed_restaurant_users(rest_id, boolean_stocker, boolean_admin,  count)
   count.times do |i|
     begin "Seeding number #{i} for restaurant #{rest_id}..."
       RestaurantEmployee.create!(
@@ -473,7 +473,7 @@ def seed_items(restaurant, menu, count)
       title = menu[rand(5)] + "_#{i}"
       desc = "#{title} +  It's so good!"
       restaurant_id = restaurant.id
-      item = Item.new( 
+      item = Item.new(
         title: title,
         description: desc,
         price: rand(20) + 1,
@@ -487,6 +487,15 @@ def seed_items(restaurant, menu, count)
   end
 end
 
+ono = Restaurant.find(1)
+platable = Restaurant.find(2)
+pho = Restaurant.find(3)
+meeka = Restaurant.find(4)
+persa = Restaurant.find(5)
+dpz = Restaurant.find(6)
+teapane = Restaurant.find(7)
+coltandgray = Restaurant.find(8)
+
 restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
 ono_menu = ["Taco Gumbo", "Steak Burrito", "Breakfast Burrito", "Taco Salad", "Signature Vegetable Burrito"]
 platable_menu = ["Interstate Mac N Cheese", "Smores", "Chitlins", "Corn Bread", "Spicy Black Bean Burger"]
@@ -497,7 +506,7 @@ teapane_menu = ["Foie Gras", "Earl Grey", "Salade Perigourdine", "Braised lamb n
 dpz_menu = ["Pepperoni", "Ham and Pineapple", "Veggy special", "Garden Salad", "Soda Pop"]
 coltandgray_menu = ["Charcuterie", "Daily Pork Special", "Burger", "Manhattan", "Negroni"]
 
-menu_lookup = { ono => ono_menu, 
+menu_lookup = { ono => ono_menu,
                 platable => platable_menu,
                 pho => pho_menu,
                 persa => persa_menu,
@@ -506,12 +515,12 @@ menu_lookup = { ono => ono_menu,
                 dpz => dpz_menu,
                 coltandgray => coltandgray_menu}
 
- menu_lookup = [ono_menu, platable_menu, pho_menu, persa_menu, meeka_menu, teapane_menu, dpz_menu, coltandgray_menu]               
+ menu_lookup = [ono_menu, platable_menu, pho_menu, persa_menu, meeka_menu, teapane_menu, dpz_menu, coltandgray_menu]
 
 db_restaurants.each do |rest|
   menu = menu_lookup.first
     menu_lookup.rotate!
-    seed_items(rest, menu, 20) 
+    seed_items(rest, menu, 20)
   end
 
 
@@ -520,7 +529,7 @@ db_restaurants.each do |rest|
 
 #CATEGORIES
 
-cats = ["Entrees", "Appetizers", "Dessert", "Beverages", "Specialties", 
+cats = ["Entrees", "Appetizers", "Dessert", "Beverages", "Specialties",
   "Apéritifs", "Digestifs", "Vegetarian", "Salads", "Kids Menu"]
 
 def seed_categories(restaurant, category_name, count)
@@ -529,9 +538,9 @@ def seed_categories(restaurant, category_name, count)
       puts "Creating category #{i} for #{restaurant.name}..."
       Category.create(name: category_name)
                                   #restaurant_id: restaurant.id)
-   
+
     end
-  end 
+  end
 end
 
 db_restaurants.each { |rest| seed_categories(rest, cats[rand(9)], 3) }
