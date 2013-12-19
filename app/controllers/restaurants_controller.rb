@@ -94,6 +94,8 @@ class RestaurantsController < ApplicationController
 
   def load_restaurants_by_type
     @restaurants = Restaurant.where(:food_type => params[:food_type]).page(params[:page]).per(10)
+    filtered = Restaurant.where(:food_type => params[:food_type])
+    @restaurants_count = filtered.count
   end
 
   private

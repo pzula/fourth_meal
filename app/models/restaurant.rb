@@ -46,4 +46,8 @@ class Restaurant < ActiveRecord::Base
       return self.restaurant_detail.description
     end
   end
+
+  def count
+    where(:food_type => params[:food_type]).count
+  end
 end
