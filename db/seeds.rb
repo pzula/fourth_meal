@@ -423,14 +423,14 @@
 @size = User.all.size
 
 def seed_restaurant_users(rest_id, boolean_stocker, boolean_admin,  count)
+  users = User.all
   count.times do |i|
-    begin "Seeding number #{i} for restaurant #{rest_id}..."
-      RestaurantEmployee.create!(
-        restaurant_id: rest_id,
-        user_id: User.all[rand(1..@size)],
-        stocker: boolean_stocker,
-        admin: boolean_admin )
-     end
+    puts "Seeding number #{i} for restaurant #{rest_id}..."
+    RestaurantEmployee.create!(
+      restaurant_id: rest_id,
+      user_id: users.sample,
+      stocker: boolean_stocker,
+      admin: boolean_admin )
    end
 end
 
