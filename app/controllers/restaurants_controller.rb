@@ -26,7 +26,7 @@ class RestaurantsController < ApplicationController
         @hours.day = day
         @hours.save
       end
-      redirect_to restaurants_path
+      redirect_to user_path(current_user.id)
       flash.notice = "#{@restaurant.name} was successfully created!"
       set_restaurant_admin
       RestaurantMailer.restaurant_created(current_user, @restaurant).deliver
@@ -71,7 +71,7 @@ class RestaurantsController < ApplicationController
       @restaurant = Restaurant.find(params[:id])
       @restaurant.update(restaurant_params)
     end
-    redirect_to restaurants_path
+    redirect_to user_path(@user)
   end
 
   def approve
