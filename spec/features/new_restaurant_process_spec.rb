@@ -43,7 +43,6 @@ describe "Customer on creating a restaurant", :type => :feature do
 
   it "see the new restaurant in my dashboard" do
     fill_in "Name", with: "Test Restaurant"
-    #fill_in "Url slug", with: "test-restaurant"
     fill_in "Food type", with: "Italian"
     click_button "Apply for Restaurant Approval"
     visit user_path(@user)
