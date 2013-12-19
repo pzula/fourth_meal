@@ -425,7 +425,7 @@
 def seed_restaurant_users(rest_id, boolean_stocker, boolean_admin, users)
 
   users.each do |user|
-    puts "Seeding number #{i} for restaurant #{rest_id}..."
+    puts "Seeding #{user.inspect} for restaurant #{rest_id}..."
     RestaurantEmployee.create!(
       restaurant_id: rest_id,
       user_id: user.id,
@@ -434,7 +434,7 @@ def seed_restaurant_users(rest_id, boolean_stocker, boolean_admin, users)
    end
 end
 
-users = User.all
+users = User.limit(1000)
 @rest_size = Restaurant.all.count
 @rest_size.times { |r| seed_restaurant_users(r, true, false, [User.sample, User.sample]) }
 @rest_size.times { |r| seed_restaurant_users(r, false, true, [User.sample, User.sample]) }
