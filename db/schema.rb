@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131218194912) do
+ActiveRecord::Schema.define(version: 20131219200609) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20131218194912) do
     t.time    "end_at"
     t.boolean "closed",        default: false
   end
+
+  add_index "hours", ["restaurant_id"], name: "index_hours_on_restaurant_id"
 
   create_table "item_categories", force: true do |t|
     t.integer  "item_id"
@@ -130,6 +132,9 @@ ActiveRecord::Schema.define(version: 20131218194912) do
     t.boolean "admin",         default: false
   end
 
+  add_index "restaurant_employees", ["restaurant_id"], name: "index_restaurant_employees_on_restaurant_id"
+  add_index "restaurant_employees", ["user_id"], name: "index_restaurant_employees_on_user_id"
+
   create_table "restaurants", force: true do |t|
     t.string   "name"
     t.string   "url_slug"
@@ -139,6 +144,8 @@ ActiveRecord::Schema.define(version: 20131218194912) do
     t.string   "food_type"
     t.integer  "location_id"
   end
+
+  add_index "restaurants", ["location_id"], name: "index_restaurants_on_location_id"
 
   create_table "users", force: true do |t|
     t.string   "username",                         null: false
