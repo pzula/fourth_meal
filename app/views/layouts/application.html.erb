@@ -14,11 +14,11 @@
       <nav class="navbar-inner">
           <a href="/" class="logo"><img src="/images/craveyard-chalk.png"></a>
           <div class="controls">
-              
+
               <% if @order %>
-                <%= link_to "My Order (#{@order.total_items})", order_path(@order.id), {:class => "btn btn-default"} %>  
+                <%= link_to "My Order (#{@order.total_items})", order_path(@order.id), {:class => "btn btn-default"} %>
               <% end %>
-            <%= link_to "Restaurants", static_pages_home_path, {:class => "btn btn-primary"} %>
+            <%= link_to "Restaurants", root_path, {:class => "btn btn-primary"} %>
             <% if current_user %>
             <%= link_to "My Account", user_path(current_user), {:class => "btn btn-info"} %>
               <%= link_to "Logout", logout_path, {:class => "btn btn-warning"} %>
