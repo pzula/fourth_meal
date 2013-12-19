@@ -1,0 +1,14 @@
+<div class="jumbotron">
+  <h1>We have <%= @restaurants.count %> <%= @restaurants.first.food_type.capitalize %> Restaurants</h1>
+  <p>Give one a try!</p>
+</div>
+
+<ul id="restaurant-types">
+<% @restaurants.each do |restaurant| %>
+    <li class="listing"> 
+      <%= link_to restaurant.name, restaurant_path(restaurant)%>
+      <%= restaurant.description  %>
+    </li>
+<% end %>
+</ul>
+<%= paginate @restaurants%>

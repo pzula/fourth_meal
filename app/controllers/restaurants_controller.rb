@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :require_login, except: [:index, :show, :restaurant_admin]
+  before_action :require_login, except: [:index, :show, :restaurant_admin, :load_restaurants_by_type]
   before_action :require_admin, only: [:approve]
 
   def index
@@ -92,10 +92,18 @@ class RestaurantsController < ApplicationController
     @orders = @restaurant.orders.page(params[:page]).per(5)
   end
 
+  def load_restaurants_by_type
+    @restaurants = Restaurant.where(:food_type => params[:food_type]).page(params[:page]).per(10)
+  end
+
   private
 
   def update_status
     params.require(:restaurant).permit(:status)
+  end
+
+  def type_params
+    params.require(:restaurant).permit(:food_type)
   end
 
   def restaurant_params
