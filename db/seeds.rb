@@ -1,6 +1,5 @@
  require 'open-uri'
 
-
 # The data:
 # At least 10,000 restaurants
 # Broken into 30 regions
@@ -134,69 +133,67 @@
 #   end
 
 
+#USERS
+
+frank = User.create(email: "demo+franklin@jumpstartlab.com",
+  username: "",
+  password: "password",
+  :admin => true)
+
+jeff = User.create(email: "demo+jeff@jumpstartlab.com",
+  username: "j3",
+  password: "password",
+  :admin => true)
+
+katrina = User.create(email: "demo+katrina@jumpstartlab.com",
+  username: "kytrinyx",
+  password: "password",
+  :admin => true)
+
+meeks = User.create(email: "rrgayhart@gmail.com",
+  username: "meek",
+  password: "password")
+
+zula = User.create(email: "pzula@persazula.com",
+  username: "zulinator",
+  password: "password")
+
+tyler = User.create(email: "tyler.long@gmail.com",
+  username: "TeaPane",
+  password: "password")
+
+def seed_users(count)
+  count.times do |i|
+    puts "Creating user #{i}"
+    User.create(
+      username: "user_#{i}",
+      email: "user_#{i}@example.com",
+      password: "password")
+  end
+end
+
+#seed_users(100000)
 
 
-# #USERS
+#RESTAURANT USERS
+@size = User.all.size
 
-# frank = User.create(email: "demo+franklin@jumpstartlab.com",
-#   username: "",
-#   password: "password",
-#   :admin => true)
+def seed_restaurant_users(rest_id, boolean_stocker, boolean_admin, users)
 
-# jeff = User.create(email: "demo+jeff@jumpstartlab.com",
-#   username: "j3",
-#   password: "password",
-#   :admin => true)
+  users.each do |user|
+    puts "Seeding #{user.inspect} for restaurant #{rest_id}..."
+    RestaurantEmployee.create!(
+      restaurant_id: rest_id,
+      user_id: user.id,
+      stocker: boolean_stocker,
+      admin: boolean_admin )
+   end
+end
 
-# katrina = User.create(email: "demo+katrina@jumpstartlab.com",
-#   username: "kytrinyx",
-#   password: "password",
-#   :admin => true)
-
-# meeks = User.create(email: "rrgayhart@gmail.com",
-#   username: "meek",
-#   password: "password")
-
-# zula = User.create(email: "pzula@persazula.com",
-#   username: "zulinator",
-#   password: "password")
-
-# tyler = User.create(email: "tyler.long@gmail.com",
-#   username: "TeaPane",
-#   password: "password")
-
-# def seed_users(count)
-#   count.times do |i|
-#     puts "Creating user #{i}"
-#     User.create(
-#       username: "user_#{i}",
-#       email: "user_#{i}@example.com",
-#       password: "password")
-#   end
-# end
-
-# seed_users(100000)
-
-
-# #RESTAURANT USERS
-# @size = User.all.size
-
-# def seed_restaurant_users(rest_id, boolean_stocker, boolean_admin, users)
-
-#   users.each do |user|
-#     puts "Seeding #{user.inspect} for restaurant #{rest_id}..."
-#     RestaurantEmployee.create!(
-#       restaurant_id: rest_id,
-#       user_id: user.id,
-#       stocker: boolean_stocker,
-#       admin: boolean_admin )
-#    end
-# end
-
-# users = User.limit(1000)
-# @rest_size = Restaurant.limit(1000)
-# # @rest_size.times { |r| seed_restaurant_users(r, true, false, [users.sample, users.sample]) }
-# @rest_size.times { |r| seed_restaurant_users(r, false, true, [users.sample, users.sample]) }
+users = User.limit(10)
+@rest_size = Restaurant.limit(10)
+# @rest_size.times { |r| seed_restaurant_users(r, true, false, [users.sample, users.sample]) }
+@rest_size.times { |r| seed_restaurant_users(r, false, true, [users.sample, users.sample]) }
 
 
 
@@ -204,83 +201,83 @@
 
 #ITEMS
 
-# db_restaurants = Restaurant.all
+db_restaurants = Restaurant.all
 
-#   @pictures = ["https://platable.s3.amazonaws.com/craveyard/arugala-salad.png",
-#     "https://platable.s3.amazonaws.com/craveyard/berry-trifle.png",
-#     "https://platable.s3.amazonaws.com/craveyard/chicken-fried-chicken.jpeg",
-#     "https://platable.s3.amazonaws.com/craveyard/classic-burger.png",
-#     "https://platable.s3.amazonaws.com/craveyard/coffee-cake.png",
-#     "https://platable.s3.amazonaws.com/craveyard/french-omlettes.png",
-#     "https://platable.s3.amazonaws.com/craveyard/french-toast.png",
-#     "https://platable.s3.amazonaws.com/craveyard/half-grapefruit.jpeg",
-#     "https://platable.s3.amazonaws.com/craveyard/hoe-platter.png",
-#     "https://platable.s3.amazonaws.com/craveyard/house-made-veggie-burger.png",
-#     "https://platable.s3.amazonaws.com/craveyard/ice-box-cake.png",
-#     "https://platable.s3.amazonaws.com/craveyard/monte-cristo.png",
-#     "https://platable.s3.amazonaws.com/craveyard/porterhouse.jpeg",
-#     "https://platable.s3.amazonaws.com/craveyard/seared-ribeye.png",
-#     "https://platable.s3.amazonaws.com/craveyard/smores.png",
-#     "https://platable.s3.amazonaws.com/craveyard/spoon-bread.jpeg",
-#     "https://platable.s3.amazonaws.com/craveyard/street-tacos.png",
-#     "https://platable.s3.amazonaws.com/craveyard/tomato-sauce.jpeg"]
+  @pictures = ["https://platable.s3.amazonaws.com/craveyard/arugala-salad.png",
+    "https://platable.s3.amazonaws.com/craveyard/berry-trifle.png",
+    "https://platable.s3.amazonaws.com/craveyard/chicken-fried-chicken.jpeg",
+    "https://platable.s3.amazonaws.com/craveyard/classic-burger.png",
+    "https://platable.s3.amazonaws.com/craveyard/coffee-cake.png",
+    "https://platable.s3.amazonaws.com/craveyard/french-omlettes.png",
+    "https://platable.s3.amazonaws.com/craveyard/french-toast.png",
+    "https://platable.s3.amazonaws.com/craveyard/half-grapefruit.jpeg",
+    "https://platable.s3.amazonaws.com/craveyard/hoe-platter.png",
+    "https://platable.s3.amazonaws.com/craveyard/house-made-veggie-burger.png",
+    "https://platable.s3.amazonaws.com/craveyard/ice-box-cake.png",
+    "https://platable.s3.amazonaws.com/craveyard/monte-cristo.png",
+    "https://platable.s3.amazonaws.com/craveyard/porterhouse.jpeg",
+    "https://platable.s3.amazonaws.com/craveyard/seared-ribeye.png",
+    "https://platable.s3.amazonaws.com/craveyard/smores.png",
+    "https://platable.s3.amazonaws.com/craveyard/spoon-bread.jpeg",
+    "https://platable.s3.amazonaws.com/craveyard/street-tacos.png",
+    "https://platable.s3.amazonaws.com/craveyard/tomato-sauce.jpeg"]
 
-# def seed_items(restaurant, menu, count)
-#   count.times do |i|
-#     begin
-#       puts "Seeding item number #{i} for #{restaurant.name}..."
-#       title = menu[rand(5)] + "_#{i}"
-#       desc = "#{title} +  It's so good!"
-#       restaurant_id = restaurant.id
-#       item = Item.new(
-#         title: title,
-#         description: desc,
-#         price: rand(20) + 1,
-#         active: true,
-#         restaurant_id: restaurant_id)
-#       item.image = open(@pictures.first)
-#       item.save
-#       @pictures.rotate!
-#       puts "#{item.restaurant_id}"
-#     end
-#   end
-# end
+def seed_items(restaurant, menu, count)
+  count.times do |i|
+    begin
+      puts "Seeding item number #{i} for #{restaurant.name}..."
+      title = menu[rand(5)] + "_#{i}"
+      desc = "#{title} +  It's so good!"
+      restaurant_id = restaurant.id
+      item = Item.new(
+        title: title,
+        description: desc,
+        price: rand(20) + 1,
+        active: true,
+        restaurant_id: restaurant_id)
+      item.image = open(@pictures.first)
+      item.save
+      @pictures.rotate!
+      puts "#{item.restaurant_id}"
+    end
+  end
+end
 
-# ono = Restaurant.find(1)
-# platable = Restaurant.find(2)
-# pho = Restaurant.find(3)
-# meeka = Restaurant.find(4)
-# persa = Restaurant.find(5)
-# dpz = Restaurant.find(6)
-# teapane = Restaurant.find(7)
-# coltandgray = Restaurant.find(8)
+ono = Restaurant.find(1)
+platable = Restaurant.find(2)
+pho = Restaurant.find(3)
+meeka = Restaurant.find(4)
+persa = Restaurant.find(5)
+dpz = Restaurant.find(6)
+teapane = Restaurant.find(7)
+coltandgray = Restaurant.find(8)
 
-# restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
-# ono_menu = ["Taco Gumbo", "Steak Burrito", "Breakfast Burrito", "Taco Salad", "Signature Vegetable Burrito"]
-# platable_menu = ["Interstate Mac N Cheese", "Smores", "Chitlins", "Corn Bread", "Spicy Black Bean Burger"]
-# pho_menu = ["Pho 20", "Pho 39", "Spring Roll", "Steam Buns", "Coke"]
-# persa_menu = ["Leg of Lamb", "Bacon wrapped dates", "Curried Chicken", "Ginger BEER", "French Fries"]
-# meeka_menu = ["Cupcakes", "Brownies", "Gin and Tonic", "Tomato Soupd", "BIG SALAD"]
-# teapane_menu = ["Foie Gras", "Earl Grey", "Salade Perigourdine", "Braised lamb neck", "Bone Marrow"]
-# dpz_menu = ["Pepperoni", "Ham and Pineapple", "Veggy special", "Garden Salad", "Soda Pop"]
-# coltandgray_menu = ["Charcuterie", "Daily Pork Special", "Burger", "Manhattan", "Negroni"]
+restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
+ono_menu = ["Taco Gumbo", "Steak Burrito", "Breakfast Burrito", "Taco Salad", "Signature Vegetable Burrito"]
+platable_menu = ["Interstate Mac N Cheese", "Smores", "Chitlins", "Corn Bread", "Spicy Black Bean Burger"]
+pho_menu = ["Pho 20", "Pho 39", "Spring Roll", "Steam Buns", "Coke"]
+persa_menu = ["Leg of Lamb", "Bacon wrapped dates", "Curried Chicken", "Ginger BEER", "French Fries"]
+meeka_menu = ["Cupcakes", "Brownies", "Gin and Tonic", "Tomato Soupd", "BIG SALAD"]
+teapane_menu = ["Foie Gras", "Earl Grey", "Salade Perigourdine", "Braised lamb neck", "Bone Marrow"]
+dpz_menu = ["Pepperoni", "Ham and Pineapple", "Veggy special", "Garden Salad", "Soda Pop"]
+coltandgray_menu = ["Charcuterie", "Daily Pork Special", "Burger", "Manhattan", "Negroni"]
 
-# menu_lookup = { ono => ono_menu,
-#                 platable => platable_menu,
-#                 pho => pho_menu,
-#                 persa => persa_menu,
-#                 meeka => meeka_menu,
-#                 teapane => teapane_menu,
-#                 dpz => dpz_menu,
-#                 coltandgray => coltandgray_menu}
+menu_lookup = { ono => ono_menu,
+                platable => platable_menu,
+                pho => pho_menu,
+                persa => persa_menu,
+                meeka => meeka_menu,
+                teapane => teapane_menu,
+                dpz => dpz_menu,
+                coltandgray => coltandgray_menu}
 
-#  menu_lookup = [ono_menu, platable_menu, pho_menu, persa_menu, meeka_menu, teapane_menu, dpz_menu, coltandgray_menu]
+ menu_lookup = [ono_menu, platable_menu, pho_menu, persa_menu, meeka_menu, teapane_menu, dpz_menu, coltandgray_menu]
 
-# db_restaurants.each do |rest|
-#   menu = menu_lookup.first
-#     menu_lookup.rotate!
-#     seed_items(rest, menu, 20)
-#   end
+db_restaurants.each do |rest|
+  menu = menu_lookup.first
+    menu_lookup.rotate!
+    seed_items(rest, menu, 5)
+  end
 
 
 
@@ -299,7 +296,7 @@ def seed_categories(restaurant, category_name, count)
   end
 end
 
-rest_size = Restaurant.limit(1000)
+rest_size = Restaurant.limit(10)
 rest_size.each { |rest| seed_categories(rest, cats[rand(9)], 3) }
 
 
@@ -314,5 +311,5 @@ def seed_item_categories(restaurant, count)
   end
 end
 
-rest_size.each { |rest| seed_item_categories(rest, 10) }
+rest_size.each { |rest| seed_item_categories(rest, 2) }
 

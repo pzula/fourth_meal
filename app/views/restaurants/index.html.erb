@@ -4,9 +4,6 @@
     <h3 class="restaurant-<%= restaurant.id %>"> 
       <%= link_to restaurant.name, restaurant_path(restaurant)%> 
     </h3>
-    <% if restaurant.restaurant_employees.any? %>
-      <p> There is an employee <p>
-    <% end %>
   <% end %>
 </div>
 
@@ -16,8 +13,5 @@
     <h3 class="restaurant-<%= restaurant.id %>"> 
       <%= link_to restaurant.name, restaurant_path(restaurant)%> 
     </h3>
-      <% if restaurant.restaurant_employees.any? %>
-      <p> There is an employee <p>
-    <% end %>
   <% end %>
 </div>

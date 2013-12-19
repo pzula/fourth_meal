@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
 
   def new
     order = current_order
-    redirect_to items_path
+    redirect_to order_path(order)
   end
 
   def show
