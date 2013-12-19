@@ -436,8 +436,8 @@ end
 
 users = User.limit(1000)
 @rest_size = Restaurant.all.count
-@rest_size.times { |r| seed_restaurant_users(r, true, false, [users.sample, users.sample]) }
-@rest_size.times { |r| seed_restaurant_userss(r, false, true, [users.sample, users.sample]) }
+# @rest_size.times { |r| seed_restaurant_users(r, true, false, [users.sample, users.sample]) }
+@rest_size.times { |r| seed_restaurant_users(r, false, true, [users.sample, users.sample]) }
 
 
 
