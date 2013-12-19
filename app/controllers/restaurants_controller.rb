@@ -71,7 +71,7 @@ class RestaurantsController < ApplicationController
       @restaurant = Restaurant.find(params[:id])
       @restaurant.update(restaurant_params)
     end
-    redirect_to user_path(@user)
+    redirect_to user_path(current_user.id)
   end
 
   def approve
