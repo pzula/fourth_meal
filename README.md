@@ -79,3 +79,5 @@ We extracted Stripe into its own model, and switch to the development processor 
 
 ![Stripe Integration](/demo/payment-stripe.png)
 
+![Stripe Rendering](/demo/payment-rendering.png)
+
