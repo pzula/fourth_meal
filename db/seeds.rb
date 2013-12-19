@@ -479,9 +479,9 @@ def seed_items(restaurant, menu, count)
         price: rand(20) + 1,
         active: true,
         restaurant_id: restaurant_id)
-      item.image = open(@pictures.first)
-      item.save
-      @pictures.rotate!
+      #item.image = open(@pictures.first)
+      #item.save
+      #@pictures.rotate!
       puts "#{item.restaurant_id}"
     end
   end
