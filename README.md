@@ -59,3 +59,23 @@ need to sign up for a free Stripe account, visit your account settings, and expo
 To integrate email on account creation and payment success, we use the SendGrid API.
 In order for this to function correctly, you must create a SendGrid account, and set your environment variables with the following: `SENDGRID_USERNAME` and `SENDGRID_PASSWORD`.
 
+
+###Process
+
+We used [Pivotal Tracker](https://www.pivotaltracker.com/s/projects/949354) in order to structure our project. We wrote user stories that we converted into tests, using BDD with RSpec and Capybara in order to drive development.
+
+![PivotalTracker Screenshot](/demo/story.png)
+
+![RSpec Test](/demo/test.png)
+
+
+####Extraction of External Services
+
+We extracted Stripe into its own model, and switch to the development processor in our development and testing environments in order to speed up the development process. 
+
+![Payment Processor Initializer](/demo/payment-processor-env.png)
+
+![Stripe Stub](/demo/payment-stub.png)
+
+![Stripe Integration](/demo/payment-stripe.png)
+
