@@ -4,4 +4,6 @@ class Hours < ActiveRecord::Base
   def days
     ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
   end
+
+  
 end

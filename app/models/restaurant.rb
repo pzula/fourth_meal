@@ -34,4 +34,10 @@ class Restaurant < ActiveRecord::Base
   def self.food_style(style)
     where(food_type: style).where(status: "approved")
   end
+
+  def open?
+    Hours.where(closed:false).each do |hour|
+      hour.restaurant
+    end
+  end
 end
