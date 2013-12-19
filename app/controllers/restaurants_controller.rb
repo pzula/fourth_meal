@@ -92,6 +92,10 @@ class RestaurantsController < ApplicationController
     @orders = @restaurant.orders.page(params[:page]).per(5)
   end
 
+  def load_restaurants_by_type
+    @restaurants = Restaurant.find_by(:food_type => params[:food_type])
+  end
+
   private
 
   def update_status

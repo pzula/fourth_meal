@@ -11,7 +11,7 @@
 ul.food-types {
 	list-style:none;
 	padding:0;
-	margin:0;
+	margin:0 auto;
 	overflow:hidden;
 }
 
@@ -20,7 +20,12 @@ ul.food-types li {
 	border-radius:5px;
 	width:15%;
 	padding:1%;
-	float:left
+	float:left;
+	margin-right:1.65%;
+}
+
+ul.food-types li.last-child {
+	margin-right:0;
 }
 
 ul.food-types li h2 {
@@ -32,4 +37,8 @@ ul.food-types li h2 {
 .centered-icon {
 	margin:0 auto;
 	display:block;
+}
+
+.icon-spacing {
+	padding-top:11px;
 }

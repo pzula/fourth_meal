@@ -42,4 +42,5 @@ DinnerDash::Application.routes.draw do
 
   get "past_orders/:unique_url" => "orders#guest_order_receipt", as: "past_orders"
 
+  get "food/:food_type" => "restaurants#load_restaurants_by_type", as: "food_type"
 end
