@@ -1,6 +1,5 @@
  require 'open-uri'
 
-<<<<<<< HEAD
 
 # The data:
 # At least 10,000 restaurants
@@ -133,7 +132,7 @@
 #       restaurant_hours(rest)
 #       random_closings
 #   end
-=======
+
   denver = Location.create(name: "Denver")
   dc = Location.create(name: "Washington, D.C.")
   nyc = Location.create(name: "New York City")
@@ -255,7 +254,6 @@ restaurants = [ono, platable, pho, meeka, persa, dpz, teapane, coltandgray]
   end
 
 
->>>>>>> 206cdf3da526c3cb011212cdf02fe9c74b6576f5
 
 
 #USERS
