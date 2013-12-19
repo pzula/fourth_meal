@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.save
     @item.update_categories(params[:item][:category])
-    redirect_to items_path
+    redirect_to item_path(@item)
   end
 
   def show
@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.update(params[:id], item_params)
     @item.update_categories(params[:item][:category])
-    redirect_to items_path
+    redirect_to item_path(@item)
   end
 
   def add_to_order
