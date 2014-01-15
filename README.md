@@ -5,7 +5,7 @@
 Fourth Meal is the step after the Dinner Dash Project [Dinner Dash](http://tutorials.jumpstartlab.com/projects/dinner_dash.html)
 The original tutorial was created by Jumpstart Lab. Fourth Meal [Fourth Meal](http://tutorials.jumpstartlab.com/projects/fourth_meal.html) focuses on taking another group's code, refactoring it and making it applicable for multiple restaurants. 
 
-##[**Craveyard**](http://fourth-meal-group7.herokuapp.com) Production site link
+###[**Craveyard**](http://craveyard.herokuapp.com) Production site link
 
 ####Instructions
 
